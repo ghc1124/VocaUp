@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "142953842454-oraoe6bd22ondcf5fi8igft3ebgb8719.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.test.vocaup",
+            "certificate_hash": "ab960269a2b4b2403fb46daf65ad737bd3a54309"
+          }
+        },
+        {
           "client_id": "142953842454-upkg74fb5hld2l33dd4bkpabp92gekbs.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
