@@ -11,40 +11,46 @@
         android:layout_width="170dp"
         android:layout_height="150dp"
         android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.896"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/exam"
-        tools:layout_editor_absoluteY="271dp" />
+        app:layout_constraintTop_toBottomOf="@+id/img_background"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/exam" />
 
     <ImageButton
         android:id="@+id/imageButton4"
         android:layout_width="170dp"
         android:layout_height="150dp"
         android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.896"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@android:drawable/ic_popup_sync"
-        tools:layout_editor_absoluteY="440dp" />
+        app:layout_constraintTop_toTopOf="@+id/imageButton2"
+        app:layout_constraintVertical_bias="0.572"
+        app:srcCompat="@android:drawable/ic_popup_sync" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="나만의 단어장"
-        tools:layout_editor_absoluteX="68dp"
-        tools:layout_editor_absoluteY="590dp" />
+        tools:layout_editor_absoluteX="67dp"
+        tools:layout_editor_absoluteY="609dp" />
 
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="170dp"
         android:layout_height="150dp"
         android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageButton2"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/study"
-        tools:layout_editor_absoluteY="271dp" />
+        app:layout_constraintTop_toBottomOf="@+id/img_background"
+        app:layout_constraintVertical_bias="0.572"
+        app:srcCompat="@drawable/study" />
 
     <ImageButton
         android:id="@+id/imageButton3"
@@ -53,8 +59,8 @@
         android:scaleType="centerInside"
         app:layout_constraintEnd_toStartOf="@+id/imageButton4"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/mynote"
-        tools:layout_editor_absoluteY="440dp" />
+        app:layout_constraintTop_toBottomOf="@+id/img_background"
+        app:srcCompat="@drawable/mynote" />
 
     <TextView
         android:id="@+id/textView2"
@@ -62,15 +68,15 @@
         android:layout_height="wrap_content"
         android:text="시험"
         tools:layout_editor_absoluteX="288dp"
-        tools:layout_editor_absoluteY="421dp" />
+        tools:layout_editor_absoluteY="436dp" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="학습"
-        tools:layout_editor_absoluteX="96dp"
-        tools:layout_editor_absoluteY="421dp" />
+        tools:layout_editor_absoluteX="95dp"
+        tools:layout_editor_absoluteY="436dp" />
 
     <ImageView
         android:id="@+id/img_background"
