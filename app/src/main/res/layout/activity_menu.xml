@@ -6,35 +6,71 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/button6"
+    <ImageButton
+        android:id="@+id/imageButton2"
         android:layout_width="170dp"
         android:layout_height="150dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="172dp"
-        android:text="나만의 단어장"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.896"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/exam"
+        tools:layout_editor_absoluteY="271dp" />
 
-    <Button
-        android:id="@+id/button4"
+    <ImageButton
+        android:id="@+id/imageButton4"
         android:layout_width="170dp"
         android:layout_height="150dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="172dp"
-        android:text="나만의 단어장"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.896"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@android:drawable/ic_popup_sync"
+        tools:layout_editor_absoluteY="440dp" />
 
-    <Button
-        android:id="@+id/button2"
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="나만의 단어장"
+        tools:layout_editor_absoluteX="68dp"
+        tools:layout_editor_absoluteY="590dp" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
         android:layout_width="170dp"
         android:layout_height="150dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="10dp"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/study"
+        tools:layout_editor_absoluteY="271dp" />
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="170dp"
+        android:layout_height="150dp"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/mynote"
+        tools:layout_editor_absoluteY="440dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="시험"
+        tools:layout_editor_absoluteX="288dp"
+        tools:layout_editor_absoluteY="421dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="학습"
-        app:layout_constraintBottom_toTopOf="@+id/button6"
-        app:layout_constraintEnd_toEndOf="parent" />
+        tools:layout_editor_absoluteX="96dp"
+        tools:layout_editor_absoluteY="421dp" />
 
     <ImageView
         android:id="@+id/img_background"
@@ -48,16 +84,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.111"
         tools:srcCompat="@tools:sample/avatars" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="170dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="10dp"
-        android:text="나만의 단어장"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
