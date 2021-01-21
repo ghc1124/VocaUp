@@ -36,10 +36,10 @@
         android:layout_marginTop="3dp"
         android:text="나만의 단어장"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+        app:layout_constraintTop_toBottomOf="@+id/imgBtn_myWord" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/imgBtn_myWord"
         android:layout_width="170dp"
         android:layout_height="150dp"
         android:layout_marginStart="24dp"
@@ -56,7 +56,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginBottom="24dp"
         android:scaleType="centerInside"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton"
+        app:layout_constraintBottom_toTopOf="@+id/imgBtn_myWord"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/mynote" />
 
@@ -80,7 +80,7 @@
         android:layout_marginTop="3dp"
         android:layout_marginBottom="3dp"
         android:text="학습"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton"
+        app:layout_constraintBottom_toTopOf="@+id/imgBtn_myWord"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton3" />
 
