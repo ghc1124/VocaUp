@@ -6,6 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -15,6 +19,9 @@ public class DetailActivity extends AppCompatActivity {
     private String profile;
     private String email;
     private String token;
+
+    private TextView textView_name;
+    private ImageView image_profile2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +41,11 @@ public class DetailActivity extends AppCompatActivity {
             token = intent.getStringExtra("token");
         }
 
+        textView_name = (TextView)findViewById(R.id.textView_name);
+        image_profile2 = (ImageView)findViewById(R.id.image_profile2);
 
+        textView_name.setText(name);
+        Glide.with(this).load(profile).into(image_profile2);
     }
 
     @Override
