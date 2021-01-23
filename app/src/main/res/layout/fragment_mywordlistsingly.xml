@@ -8,7 +8,7 @@
 
     <!--발음 듣기 버튼-->
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btn_pron"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:text="word"
@@ -17,11 +17,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/image_word"
         app:layout_constraintVertical_bias="0.035" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/text_mean"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="한글뜻"
@@ -29,11 +29,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4"
+        app:layout_constraintTop_toBottomOf="@+id/btn_pron"
         app:layout_constraintVertical_bias="0.078" />
 
+    <!-- 이전 단어 버튼-->
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/image_word"
         android:layout_width="280dp"
         android:layout_height="280dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -41,26 +42,27 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.058"
+        app:layout_constraintVertical_bias="0.042"
         app:srcCompat="@drawable/background" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/text_sentence"
         android:layout_width="300dp"
         android:layout_height="30dp"
+        android:layout_marginBottom="16dp"
         android:gravity="center_horizontal"
         android:text="sentence"
         android:textColor="#000000"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintBottom_toTopOf="@+id/text_s_mean"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.747"/>
+        app:layout_constraintTop_toBottomOf="@+id/text_mean"
+        app:layout_constraintVertical_bias="0.842" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/text_s_mean"
         android:layout_width="300dp"
         android:layout_height="30dp"
         android:gravity="center_horizontal"
@@ -71,8 +73,33 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.731" />
+        app:layout_constraintTop_toBottomOf="@+id/text_mean"
+        app:layout_constraintVertical_bias="0.801" />
+
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="100dp"
+        android:layout_height="210dp"
+        android:text="<"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.674" />
+
+    <!-- 다음 단어 버튼-->
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="100dp"
+        android:layout_height="210dp"
+        android:text=">"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.674" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
