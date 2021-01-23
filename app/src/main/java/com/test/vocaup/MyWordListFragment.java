@@ -21,7 +21,7 @@ public class MyWordListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_menu, container, false);
+        ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_mywordlist, container, false);
 
         btn_singly = viewGroup.findViewById(R.id.btn_singly); // 하나씩 보기 버튼 할당
         btn_singly.setOnClickListener(new View.OnClickListener() {

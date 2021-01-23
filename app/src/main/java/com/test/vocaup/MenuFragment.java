@@ -46,7 +46,7 @@ public class MenuFragment extends Fragment {
         imgBtn_study.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MenuActivity) getActivity()).replaceFragment(StudyFragment.newInstance());
+                ((MenuActivity) getActivity()).replaceFragment(StudyListFragment.newInstance());
             }
         });
 
