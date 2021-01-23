@@ -1,4 +1,4 @@
-package com.test.vocaup;
+package com.test.vocaup.fragment;
 
 import android.os.Bundle;
 
@@ -8,6 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.test.vocaup.R;
+import com.test.vocaup.activity.MenuActivity;
 
 public class MyWordListFragment extends Fragment {
 

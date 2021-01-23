@@ -1,42 +1,33 @@
-package com.test.vocaup;
+package com.test.vocaup.activity;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.test.vocaup.R;
 
-public class MenuActivity extends AppCompatActivity {
+public class DetailActivity extends AppCompatActivity {
 
     public static final String PREF = "Save";
-
-    private Toolbar toolbar;
-    private TextView text_name;
-    private ImageView image_profile;
 
     private String name;
     private String profile;
     private String email;
     private String token;
 
-    private Fragment menu_fragment;
+    private TextView textView_name;
+    private ImageView image_profile2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
-
-        text_name = (TextView)findViewById(R.id.text_name);
-        image_profile = (ImageView)findViewById(R.id.image_profile);
+        setContentView(R.layout.activity_detail);
 
         Intent intent = getIntent();
         name = intent.getStringExtra("name");
@@ -51,38 +42,11 @@ public class MenuActivity extends AppCompatActivity {
             token = intent.getStringExtra("token");
         }
 
-        text_name.setText(name + " 님");
-        Glide.with(this).load(profile).into(image_profile);
+        textView_name = (TextView)findViewById(R.id.textView_name);
+        image_profile2 = (ImageView)findViewById(R.id.image_profile2);
 
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayShowTitleEnabled(false);
-
-        menu_fragment = new MenuFragment();
-
-        replaceFragment(menu_fragment);
-
-        image_profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent_detail = new Intent(getApplicationContext(), DetailActivity.class);
-                intent_detail.putExtra("token", token);
-                intent_detail.putExtra("name", name);
-                intent_detail.putExtra("profile", profile); // getPhotoUrl이 URI 형태
-                intent_detail.putExtra("email", email);
-                startActivity(intent_detail);
-            }
-        });
-    }
-
-    // 프래그먼트 전환하는 메소드. "fragment"에 이름 지정해주면 됨.
-    public void replaceFragment(Fragment fragment) {
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.container, fragment)
-                .commit();
+        textView_name.setText(name);
+        Glide.with(this).load(profile).into(image_profile2);
     }
 
     @Override
