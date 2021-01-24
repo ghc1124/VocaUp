@@ -1,4 +1,4 @@
 package com.test.vocaup.server;
 
-public class connect_post {
+public class Connect_post {
 }
