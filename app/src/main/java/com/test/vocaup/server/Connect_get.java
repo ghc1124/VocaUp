@@ -23,8 +23,8 @@ public class Connect_get {
     private String url = "http://192.168.0.107:5000/";
     private ArrayList<ListAll> result = new ArrayList<>();
 
-    public void get(String... strings) {
-        /*try {
+    public ArrayList get(String... strings) {
+        try {
             OkHttpClient httpClient = new OkHttpClient();
             //RequestBody body = null;
             Request request = null;
@@ -33,37 +33,26 @@ public class Connect_get {
 
             System.out.println(url + strings[0] + "/" + strings[1]);
 
-            httpClient.newCall(request).enqueue(new Callback() {
-                @Override
-                public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                    Log.d("GET", "\"list\" request fail!!");
-                }
+            Response response = httpClient.newCall(request).execute();
 
-                @Override
-                public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                    try {
-                        String jsonData = response.body().string();
-                        JSONObject object = new JSONObject(jsonData);
-                        JSONArray array = object.getJSONArray("result");
+            String jsonData = response.body().string();
+            JSONObject object = new JSONObject(jsonData);
+            JSONArray array = object.getJSONArray("result");
 
-                        for(int i = 0; i < array.length(); i++) {
-                            JSONObject jsonObject = array.getJSONObject(i);
-                            ListAll listAll = new ListAll();
-                            listAll.setWord(jsonObject.getString("word"));
-                            listAll.setMean(jsonObject.getString("mean_w"));
-                            listAll.setPart(jsonObject.getString("part"));
-                            listAll.setLevel(jsonObject.getString("level"));
-                            result.add(listAll);
-                        }
+            for(int i = 0; i < array.length(); i++) {
+                JSONObject jsonObject = array.getJSONObject(i);
+                ListAll listAll = new ListAll();
+                listAll.setWord(jsonObject.getString("word"));
+                listAll.setMean(jsonObject.getString("mean_w"));
+                listAll.setPart(jsonObject.getString("part"));
+                listAll.setLevel(jsonObject.getString("level"));
+                result.add(listAll);
+            }
 
-                        System.out.println(result.size());
-                    } catch(Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
         } catch(Exception e) {
             e.printStackTrace();
-        }*/
+        }
+
+        return result;
     }
 }

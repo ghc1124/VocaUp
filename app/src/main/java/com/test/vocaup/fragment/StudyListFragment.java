@@ -32,9 +32,6 @@ public class StudyListFragment extends Fragment {
     private Button btn_act;
     private Button btn_once;
 
-    private String url = "http://192.168.0.107:5000/";
-    private ArrayList<ListAll> result = new ArrayList<>();
-
     public static StudyListFragment newInstance() { // 모든 프래그먼트에 공통으로 들어가야될 부분!!
         return new StudyListFragment();
     }
@@ -56,45 +53,7 @@ public class StudyListFragment extends Fragment {
         btn_once.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try {
-                    OkHttpClient httpClient = new OkHttpClient();
-                    //RequestBody body = null;
-                    Request request = null;
-
-                    request = new Request.Builder().url(url + "list/" + "1").build();
-
-                    httpClient.newCall(request).enqueue(new Callback() {
-                        @Override
-                        public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                            Log.d("GET", "\"list\" request fail!!");
-                        }
-
-                        @Override
-                        public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                            try {
-                                String jsonData = response.body().string();
-                                JSONObject object = new JSONObject(jsonData);
-                                JSONArray array = object.getJSONArray("result");
-
-                                for(int i = 0; i < array.length(); i++) {
-                                    JSONObject jsonObject = array.getJSONObject(i);
-                                    ListAll listAll = new ListAll();
-                                    listAll.setWord(jsonObject.getString("word"));
-                                    listAll.setMean(jsonObject.getString("mean_w"));
-                                    listAll.setPart(jsonObject.getString("part"));
-                                    listAll.setLevel(jsonObject.getString("level"));
-                                    result.add(listAll);
-                                }
-
-                                System.out.println(result.size());
-                            } catch(Exception e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    });
-                } catch(Exception e) {
-                    e.printStackTrace();
-                }
+                ((MenuActivity) getActivity()).replaceFragment(AllWordFragment.newInstance());
             }
         });
 

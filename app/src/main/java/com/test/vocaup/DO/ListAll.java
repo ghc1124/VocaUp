@@ -1,5 +1,7 @@
 package com.test.vocaup.DO;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 public class ListAll {
     private String word;
     private String mean;
@@ -37,4 +39,5 @@ public class ListAll {
     public void setLevel(String level) {
         this.level = level;
     }
+
 }
