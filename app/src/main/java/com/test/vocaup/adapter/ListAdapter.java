@@ -36,6 +36,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         return items.size();
     }
 
+    // 뷰 홀더
     static class ViewHolder extends RecyclerView.ViewHolder {
         private TextView textView_word;
         private TextView textView_part;
@@ -60,6 +61,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         items.add(listAll);
     }
 
+    // 어댑터 아이템 설정
     public void setItems(ArrayList<ListAll> items) {
         this.items = items;
     }

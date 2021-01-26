@@ -3,6 +3,7 @@ package com.test.vocaup.fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -42,17 +43,24 @@ public class AllWordFragment extends Fragment {
             e.printStackTrace();
         }
 
+        // 프래그먼트가 위치한 ViewGroup
         ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_allword, container, false);
 
+        // ViewGroup 내에서 View 찾음
         RecyclerView recyclerView = viewGroup.findViewById(R.id.recycler_word);
+        recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-        recyclerView.setLayoutManager(linearLayoutManager);
-        ListAdapter adapter = new ListAdapter();
+        // 세로방향으로 레이아웃 매니저 설정
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(
+                getContext(), LinearLayoutManager.VERTICAL, false
+        );
 
-        adapter.setItems(result);
+        recyclerView.setLayoutManager(linearLayoutManager); // 레이아웃 매니저 등록
 
-        recyclerView.setAdapter(adapter);
+        ListAdapter adapter = new ListAdapter(); // 어댑터 객체 생성
+        adapter.setItems(result); // 어댑터 아이템 설정
+
+        recyclerView.setAdapter(adapter); // 어댑터 등록
 
         return viewGroup;
     }

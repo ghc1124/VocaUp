@@ -31,7 +31,8 @@ public class Connect_get {
 
             request = new Request.Builder().url(url + strings[0] + "/" + strings[1]).build();
 
-            System.out.println(url + strings[0] + "/" + strings[1]);
+//            System.out.println(url + strings[0] + "/" + strings[1]);
+//            전체 리스트 요청할 때는 /list/{"레벨"}
 
             Response response = httpClient.newCall(request).execute();
 
@@ -42,7 +43,7 @@ public class Connect_get {
             for(int i = 0; i < array.length(); i++) {
                 JSONObject jsonObject = array.getJSONObject(i);
                 ListAll listAll = new ListAll();
-                listAll.setWord(jsonObject.getString("word"));
+                listAll.setWord(jsonObject.getString("word").replaceAll("[0-9]", ""));
                 listAll.setMean(jsonObject.getString("mean_w"));
                 listAll.setPart(jsonObject.getString("part"));
                 listAll.setLevel(jsonObject.getString("level"));
