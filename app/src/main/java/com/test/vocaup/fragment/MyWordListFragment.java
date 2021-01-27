@@ -34,7 +34,8 @@ public class MyWordListFragment extends Fragment {
             }
         });
 
-        btn_once = viewGroup.findViewById(R.id.btn_once); // 하나씩 보기 버튼 할당
+
+        btn_once = viewGroup.findViewById(R.id.btn_once); // 한번에 보기 버튼 할당
         btn_once.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
