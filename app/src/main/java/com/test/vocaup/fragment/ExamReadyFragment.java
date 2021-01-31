@@ -21,7 +21,7 @@ public class ExamReadyFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_menu, container, false);
+        ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_examready, container, false);
 
 
         btn_start = viewGroup.findViewById(R.id.btn_start); // 시험 시작 버튼 할당
