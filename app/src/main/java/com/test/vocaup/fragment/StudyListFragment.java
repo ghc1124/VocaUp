@@ -1,5 +1,6 @@
 package com.test.vocaup.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -28,7 +29,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class StudyListFragment extends Fragment {
+public class StudyListFragment extends Fragment implements MenuActivity.OnBackPressedListener {
     private Button btn_act;
     private Button btn_once;
 
@@ -58,5 +59,24 @@ public class StudyListFragment extends Fragment {
         });
 
         return viewGroup;
+    }
+
+    @Override
+    public void onBack() {
+        Log.e("Other", "onBack()");
+        // 리스너를 설정하기 위해 Activity 를 받아옴
+        MenuActivity activity = (MenuActivity)getActivity();
+        // 한번 뒤로가기 버튼을 눌렀다면 Listener 를 null로 설정
+        activity.setOnBackPressedListener(null);
+        // MainFragment 로 교체
+        ((MenuActivity) getActivity()).replaceFragment(MenuFragment.newInstance());
+    }
+
+    // Fragment 호출 시 반드시 호출되는 오버라이드 메소드
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        Log.e("Other", "onAttach()");
+        ((MenuActivity)context).setOnBackPressedListener(this);
     }
 }
