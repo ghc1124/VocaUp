@@ -1,18 +1,33 @@
 package com.test.vocaup.fragment;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.activity.OnBackPressedDispatcher;
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.test.vocaup.R;
+import com.test.vocaup.activity.MainActivity;
 import com.test.vocaup.activity.MenuActivity;
 
-public class MenuFragment extends Fragment {
+import java.util.Stack;
+
+public class MenuFragment extends Fragment  {
+    public static FragmentManager manager;
+    public static Stack<Fragment> fragmentStack;
+    public static FragmentTransaction transaction;
 
     private ImageButton imgBtn_myWord; // 나만의 단어장 이미지 버튼
     private ImageButton imgBtn_exam; // 시험 이미지 버튼

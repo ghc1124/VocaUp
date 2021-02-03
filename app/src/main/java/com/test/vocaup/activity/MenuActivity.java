@@ -1,5 +1,6 @@
 package com.test.vocaup.activity;
 
+import androidx.activity.OnBackPressedDispatcher;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,13 +10,18 @@ import androidx.fragment.app.Fragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.snackbar.Snackbar;
 import com.test.vocaup.fragment.MenuFragment;
 import com.test.vocaup.R;
+
+import java.util.Stack;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -123,4 +129,53 @@ public class MenuActivity extends AppCompatActivity {
             outState.putString("token", token);
         }
     }
+
+    // 뒤로가기 버튼 입력시간이 담길 long 객체
+    private long pressedTime = 0;
+
+    // 리스너 생성
+    public interface OnBackPressedListener {
+        public void onBack();
+    }
+
+    // 리스너 객체 생성
+    private OnBackPressedListener mBackListener;
+
+    // 리스너 설정 메소드
+    public void setOnBackPressedListener(OnBackPressedListener listener) {
+        mBackListener = listener;
+    }
+
+    // 뒤로가기 버튼을 눌렀을 때의 오버라이드 메소드
+    @Override
+    public void onBackPressed() {
+        // 다른 Fragment 에서 리스너를 설정했을 때 처리
+        if(mBackListener != null) {
+            mBackListener.onBack();
+            Log.e("!!!", "Listener is not null");
+            // 리스너가 설정되지 않은 상태(ex)MenuFragment)라면
+            // 뒤로가기 버튼을 연속적으로 두번 눌렀을 때 앱이 종료
+        } else {
+            Log.e("!!!", "Listener is null");
+            if ( pressedTime == 0 ) {
+                Toast.makeText(this,"한번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show();
+                pressedTime = System.currentTimeMillis();
+            }
+            else {
+                int seconds = (int) (System.currentTimeMillis() - pressedTime);
+
+                if ( seconds > 2000 ) {
+                    Toast.makeText(this,"한번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show();
+                    pressedTime = 0 ;
+                }
+                else {
+                    super.onBackPressed();
+                    Log.e("!!!", "onBackPressed : finish, killProcess");
+                    finish();
+                    android.os.Process.killProcess(android.os.Process.myPid());
+                }
+            }
+        }
+    }
+
 }
