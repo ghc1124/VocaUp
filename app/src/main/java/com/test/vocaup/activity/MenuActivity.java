@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.snackbar.Snackbar;
+import com.test.vocaup.DO.*;
 import com.test.vocaup.fragment.MenuFragment;
 import com.test.vocaup.R;
 
@@ -37,6 +38,8 @@ public class MenuActivity extends AppCompatActivity {
     private String token;
 
     private Fragment menu_fragment;
+
+    private Manager manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +86,25 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(intent_detail);
             }
         });
+
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+                // 사용자 정보 등록 or 받아오기
+                UserManager userManager = new UserManager();
+                manager = userManager.getUserInfo(new Manager(token));
+            }
+        };
+
+        thread.start();
+
+        try {
+            thread.join();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(manager.getLevel());
     }
 
     // 프래그먼트 전환하는 메소드. "fragment"에 이름 지정해주면 됨.
