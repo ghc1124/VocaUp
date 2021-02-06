@@ -64,8 +64,7 @@ public class Connect_get {
 
                 String jsonData = response.body().string();
                 JSONObject object = new JSONObject(jsonData);
-                JSONArray array = object.getJSONArray("result");
-                System.out.println(array);
+                System.out.println(object);
 
                 /*for(int i = 0; i < array.length(); i++) {
                     JSONObject jsonObject = array.getJSONObject(i);
