@@ -105,7 +105,12 @@ public class Connect_get implements Interceptor {
     }
 
     public JSONObject problem_get(String... strings){
-        OkHttpClient httpClient = new OkHttpClient.Builder().retryOnConnectionFailure(true).build();
+        OkHttpClient httpClient = new OkHttpClient
+                .Builder()
+                .retryOnConnectionFailure(true)
+                .addInterceptor(this::intercept)
+                .build();
+
         Request request = null;
         JSONObject result=null;
         request = new Request.Builder().url(url + strings[0] + "/" + strings[1]).build();

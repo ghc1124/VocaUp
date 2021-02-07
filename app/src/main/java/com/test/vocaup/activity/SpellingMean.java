@@ -14,11 +14,12 @@ import com.test.vocaup.R;
 import com.test.vocaup.server.Connect_get;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
 public class SpellingMean extends AppCompatActivity {
-    private ArrayList<ListAll> result = new ArrayList<>();
+    private JSONObject result = new JSONObject();
     TextView spelling;
     Button button1;
 
@@ -37,19 +38,19 @@ public class SpellingMean extends AppCompatActivity {
             @Override
             public void run() {
                 result = new Connect_get(intent.getStringExtra("Token"))
-                        .get("problem/spelling_mean", "10");
+                        .problem_get("problem/spelling_mean", "10");
             }
         };
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*try {
+                try {
                     spelling.setText((String)result.getString("problem_type"));
                     System.out.println((String)result.getString("problem_type"));
                 } catch (JSONException e) {
                     e.printStackTrace();
-                }*/
+                }
             }
         });
 
