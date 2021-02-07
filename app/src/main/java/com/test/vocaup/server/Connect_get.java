@@ -103,4 +103,24 @@ public class Connect_get implements Interceptor {
         Response response = chain.proceed(newRequest);
         return response;
     }
+
+    public JSONObject problem_get(String... strings){
+        OkHttpClient httpClient = new OkHttpClient.Builder().retryOnConnectionFailure(true).build();
+        Request request = null;
+        JSONObject result=null;
+        request = new Request.Builder().url(url + strings[0] + "/" + strings[1]).build();
+
+        try {
+            Response response = httpClient.newCall(request).execute();
+
+            String jsonData = response.body().string();
+            JSONObject object = new JSONObject(jsonData);
+            System.out.println(object);
+            result=object;
+
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
 }
