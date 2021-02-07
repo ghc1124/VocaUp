@@ -39,7 +39,7 @@ public class MenuActivity extends AppCompatActivity {
 
     private Fragment menu_fragment;
 
-    private Manager manager;
+    public Manager manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

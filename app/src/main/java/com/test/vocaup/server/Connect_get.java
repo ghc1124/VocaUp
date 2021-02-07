@@ -14,18 +14,32 @@ import java.util.ArrayList;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class Connect_get {
+public class Connect_get implements Interceptor {
     //private String url = "http://192.168.0.107:5000/";
     private String url = "http://13.209.75.148:5000/";
     private ArrayList<ListAll> result = new ArrayList<>();
 
+    private String userToken = "";
+
+    public Connect_get(String userToken) {
+        this.userToken = userToken;
+    }
+
+    public Connect_get() {
+    }
+
     public ArrayList get(String... strings) {
-        OkHttpClient httpClient = new OkHttpClient.Builder().retryOnConnectionFailure(true).build();
+        OkHttpClient httpClient = new OkHttpClient
+                .Builder()
+                .retryOnConnectionFailure(true)
+                .addInterceptor(this::intercept)
+                .build();
         //RequestBody body = null;
         Request request = null;
 
@@ -77,5 +91,16 @@ public class Connect_get {
         }
 
         return null;
+    }
+
+    @NotNull
+    @Override
+    public Response intercept(@NotNull Chain chain) throws IOException {
+        Request request = chain.request();
+        Request newRequest = request.newBuilder()
+                .addHeader("UserToken", userToken)
+                .build();
+        Response response = chain.proceed(newRequest);
+        return response;
     }
 }

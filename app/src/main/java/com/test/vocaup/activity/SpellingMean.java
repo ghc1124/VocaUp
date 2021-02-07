@@ -2,7 +2,9 @@ package com.test.vocaup.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.test.vocaup.DO.ListAll;
 import com.test.vocaup.R;
@@ -18,10 +20,15 @@ public class SpellingMean extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spelling_mean);
 
+        Intent intent = getIntent();
+
+        //Toast.makeText(this, intent.getStringExtra("Token"), Toast.LENGTH_SHORT).show();
+
         Thread thread = new Thread() {
             @Override
             public void run() {
-                result = new Connect_get().get("problem/spelling_mean", "10");
+                result = new Connect_get(intent.getStringExtra("Token"))
+                        .get("problem/spelling_mean", "10");
             }
         };
 

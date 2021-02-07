@@ -40,6 +40,8 @@ public class StudyFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), SpellingMean.class);
+                // 추가 사항
+                intent.putExtra("Token", ((MenuActivity)getActivity()).manager.getToken());
                 startActivity(intent);
             }
         });
