@@ -1,6 +1,5 @@
 package com.test.vocaup.activity;
 
-import androidx.activity.OnBackPressedDispatcher;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,12 +16,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.google.android.material.snackbar.Snackbar;
 import com.test.vocaup.DO.*;
 import com.test.vocaup.fragment.MenuFragment;
 import com.test.vocaup.R;
-
-import java.util.Stack;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -38,7 +34,6 @@ public class MenuActivity extends AppCompatActivity {
     private String token;
 
     private Fragment menu_fragment;
-
     public Manager manager;
 
     @Override
