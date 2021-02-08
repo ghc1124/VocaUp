@@ -40,10 +40,14 @@ public class SpellingMean extends AppCompatActivity {
         level_info = 10;
         test_json = "problem/spelling_mean";
         SelectBtnOnClickListener but_listener = new SelectBtnOnClickListener();
+
+        Intent intent = getIntent();
+
         Thread thread = new Thread() {
             @Override
             public void run() {
-                result = new Connect_get().problem_get(test_json, (level_info+""));
+                result = new Connect_get(intent.getStringExtra("Token"))
+                        .problem_get(test_json, (level_info+""));
                 try {
                     problem_list_fill(result,problem_list);
                     next_problem(spelling, but_array, problem_list);
