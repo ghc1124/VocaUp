@@ -82,6 +82,8 @@ public class UserManager {
             e.printStackTrace();
         }
 
+        response.close();
+
         return result;
     }
 }

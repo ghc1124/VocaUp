@@ -3,6 +3,7 @@ package com.test.vocaup.server;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.bumptech.glide.load.PreferredColorSpace;
 import com.test.vocaup.DO.ListAll;
 
 import org.jetbrains.annotations.NotNull;
@@ -57,7 +58,7 @@ public class Connect_get implements Interceptor {
                 JSONArray array = object.getJSONArray("result");
                 //System.out.println(array);
 
-                for(int i = 0; i < array.length(); i++) {
+                for (int i = 0; i < array.length(); i++) {
                     JSONObject jsonObject = array.getJSONObject(i);
                     ListAll listAll = new ListAll();
                     listAll.setWord(jsonObject.getString("word").replaceAll("[0-9]", ""));
@@ -67,27 +68,13 @@ public class Connect_get implements Interceptor {
                     result.add(listAll);
                 }
 
-            } catch(Exception e) {
+                response.close();
+
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
             return result;
-        } else {
-            try {
-                Response response = httpClient.newCall(request).execute();
-
-                String jsonData = response.body().string();
-                JSONObject object = new JSONObject(jsonData);
-                System.out.println(object);
-
-                /*for(int i = 0; i < array.length(); i++) {
-                    JSONObject jsonObject = array.getJSONObject(i);
-
-                }*/
-
-            } catch(Exception e) {
-                e.printStackTrace();
-            }
         }
 
         return null;
@@ -123,9 +110,12 @@ public class Connect_get implements Interceptor {
             System.out.println(object);
             result=object;
 
+            response.close();
+
         } catch(Exception e) {
             e.printStackTrace();
         }
+
         return result;
     }
 }
