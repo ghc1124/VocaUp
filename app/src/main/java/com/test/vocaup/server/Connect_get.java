@@ -91,7 +91,7 @@ public class Connect_get implements Interceptor {
         return response;
     }
 
-    public JSONObject problem_get(String... strings){
+    public JSONObject problem_get(String... strings) {
         OkHttpClient httpClient = new OkHttpClient
                 .Builder()
                 .retryOnConnectionFailure(true)
@@ -99,7 +99,7 @@ public class Connect_get implements Interceptor {
                 .build();
 
         Request request = null;
-        JSONObject result=null;
+        JSONObject result = null;
         request = new Request.Builder().url(url + strings[0] + "/" + strings[1]).build();
 
         try {
@@ -108,7 +108,7 @@ public class Connect_get implements Interceptor {
             String jsonData = response.body().string();
             JSONObject object = new JSONObject(jsonData);
             System.out.println(object);
-            result=object;
+            result = object;
 
             response.close();
 
