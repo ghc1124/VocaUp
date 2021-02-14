@@ -1,6 +1,8 @@
 package com.test.vocaup.DO;
 
-public class Manager {
+import java.io.Serializable;
+
+public class Manager implements Serializable {
     private String Token; // 사용자 토큰
     private int Level = 0; // 레벨
     private double Exp = 0.f; // 경험치

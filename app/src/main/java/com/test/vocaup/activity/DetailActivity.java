@@ -10,10 +10,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.test.vocaup.DO.Manager;
 import com.test.vocaup.R;
 
 public class DetailActivity extends AppCompatActivity {
-
     public static final String PREF = "Save";
 
     private String name;
@@ -23,6 +23,9 @@ public class DetailActivity extends AppCompatActivity {
 
     private TextView textView_name;
     private ImageView image_profile2;
+    private TextView textView_level;
+
+    private Manager manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,7 @@ public class DetailActivity extends AppCompatActivity {
         profile = intent.getStringExtra("profile");
         email = intent.getStringExtra("email");
         token = intent.getStringExtra("token");
+        manager = (Manager)intent.getSerializableExtra("Manager");
 
         if(savedInstanceState != null) {
             name = savedInstanceState.getString("name");
@@ -44,8 +48,10 @@ public class DetailActivity extends AppCompatActivity {
 
         textView_name = (TextView)findViewById(R.id.textView_name);
         image_profile2 = (ImageView)findViewById(R.id.image_profile2);
+        textView_level = findViewById(R.id.textView_level);
 
         textView_name.setText(name);
+        textView_level.setText("lv. " + manager.getLevel());
         Glide.with(this).load(profile).into(image_profile2);
     }
 

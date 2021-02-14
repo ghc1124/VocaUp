@@ -32,10 +32,10 @@ public class SpellingMean extends AppCompatActivity {
         setContentView(R.layout.activity_spelling_mean);
         spelling =  (TextView)findViewById(R.id.spelling);
         but_array = new Button[4];
-        but_array[0]= (Button)findViewById(R.id.button0);
-        but_array[1]= (Button)findViewById(R.id.button1);
-        but_array[2]= (Button)findViewById(R.id.button2);
-        but_array[3]= (Button)findViewById(R.id.button3);
+        but_array[0] = (Button)findViewById(R.id.button0);
+        but_array[1] = (Button)findViewById(R.id.button1);
+        but_array[2] = (Button)findViewById(R.id.button2);
+        but_array[3] = (Button)findViewById(R.id.button3);
         what_problem = -1;
         level_info = 10;
         test_json = "problem/spelling_mean";
@@ -64,7 +64,7 @@ public class SpellingMean extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        for(int i=0;i<4;i++){
+        for(int i = 0; i < 4; i++){
             but_array[i].setOnClickListener(but_listener);
         }
 

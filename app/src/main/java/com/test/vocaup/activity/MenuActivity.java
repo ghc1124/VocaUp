@@ -78,6 +78,7 @@ public class MenuActivity extends AppCompatActivity {
                 intent_detail.putExtra("name", name);
                 intent_detail.putExtra("profile", profile); // getPhotoUrl이 URI 형태
                 intent_detail.putExtra("email", email);
+                intent_detail.putExtra("Manager", manager);
                 startActivity(intent_detail);
             }
         });
