@@ -54,6 +54,8 @@ public class SpellingMean extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+
+                new Connect_get(intent.getStringExtra("Token")).updateSet();
             }
         };
         thread.start();

@@ -19,7 +19,9 @@ public class UserManager {
         JSONObject object = new JSONObject();
         JSONObject jsonData = null;
 
-        OkHttpClient httpClient = new OkHttpClient.Builder().retryOnConnectionFailure(true).build();
+        OkHttpClient httpClient = new OkHttpClient.Builder()
+                .retryOnConnectionFailure(true)
+                .build();
         RequestBody body = null;
         Request request = null;
         Response response = null;
