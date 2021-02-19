@@ -8,6 +8,7 @@ public class Problem implements Serializable {
     private int answer;
     private int choice;
     private String show;
+    private String sentence;
     private boolean check;
 
     public Problem(){
@@ -20,24 +21,16 @@ public class Problem implements Serializable {
     public int getSelectSize(){
         return select.size();
     }
-
     public int getAnswer() {
         return answer;
     }
-
     public String getShow() {
         return show;
     }
-
-    public boolean isCheck() {
-        return check;
-    }
+    public String getSentence(){return sentence;}
 
     public void setSelect(ArrayList<String> select) {
         this.select = select;
-    }
-    public void addSelect(String select){
-        this.select.add(select);
     }
     public void setAnswer(int answer) {
         this.answer = answer;
@@ -46,8 +39,16 @@ public class Problem implements Serializable {
     public void setShow(String show) {
         this.show = show;
     }
-
     public void setCheck(boolean check) {
         this.check = check;
     }
+    public void setSentence(String sentence) { this.sentence = sentence;}
+
+    public boolean isCheck() {
+        return check;
+    }
+    public void addSelect(String select){
+        this.select.add(select);
+    }
+
 }

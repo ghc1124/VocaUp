@@ -1,4 +1,4 @@
-package com.test.vocaup.activity;
+package com.test.vocaup.quiz;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.test.vocaup.DO.Problem;
 import com.test.vocaup.R;
+import com.test.vocaup.activity.TestResultActivity;
 import com.test.vocaup.server.Connect_get;
 
 import org.json.JSONArray;
@@ -30,7 +31,7 @@ public class SpellingMean extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spelling_mean);
-        spelling =  (TextView)findViewById(R.id.spelling);
+        spelling =  (TextView)findViewById(R.id.look);
         but_array = new Button[4];
         but_array[0] = (Button)findViewById(R.id.button0);
         but_array[1] = (Button)findViewById(R.id.button1);
@@ -96,7 +97,7 @@ public class SpellingMean extends AppCompatActivity {
                 next_problem(spelling, but_array, problem_list);
             }
             else{
-                Intent intent = new Intent(SpellingMean.this,TestResultActivity.class);
+                Intent intent = new Intent(SpellingMean.this, TestResultActivity.class);
                 intent.putExtra("test_result",problem_list);
                 startActivity(intent);
             }

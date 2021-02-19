@@ -53,15 +53,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="spelling_mean"
+            android:text="blank_spelling"
             android:textSize="40dp" />
 
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="5"
-            tools:srcCompat="@tools:sample/avatars" />
+
     </LinearLayout>
 
     <TableLayout
