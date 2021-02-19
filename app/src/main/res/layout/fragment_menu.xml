@@ -51,14 +51,14 @@
 
     <ImageButton
         android:id="@+id/imgBtn_study"
-        android:layout_width="170dp"
+        android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginStart="24dp"
         android:layout_marginBottom="24dp"
+        android:background="@drawable/ic_practice"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toTopOf="@+id/imgBtn_myWord"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/mynote" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView2"
