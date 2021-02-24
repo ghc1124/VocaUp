@@ -1,102 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FFFAF0">
 
-    <Button
+    <android.widget.Button
         android:id="@+id/btn_back"
-        android:layout_width="200dp"
+        android:layout_width="150dp"
         android:layout_height="50dp"
+        android:layout_marginBottom="64dp"
         android:text="처음으로"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_fill_blank" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/btn_fill_blank"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
+        android:layout_width="170dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/button_blue_big3"
         android:text="빈칸 채우기"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textStyle="bold"
+        android:typeface="normal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_arrange"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_p_to_m" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/btn_arrange"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
+        android:layout_width="170dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/button_blue_big3"
         android:text="알파뱃 배열하기"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        android:textStyle="bold"
+        android:typeface="normal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_p_to_m"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_match" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/btn_p_to_m"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
+        android:layout_width="170dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/button_blue_big3"
         android:text="발음 듣고 뜻 맞추기"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textStyle="bold"
+        android:typeface="normal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_match"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_m_to_w" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/btn_match"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
+        android:layout_width="170dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/button_blue_big3"
         android:text="단어와 뜻 연결하기"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        android:textStyle="bold"
+        android:typeface="normal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_m_to_w"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_w_to_m" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/btn_m_to_w"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
+        android:layout_width="170dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/button_blue_big3"
         android:text="뜻 보고 단어 맞추기"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textStyle="bold"
+        android:typeface="normal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_w_to_m"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/text_level" />
 
     <TextView
         android:id="@+id/text_level"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="현재 레벨은 ??? 입니다"
+        android:layout_marginTop="88dp"
+        android:text="lv. ???"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/btn_w_to_m"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
+        android:layout_width="170dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/button_blue_big3"
         android:text="단어 보고 뜻 맞추기"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        android:textStyle="bold"
+        android:typeface="normal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.327" />
+        app:layout_constraintTop_toBottomOf="@+id/text_level" />
 </androidx.constraintlayout.widget.ConstraintLayout>
