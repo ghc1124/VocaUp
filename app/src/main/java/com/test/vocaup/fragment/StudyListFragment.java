@@ -32,6 +32,7 @@ import okhttp3.Response;
 public class StudyListFragment extends Fragment implements MenuActivity.OnBackPressedListener {
     private Button btn_act;
     private Button btn_once;
+    private Button btn_singly;
 
     public static StudyListFragment newInstance() { // 모든 프래그먼트에 공통으로 들어가야될 부분!!
         return new StudyListFragment();
