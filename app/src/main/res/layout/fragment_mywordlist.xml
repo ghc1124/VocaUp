@@ -4,42 +4,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFAF0"
     tools:context=".fragment.MenuFragment">
 
     <!--전체 리스트 보기 버튼-->
-    <Button
+    <android.widget.Button
         android:id="@+id/btn_once"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="32dp"
-        android:backgroundTint="#FFEBCD"
+        android:layout_marginEnd="44dp"
+        android:background="@drawable/button_blue_big3"
+        android:drawableTop="@drawable/pencil_case_resize"
+        android:paddingTop="30dp"
         android:text="전체 리스트 보기"
         android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.991"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.406" />
 
     <!--하나씩 보기 버튼-->
-    <Button
+    <android.widget.Button
         android:id="@+id/btn_singly"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="4dp"
-        android:backgroundTint="#FFEBCD"
+        android:layout_marginStart="44dp"
+        android:background="@drawable/button_blue_big3"
+        android:drawableTop="@drawable/pencil_resize"
+        android:paddingTop="30dp"
         android:text="하나씩 보기"
         android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_once"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.406" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:text="나만의 단어장"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:typeface="serif"
+        app:layout_constraintBottom_toTopOf="@+id/btn_singly"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

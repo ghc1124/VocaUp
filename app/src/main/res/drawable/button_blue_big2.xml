@@ -10,7 +10,7 @@
                 android:top="1dp" />
 
             <solid android:color="#00CCCCCC" />
-            <corners android:radius="10dp" />
+            <corners android:radius="50dp" />
         </shape>
     </item>
 
@@ -23,7 +23,7 @@
                 android:top="1dp" />
 
             <solid android:color="#06CCCCCC" />
-            <corners android:radius="10dp" />
+            <corners android:radius="50dp" />
         </shape>
     </item>
 
@@ -36,7 +36,7 @@
                 android:top="1dp" />
 
             <solid android:color="#09CCCCCC" />
-            <corners android:radius="10dp" />
+            <corners android:radius="50dp" />
         </shape>
     </item>
 
@@ -49,7 +49,7 @@
                 android:top="1dp" />
 
             <solid android:color="#0BCCCCCC" />
-            <corners android:radius="10dp" />
+            <corners android:radius="50dp" />
         </shape>
     </item>
 
@@ -62,7 +62,7 @@
                 android:top="1dp" />
 
             <solid android:color="#0DCCCCCC" />
-            <corners android:radius="10dp" />
+            <corners android:radius="50dp" />
         </shape>
     </item>
 
@@ -75,7 +75,7 @@
                 android:top="1dp" />
 
             <solid android:color="#10CCCCCC" />
-            <corners android:radius="10dp" />
+            <corners android:radius="50dp" />
         </shape>
     </item>
 
@@ -88,7 +88,7 @@
                 android:top="1dp" />
 
             <solid android:color="#12CCCCCC" />
-            <corners android:radius="10dp" />
+            <corners android:radius="50dp" />
         </shape>
     </item>
 
@@ -101,7 +101,7 @@
                 android:top="1dp" />
 
             <solid android:color="#15CCCCCC" />
-            <corners android:radius="10dp" />
+            <corners android:radius="50dp" />
         </shape>
     </item>
 
@@ -114,7 +114,7 @@
                 android:top="1dp" />
 
             <solid android:color="#17CCCCCC" />
-            <corners android:radius="10dp" />
+            <corners android:radius="50dp" />
         </shape>
     </item>
 
@@ -127,7 +127,7 @@
                 android:top="1dp" />
 
             <solid android:color="#1ACCCCCC" />
-            <corners android:radius="10dp" />
+            <corners android:radius="50dp" />
         </shape>
     </item>
 
@@ -139,7 +139,7 @@
                 android:endColor="#1565C0"
                 android:type="linear" />
 
-            <corners android:radius="10dp" />
+            <corners android:radius="50dp" />
 
             <stroke android:color="@color/white" android:width="2dp" />
         </shape>
