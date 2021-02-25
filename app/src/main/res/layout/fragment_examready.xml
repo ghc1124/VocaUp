@@ -13,6 +13,8 @@
         android:layout_height="30dp"
         android:text="Do not deceive yourself."
         android:textSize="24sp"
+        android:textStyle="bold"
+        android:typeface="serif"
         app:layout_constraintBottom_toTopOf="@+id/btn_start"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,8 +24,9 @@
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:text="*부정행위시 후원자에게 경고 문자가 전송됩니다."
+        android:text="▶ 부정행위시 후원자에게 경고 문자 전송"
         android:textSize="18sp"
+        android:typeface="serif"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
@@ -37,6 +40,8 @@
         android:layout_height="50dp"
         android:text="不欺自心"
         android:textSize="36sp"
+        android:textStyle="bold"
+        android:typeface="serif"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,19 +54,27 @@
         android:layout_height="30dp"
         android:text='"자기 자신을 속이지 말라"'
         android:textSize="24sp"
+        android:textStyle="bold"
+        android:typeface="serif"
         app:layout_constraintBottom_toTopOf="@+id/textView9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/btn_start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="80dp"
+        android:background="@drawable/button_blue_big2"
         android:text="시험 시작"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:typeface="serif"
         app:layout_constraintBottom_toTopOf="@+id/textView10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:layout_constraintVertical_bias="0.678" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

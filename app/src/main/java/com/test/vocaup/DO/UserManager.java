@@ -65,6 +65,8 @@ public class UserManager {
         try {
             response = httpClient.newCall(request).execute();
 
+            Thread.sleep(100);
+
             if(response != null) {
                 data = response.body().string();
                 jsonData = new JSONObject(data);
