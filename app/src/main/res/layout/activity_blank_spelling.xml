@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFAF0"
     android:orientation="vertical"
     tools:context=".quiz.SpellingMean">
 
@@ -11,14 +12,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <Button
+        <android.widget.Button
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:layout_weight="1"
-            android:text="시험포기" />
+            android:background="@drawable/button_giveup"
+            android:text="시험포기"
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/level_info"
@@ -27,7 +34,8 @@
             android:layout_weight="30"
             android:gravity="bottom"
             android:text="   레벨 :"
-            android:textSize="25dp" />
+            android:textSize="20sp"
+            android:typeface="serif" />
 
         <TextView
             android:id="@+id/textView13"
@@ -36,7 +44,8 @@
             android:layout_weight="1"
             android:gravity="bottom"
             android:text="문제/문제"
-            android:textSize="25dp" />
+            android:textSize="20sp"
+            android:typeface="serif" />
 
     </LinearLayout>
 
@@ -69,19 +78,21 @@
             android:layout_height="match_parent"
             android:layout_weight="1">
 
-            <Button
+            <android.widget.Button
                 android:id="@+id/button0"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Button" />
+                android:background="@drawable/button_blue_big3"
+                android:text="B" />
 
-            <Button
+            <android.widget.Button
                 android:id="@+id/button1"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Button" />
+                android:background="@drawable/button_blue_big3"
+                android:text="B" />
         </TableRow>
 
         <TableRow
@@ -89,19 +100,21 @@
             android:layout_height="match_parent"
             android:layout_weight="1">
 
-            <Button
+            <android.widget.Button
                 android:id="@+id/button2"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Button" />
+                android:background="@drawable/button_blue_big3"
+                android:text="B" />
 
-            <Button
+            <android.widget.Button
                 android:id="@+id/button3"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Button" />
+                android:background="@drawable/button_blue_big3"
+                android:text="B" />
         </TableRow>
 
     </TableLayout>
@@ -113,10 +126,13 @@
         android:gravity="bottom|right"
         android:orientation="horizontal">
 
-        <Button
+        <android.widget.Button
             android:id="@+id/pass"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/button_pass"
             android:text="통과하기" />
     </LinearLayout>
 

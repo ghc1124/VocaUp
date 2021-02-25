@@ -4,21 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFAF0"
     tools:context=".fragment.MenuFragment">
 
     <!--발음 듣기 버튼-->
-    <Button
+
+    <android.widget.Button
         android:id="@+id/btn_pron"
         android:layout_width="150dp"
         android:layout_height="50dp"
+        android:background="@drawable/button_bg"
         android:text="word"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_word"
-        app:layout_constraintVertical_bias="0.035" />
+        app:layout_constraintVertical_bias="0.019" />
 
     <TextView
         android:id="@+id/text_mean"
@@ -76,30 +78,33 @@
         app:layout_constraintTop_toBottomOf="@+id/text_mean"
         app:layout_constraintVertical_bias="0.801" />
 
-    <Button
-        android:id="@+id/btn_back"
-        android:layout_width="100dp"
-        android:layout_height="210dp"
-        android:text="&lt;"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.674" />
-
     <!-- 다음 단어 버튼-->
-    <Button
+
+    <android.widget.Button
         android:id="@+id/btn_next"
-        android:layout_width="100dp"
-        android:layout_height="210dp"
-        android:text="&gt;"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/button_arrow"
+        android:text="≫"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.748" />
+
+    <android.widget.Button
+        android:id="@+id/btn_back"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="40dp"
+        android:background="@drawable/button_arrow"
+        android:text="≪"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.674" />
+        app:layout_constraintVertical_bias="0.747" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
