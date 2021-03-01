@@ -59,6 +59,14 @@ public class StudyListFragment extends Fragment implements MenuActivity.OnBackPr
             }
         });
 
+        btn_singly = viewGroup.findViewById(R.id.btn_singly);
+        btn_singly.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MenuActivity) getActivity()).replaceFragment(AllWordSinglyFragment.newInstance());
+            }
+        });
+
         return viewGroup;
     }
 

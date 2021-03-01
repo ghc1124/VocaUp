@@ -5,15 +5,15 @@
         <shape>
             <gradient
                 android:angle="0"
-                android:startColor="#EECDA3"
-                android:endColor="#EF629F"
+                android:startColor="#D3CCE3"
+                android:endColor="#E9E4F0"
                 android:type="linear" />
 
             <stroke
                 android:color="@color/white"
                 android:width="2dp" />
 
-            <corners android:radius="30dp" />
+            <corners android:radius="20dp" />
         </shape>
     </item>
 </ripple>

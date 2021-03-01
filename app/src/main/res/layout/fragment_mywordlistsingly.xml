@@ -16,25 +16,27 @@
         android:background="@drawable/button_bg"
         android:text="word"
         android:textSize="18sp"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_word"
         app:layout_constraintVertical_bias="0.019" />
 
+    <!-- 이전 단어 버튼-->
     <TextView
         android:id="@+id/text_mean"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="한글뜻"
-        android:textSize="30sp"
+        android:textColor="@color/black"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_pron"
-        app:layout_constraintVertical_bias="0.078" />
+        app:layout_constraintVertical_bias="0.176" />
 
-    <!-- 이전 단어 버튼-->
     <ImageView
         android:id="@+id/image_word"
         android:layout_width="280dp"
@@ -82,8 +84,8 @@
 
     <android.widget.Button
         android:id="@+id/btn_next"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginEnd="40dp"
         android:background="@drawable/button_arrow"
         android:text="≫"
@@ -95,8 +97,8 @@
 
     <android.widget.Button
         android:id="@+id/btn_back"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginStart="40dp"
         android:background="@drawable/button_arrow"
         android:text="≪"
@@ -105,6 +107,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.747" />
+
+    <TextView
+        android:id="@+id/text_part"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="177dp"
+        android:layout_marginEnd="177dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/text_mean"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_pron" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
