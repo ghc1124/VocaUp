@@ -7,19 +7,18 @@
     android:background="#FFFAF0"
     tools:context=".fragment.MenuFragment">
 
-    <ImageButton
+    <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/imgBtn_exam"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginEnd="35dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/button_bg"
-        android:elevation="20dp"
-        android:padding="10dp"
-        android:scaleType="centerInside"
-        android:src="@drawable/ic_exam"
         app:layout_constraintBottom_toTopOf="@+id/imageButton4"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:lottie_rawRes="@raw/exam"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true" />
 
     <ImageButton
         android:id="@+id/imageButton4"
@@ -50,31 +49,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgBtn_myWord" />
 
-    <ImageButton
+    <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/imgBtn_myWord"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginStart="35dp"
         android:layout_marginBottom="76dp"
         android:background="@drawable/button_bg"
-        android:elevation="20dp"
         android:padding="10dp"
-        android:scaleType="centerInside"
-        android:src="@drawable/ic_myword"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:lottie_rawRes="@raw/myword"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true" />
 
-    <ImageButton
+    <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/imgBtn_study"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginStart="35dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/button_bg"
-        android:elevation="20dp"
-        android:padding="10dp"
-        android:scaleType="centerInside"
-        android:src="@drawable/ic_practice"
+        app:lottie_rawRes="@raw/study"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
         app:layout_constraintBottom_toTopOf="@+id/imgBtn_myWord"
         app:layout_constraintStart_toStartOf="parent" />
 

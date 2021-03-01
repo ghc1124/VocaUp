@@ -1,6 +1,8 @@
 package com.test.vocaup.fragment;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -30,8 +32,27 @@ public class MyWordListOnceFragment extends Fragment implements MenuActivity.OnB
         MenuActivity activity = (MenuActivity)getActivity();
         // 한번 뒤로가기 버튼을 눌렀다면 Listener 를 null로 설정
         activity.setOnBackPressedListener(null);
-        // MainFragment 로 교체
-        ((MenuActivity) getActivity()).replaceFragment(MyWordListFragment.newInstance());
+        //alert 다이얼로그로 재확인
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("확인").setMessage("뒤로 가시겠습니까?");
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int id)
+            {
+                // MainFragment 로 교체
+                ((MenuActivity) getActivity()).replaceFragment(MyWordListFragment.newInstance());
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int id)
+            {
+                
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 
     // Fragment 호출 시 반드시 호출되는 오버라이드 메소드

@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.test.vocaup.R;
 import com.test.vocaup.activity.MainActivity;
 import com.test.vocaup.activity.MenuActivity;
@@ -29,9 +30,9 @@ public class MenuFragment extends Fragment  {
     public static Stack<Fragment> fragmentStack;
     public static FragmentTransaction transaction;
 
-    private ImageButton imgBtn_myWord; // 나만의 단어장 이미지 버튼
-    private ImageButton imgBtn_exam; // 시험 이미지 버튼
-    private ImageButton imgBtn_study; // 학습 이미지 버튼
+    private LottieAnimationView imgBtn_myWord; // 나만의 단어장 이미지 버튼
+    private LottieAnimationView imgBtn_exam; // 시험 이미지 버튼
+    private LottieAnimationView imgBtn_study; // 학습 이미지 버튼
 
     public static MenuFragment newInstance() { // 모든 프래그먼트에 공통으로 들어가야될 부분!!
         return new MenuFragment();
