@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="70dp">
+    android:layout_height="70dp"
+    android:background="@color/white">
 
     <TextView
         android:id="@+id/textView_word"
@@ -12,6 +13,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:text="단어"
+        android:textColor="@color/black"
         android:textSize="25sp"
         android:textStyle="bold" />
 
@@ -23,6 +25,7 @@
         android:layout_marginStart="10dp"
         android:layout_toEndOf="@+id/textView_word"
         android:text="품사"
+        android:textColor="@color/black"
         android:textSize="12sp" />
 
     <TextView
@@ -33,6 +36,7 @@
         android:layout_marginStart="30dp"
         android:layout_toEndOf="@+id/textView_part"
         android:text="뜻"
+        android:textColor="@color/black"
         android:textSize="15sp"
         android:textStyle="bold" />
 </RelativeLayout>

@@ -35,6 +35,7 @@
             android:layout_weight="30"
             android:gravity="bottom"
             android:text="   레벨 :"
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:typeface="serif" />
 
@@ -45,6 +46,7 @@
             android:layout_weight="1"
             android:gravity="bottom"
             android:text="문제/문제"
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:typeface="serif" />
 
@@ -64,6 +66,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="mean_spelling"
+            android:textColor="@color/black"
             android:textSize="40dp" />
 
         <ImageView
@@ -90,7 +93,9 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/button_blue_big3"
-                android:text="Button" />
+                android:text="Button"
+                android:textAllCaps="false"
+                android:textColor="@color/black" />
 
             <android.widget.Button
                 android:id="@+id/button1"
@@ -98,7 +103,9 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/button_blue_big3"
-                android:text="Button" />
+                android:text="Button"
+                android:textAllCaps="false"
+                android:textColor="@color/black" />
         </TableRow>
 
         <TableRow
@@ -112,7 +119,9 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/button_blue_big3"
-                android:text="Button" />
+                android:text="Button"
+                android:textAllCaps="false"
+                android:textColor="@color/black" />
 
             <android.widget.Button
                 android:id="@+id/button3"
@@ -120,7 +129,9 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/button_blue_big3"
-                android:text="Button" />
+                android:text="Button"
+                android:textAllCaps="false"
+                android:textColor="@color/black" />
         </TableRow>
 
     </TableLayout>
@@ -140,6 +151,7 @@
             android:layout_marginBottom="5dp"
             android:background="@drawable/button_pass"
             android:text="문제 넘기기"
+            android:textColor="@color/black"
             android:typeface="normal" />
     </LinearLayout>
 
