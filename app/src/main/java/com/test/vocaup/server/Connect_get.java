@@ -22,7 +22,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class Connect_get implements Interceptor {
-    //private String url = "http://192.168.0.107:5000/";
+    //private String url = "http://192.168.0.108:5000/";
     private String url = "http://13.209.75.148:5000/";
     private ArrayList<ListAll> result = new ArrayList<>();
 
@@ -65,6 +65,8 @@ public class Connect_get implements Interceptor {
                     listAll.setMean(jsonObject.getString("mean_w"));
                     listAll.setPart(jsonObject.getString("part"));
                     listAll.setLevel(jsonObject.getString("level"));
+                    listAll.setSentence(jsonObject.getString("sentence"));
+                    listAll.setMean_s(jsonObject.getString("mean_s"));
                     result.add(listAll);
                 }
 

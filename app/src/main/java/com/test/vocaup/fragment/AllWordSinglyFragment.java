@@ -30,7 +30,7 @@ public class AllWordSinglyFragment extends Fragment implements MenuActivity.OnBa
     private Button btn_next;
     private TextView text_mean;
     private TextView text_part;
-    private TextView text_s_mean;
+    private TextView text_mean_s;
     private TextView text_sentence;
     MediaPlayer mediaPlayer;
 
@@ -72,6 +72,12 @@ public class AllWordSinglyFragment extends Fragment implements MenuActivity.OnBa
         text_part = viewGroup.findViewById(R.id.text_part);
         text_part.setText(result.get(0).getPart());
 
+        text_sentence = viewGroup.findViewById(R.id.text_sentence);
+        text_sentence.setText(result.get(0).getSentence());
+
+        text_mean_s = viewGroup.findViewById(R.id.text_mean_s);
+        text_mean_s.setText(result.get(0).getMean_s());
+
         btn_pron = viewGroup.findViewById(R.id.btn_pron); // 발음 듣기 버튼 할당
         btn_pron.setText(result.get(0).getWord());
         btn_pron.setOnClickListener(new View.OnClickListener() {
@@ -95,6 +101,8 @@ public class AllWordSinglyFragment extends Fragment implements MenuActivity.OnBa
                     btn_pron.setText(result.get(now_index).getWord()); // 증가 시킨 인덱스의 단어로 텍스트 변경
                     text_mean.setText(result.get(now_index).getMean());
                     text_part.setText(result.get(now_index).getPart());
+                    text_sentence.setText(result.get(now_index).getSentence());
+                    text_mean_s.setText(result.get(now_index).getMean_s());
                 }
             }
         });
@@ -112,6 +120,8 @@ public class AllWordSinglyFragment extends Fragment implements MenuActivity.OnBa
                     btn_pron.setText(result.get(now_index).getWord()); // 증가 시킨 인덱스의 단어로 텍스트 변경
                     text_mean.setText(result.get(now_index).getMean());
                     text_part.setText(result.get(now_index).getPart());
+                    text_sentence.setText(result.get(now_index).getSentence());
+                    text_mean_s.setText(result.get(now_index).getMean_s());
                 }
             }
         });
