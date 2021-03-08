@@ -22,7 +22,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class Connect_get implements Interceptor {
-    //private String url = "http://192.168.0.108:5000/";
+    //private String url = "http://192.168.0.100:5000/";
     private String url = "http://13.209.75.148:5000/";
     private ArrayList<ListAll> result = new ArrayList<>();
 
@@ -43,10 +43,10 @@ public class Connect_get implements Interceptor {
                 .build();
         //RequestBody body = null;
         Request request = null;
-
         request = new Request.Builder().url(url + strings[0] + "/" + strings[1]).build();
 
-//      System.out.println(url + strings[0] + "/" + strings[1]);
+//        System.out.println(userToken);
+//        System.out.println(url + strings[0] + "/" + strings[1]);
 //      전체 리스트 요청할 때는 /list/{"레벨"}
 
         if(strings[0].equals("list")) {
@@ -56,7 +56,7 @@ public class Connect_get implements Interceptor {
                 String jsonData = response.body().string();
                 JSONObject object = new JSONObject(jsonData);
                 JSONArray array = object.getJSONArray("result");
-                //System.out.println(array);
+                System.out.println(jsonData);
 
                 for (int i = 0; i < array.length(); i++) {
                     JSONObject jsonObject = array.getJSONObject(i);
@@ -104,6 +104,9 @@ public class Connect_get implements Interceptor {
         JSONObject result = null;
         request = new Request.Builder().url(url + strings[0] + "/" + strings[1]).build();
 
+        System.out.println(userToken);
+        System.out.println(url + strings[0] + "/" + strings[1]);
+
         try {
             Response response = httpClient.newCall(request).execute();
 
@@ -121,7 +124,7 @@ public class Connect_get implements Interceptor {
         return result;
     }
 
-    public void updateSet() {
+    /*public void updateSet() {
         OkHttpClient httpClient = new OkHttpClient
                 .Builder()
                 .retryOnConnectionFailure(true)
@@ -143,5 +146,5 @@ public class Connect_get implements Interceptor {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+    }*/
 }
