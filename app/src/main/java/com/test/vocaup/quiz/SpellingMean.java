@@ -103,7 +103,7 @@ public class SpellingMean extends AppCompatActivity {
             }
         }
     }
-
+    //문제리스트를 받아서 배열에 저장함
     protected void problem_list_fill(JSONObject result_object, ArrayList<Problem> problem_list) throws JSONException {
         JSONArray tmp_array= result_object.getJSONArray("problem_list");
         for(int i=0;i<tmp_array.length();i++){
@@ -118,7 +118,7 @@ public class SpellingMean extends AppCompatActivity {
             problem_list.add(problem_add);
         }
     }
-
+    //다음문제로 세팅
     protected void next_problem(TextView show, Button[] buttons, ArrayList<Problem> problem_list){
         what_problem++;
         show.setText(problem_list.get(what_problem).getShow());
