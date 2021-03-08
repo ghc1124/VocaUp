@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VocaUp"
         android:usesCleartextTraffic="true">
+        <activity android:name=".quiz.SpellingMeanLink"></activity>
         <activity android:name=".quiz.SpellingMean"></activity>
         <activity android:name=".quiz.MeanSpelling"></activity>
         <activity android:name=".quiz.BlankSpelling"></activity>
