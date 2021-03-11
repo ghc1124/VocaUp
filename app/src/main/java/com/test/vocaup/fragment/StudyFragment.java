@@ -17,6 +17,7 @@ import com.test.vocaup.quiz.BlankSpelling;
 import com.test.vocaup.quiz.MeanSpelling;
 import com.test.vocaup.quiz.SpellingMean;
 import com.test.vocaup.activity.MenuActivity;
+import com.test.vocaup.quiz.SpellingMeanLink;
 
 public class StudyFragment extends Fragment implements MenuActivity.OnBackPressedListener{
 
@@ -41,9 +42,12 @@ public class StudyFragment extends Fragment implements MenuActivity.OnBackPresse
         btn_w_to_m = viewGroup.findViewById(R.id.btn_w_to_m);
         btn_m_to_w = viewGroup.findViewById(R.id.btn_m_to_w);
         btn_fill_blank = viewGroup.findViewById(R.id.btn_fill_blank);
+        btn_match = viewGroup.findViewById(R.id.btn_match);
+
         btn_w_to_m.setOnClickListener(but_listener);
         btn_m_to_w.setOnClickListener(but_listener);
         btn_fill_blank.setOnClickListener(but_listener);
+        btn_match.setOnClickListener(but_listener);
         return viewGroup;
     }
 
@@ -61,8 +65,8 @@ public class StudyFragment extends Fragment implements MenuActivity.OnBackPresse
                 case R.id.btn_fill_blank:
                     intent = new Intent(getActivity(), BlankSpelling.class);
                     break;
-                case R.id.button3:
-
+                case R.id.btn_match:
+                    intent = new Intent(getActivity(), SpellingMeanLink.class);
                     break;
             }
             intent.putExtra("Token", ((MenuActivity) getActivity()).manager.getToken());

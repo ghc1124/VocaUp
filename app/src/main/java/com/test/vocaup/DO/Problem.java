@@ -30,6 +30,12 @@ public class Problem implements Serializable {
     public int getSelectSize(){
         return select.size();
     }
+    public int getAnswer_arraySize(){
+        return answer_array.size();
+    }
+    public int getShow_arraySize(){
+        return answer_array.size();
+    }
     public int getAnswer() {
         return answer;
     }
@@ -67,6 +73,6 @@ public class Problem implements Serializable {
         this.answer_array.add(answer_array);
     }
     public void addShow_array(String addShow_array){
-        this.select.add(addShow_array);
+        this.show_array.add(addShow_array);
     }
 }

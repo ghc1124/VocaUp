@@ -1,9 +1,14 @@
 package com.test.vocaup.quiz;
 
 import android.content.Intent;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.RectF;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.test.vocaup.DO.Problem;
 import com.test.vocaup.R;
 import com.test.vocaup.activity.TestResultActivity;
+import com.test.vocaup.draw.Link_line;
 import com.test.vocaup.server.Connect_get;
 
 import org.json.JSONArray;
@@ -29,6 +35,7 @@ public class SpellingMeanLink extends AppCompatActivity {
     int[] OX;
     Button[] Show_but_array;
     Button[] Select_but_array;
+    Link_line line;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,11 +53,12 @@ public class SpellingMeanLink extends AppCompatActivity {
         Select_but_array[1] = (Button)findViewById(R.id.select_1);
         Select_but_array[2] = (Button)findViewById(R.id.select_2);
         Select_but_array[3] = (Button)findViewById(R.id.select_3);
+        line = (Link_line)findViewById(R.id.line);
         what_problem = -1;
         level_info = 10;
         test_json = "problem/spelling_mean_link";
-
-
+        SpellingMeanLink.SelectBtnOnClickListener but_listener = new SpellingMeanLink.SelectBtnOnClickListener();
+      //  line.setting(OX[0],OX[1],OX[2],OX[3]);
         Intent intent = getIntent();
 
         Thread thread = new Thread() {
@@ -75,7 +83,8 @@ public class SpellingMeanLink extends AppCompatActivity {
             e.printStackTrace();
         }
         for(int i = 0; i < 4; i++){
-           // but_array[i].setOnClickListener(but_listener); 이거고치기
+            Show_but_array[i].setOnClickListener(but_listener);
+            Select_but_array[i].setOnClickListener(but_listener);
         }
 
     }
@@ -112,13 +121,20 @@ public class SpellingMeanLink extends AppCompatActivity {
 
 
             }
-            System.out.println(problem_list.size()+ " : "+ what_problem);
+            for(int i=0;i<OX.length;i++){
+                System.out.print(OX[i]+" ");
+            }
+            System.out.println();
             if(OX[4]!=-1 && OX[5]!=-1){
                 OX[OX[4]]=OX[5];
+                OX[4] = -1;
+                OX[5] = -1;
+                line.update(OX[5],OX[4]);
+
+
             }
-            
-            //bitmap 그리기 추가란
-            
+
+
             if(what_problem<=problem_list.size()-2 && (OX[0]!=-1 && OX[1]!=-1 && OX[2]!=-1 && OX[3]!=-1) ) {
                 if(OX[0]==problem_list.get(what_problem).getAnswer_array(0) &&
                         OX[1]==problem_list.get(what_problem).getAnswer_array(1) &&
@@ -164,6 +180,7 @@ public class SpellingMeanLink extends AppCompatActivity {
         }
         OX[0] = OX[1] = OX[2] = OX[3] = OX[4] = OX[5] = -1;
     }
+
 
 
 }
