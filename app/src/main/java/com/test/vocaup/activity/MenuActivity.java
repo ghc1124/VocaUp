@@ -19,6 +19,7 @@ import com.bumptech.glide.Glide;
 import com.test.vocaup.DO.*;
 import com.test.vocaup.fragment.MenuFragment;
 import com.test.vocaup.R;
+import com.test.vocaup.server.Connect_post;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -87,8 +88,8 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void run() {
                 // 사용자 정보 등록 or 받아오기
-                UserManager userManager = new UserManager();
-                manager = userManager.getUserInfo(new Manager(token));
+                Connect_post connectPost = new Connect_post();
+                manager = connectPost.getUserInfo(new Manager(token));
             }
         };
 
