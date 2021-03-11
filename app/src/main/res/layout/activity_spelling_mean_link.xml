@@ -108,11 +108,13 @@
             </TableRow>
         </TableLayout>
 
-        <ImageView
-            android:id="@+id/imageView3"
+
+        <com.test.vocaup.draw.Link_line
+            android:id="@+id/line"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="5" />
+            android:layout_weight="5"
+            android:background="#FFFAF0" />
 
         <TableLayout
             android:layout_width="match_parent"
