@@ -32,7 +32,7 @@ public class MenuActivity extends AppCompatActivity {
     private String name;
     private String profile;
     private String email;
-    private String token;
+    public String token;
 
     private Fragment menu_fragment;
     public Manager manager;

@@ -15,13 +15,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.test.vocaup.DO.Manager;
 import com.test.vocaup.R;
 import com.test.vocaup.activity.MainActivity;
 import com.test.vocaup.activity.MenuActivity;
+import com.test.vocaup.server.Connect_post;
+import com.test.vocaup.server.Connect_put;
 
 import java.util.Stack;
 
@@ -33,6 +37,7 @@ public class MenuFragment extends Fragment  {
     private LottieAnimationView imgBtn_myWord; // 나만의 단어장 이미지 버튼
     private LottieAnimationView imgBtn_exam; // 시험 이미지 버튼
     private LottieAnimationView imgBtn_study; // 학습 이미지 버튼
+    private ImageButton imgBtn_lab;
 
     public static MenuFragment newInstance() { // 모든 프래그먼트에 공통으로 들어가야될 부분!!
         return new MenuFragment();
@@ -64,6 +69,32 @@ public class MenuFragment extends Fragment  {
             @Override
             public void onClick(View view) {
                 ((MenuActivity) getActivity()).replaceFragment(StudyListFragment.newInstance());
+            }
+        });
+
+        imgBtn_lab = viewGroup.findViewById(R.id.imgBtn_lab);
+        imgBtn_lab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Thread thread = new Thread() {
+                    @Override
+                    public void run() {
+                        // 사용자 정보 등록 or 받아오기
+                        Connect_put connect_put = new Connect_put();
+                        Manager testManager = new Manager(((MenuActivity)getActivity()).token);
+                        testManager.setLevel(999);
+                        testManager.setExp(99.9f);
+                        Manager resultManager = connect_put.changeUserInfo(testManager);
+                    }
+                };
+
+                thread.start();
+
+                try {
+                    thread.join();
+                } catch(Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
 

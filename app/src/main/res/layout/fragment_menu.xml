@@ -14,14 +14,14 @@
         android:layout_marginEnd="35dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/button_bg"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton4"
+        app:layout_constraintBottom_toTopOf="@+id/imgBtn_lab"
         app:layout_constraintEnd_toEndOf="parent"
         app:lottie_rawRes="@raw/exam"
         app:lottie_autoPlay="true"
         app:lottie_loop="true" />
 
     <ImageButton
-        android:id="@+id/imageButton4"
+        android:id="@+id/imgBtn_lab"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginEnd="35dp"
@@ -130,6 +130,6 @@
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton4" />
+        app:layout_constraintTop_toBottomOf="@+id/imgBtn_lab" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
