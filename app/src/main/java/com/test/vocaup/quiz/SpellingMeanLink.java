@@ -127,11 +127,9 @@ public class SpellingMeanLink extends AppCompatActivity {
             System.out.println();
             if(OX[4]!=-1 && OX[5]!=-1){
                 OX[OX[4]]=OX[5];
+                line.update(OX);
                 OX[4] = -1;
                 OX[5] = -1;
-                line.update(OX[5],OX[4]);
-
-
             }
 
 
@@ -143,6 +141,7 @@ public class SpellingMeanLink extends AppCompatActivity {
                     problem_list.get(what_problem).setCheck(true);
                 }
                 next_problem(spelling, Show_but_array,Select_but_array, problem_list);
+                line.update(OX);
             }
             else if(!(what_problem<=problem_list.size()-2)){
                 Intent intent = new Intent(SpellingMeanLink.this, TestResultActivity.class);
