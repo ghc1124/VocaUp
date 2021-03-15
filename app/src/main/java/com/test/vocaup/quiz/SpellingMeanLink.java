@@ -91,8 +91,12 @@ public class SpellingMeanLink extends AppCompatActivity {
 
     class SelectBtnOnClickListener implements Button.OnClickListener {
         @Override
+
         public void onClick(View view) {
             int click_but = -1;
+            for(int i=0;i<problem_list.size();i++){
+                System.out.println(problem_list.get(i).getAnswer() + " : " + problem_list.get(i).getChoice());
+            }
             switch (view.getId()) {
                 case R.id.show_0:
                     OX[4]=0;
@@ -121,29 +125,21 @@ public class SpellingMeanLink extends AppCompatActivity {
 
 
             }
-            for(int i=0;i<OX.length;i++){
-                System.out.print(OX[i]+" ");
-            }
-            System.out.println();
+
             if(OX[4]!=-1 && OX[5]!=-1){
                 OX[OX[4]]=OX[5];
+                problem_list.get(what_problem*4+OX[4]).setChoice(OX[5]);
                 line.update(OX);
                 OX[4] = -1;
                 OX[5] = -1;
             }
 
-
-            if(what_problem<=problem_list.size()-2 && (OX[0]!=-1 && OX[1]!=-1 && OX[2]!=-1 && OX[3]!=-1) ) {
-                if(OX[0]==problem_list.get(what_problem).getAnswer_array(0) &&
-                        OX[1]==problem_list.get(what_problem).getAnswer_array(1) &&
-                        OX[2]==problem_list.get(what_problem).getAnswer_array(2) &&
-                        OX[3]==problem_list.get(what_problem).getAnswer_array(3)){
-                    problem_list.get(what_problem).setCheck(true);
-                }
+            System.out.println();
+            if(what_problem<=(problem_list.size()/4)-2 && (OX[0]!=-1 && OX[1]!=-1 && OX[2]!=-1 && OX[3]!=-1) ) {
                 next_problem(spelling, Show_but_array,Select_but_array, problem_list);
                 line.update(OX);
             }
-            else if(!(what_problem<=problem_list.size()-2)){
+            else if(!(what_problem<=(problem_list.size()/4)-2)&&(OX[0]!=-1 && OX[1]!=-1 && OX[2]!=-1 && OX[3]!=-1)){
                 Intent intent = new Intent(SpellingMeanLink.this, TestResultActivity.class);
                 intent.putExtra("test_result",problem_list);
                 startActivity(intent);
@@ -157,25 +153,28 @@ public class SpellingMeanLink extends AppCompatActivity {
     protected void problem_list_fill(JSONObject result_object, ArrayList<Problem> problem_list) throws JSONException {
         JSONArray tmp_array= result_object.getJSONArray("problem_list");
         for(int i=0;i<tmp_array.length();i++){
-            Problem problem_add = new Problem();
             JSONObject problem_single = (JSONObject) tmp_array.get(i);
             JSONArray select_list = problem_single.getJSONArray("select");
             JSONArray answer_list = problem_single.getJSONArray("answer");
             JSONArray show_list = problem_single.getJSONArray("show");
+
             for(int j=0;j<select_list.length();j++){
-                problem_add.addSelect(select_list.getString(j));
-                problem_add.addAnswer_array(answer_list.getInt(j));
-                problem_add.addShow_array(show_list.getString(j));
+                Problem problem_add = new Problem();
+                for(int k=0;k<select_list.length();k++){
+                    problem_add.addSelect(select_list.getString(k));
+                }
+                problem_add.setShow(show_list.getString(j));
+                problem_add.setAnswer(answer_list.getInt(j));
+                problem_list.add(problem_add);
             }
-            problem_list.add(problem_add);
         }
     }
     //다음문제로 세팅
     protected void next_problem(TextView show, Button[] show_buttons, Button[] select_buttons, ArrayList<Problem> problem_list){
         what_problem++;
         for(int i=0 ; i< problem_list.get(what_problem).getSelectSize() ; i++){
-            show_buttons[i].setText(problem_list.get(what_problem).getShow_array(i));
-            select_buttons[i].setText(problem_list.get(what_problem).getSelect(i));
+            show_buttons[i].setText(problem_list.get(what_problem*4+i).getShow());
+            select_buttons[i].setText(problem_list.get(what_problem*4+i).getSelect(i));
         }
         OX[0] = OX[1] = OX[2] = OX[3] = OX[4] = OX[5] = -1;
     }

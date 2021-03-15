@@ -90,9 +90,7 @@ public class SpellingMean extends AppCompatActivity {
             }
             System.out.println(problem_list.size()+ " : "+ what_problem);
             problem_list.get(what_problem).setChoice(click_but);
-            if(problem_list.get(what_problem).getAnswer()==click_but){
-                problem_list.get(what_problem).setCheck(true);
-            }
+
             if(what_problem<=problem_list.size()-2) {
                 next_problem(spelling, but_array, problem_list);
             }
