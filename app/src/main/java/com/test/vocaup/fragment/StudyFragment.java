@@ -18,6 +18,7 @@ import com.test.vocaup.quiz.MeanSpelling;
 import com.test.vocaup.quiz.SpellingMean;
 import com.test.vocaup.activity.MenuActivity;
 import com.test.vocaup.quiz.SpellingMeanLink;
+import com.test.vocaup.quiz.SpellingSort;
 
 public class StudyFragment extends Fragment implements MenuActivity.OnBackPressedListener{
 
@@ -26,7 +27,7 @@ public class StudyFragment extends Fragment implements MenuActivity.OnBackPresse
     private Button btn_m_to_w;
     private Button btn_match;
     private Button btn_p_to_m;
-    private Button btn_arrange;
+    private Button btn_sort;
     private Button btn_fill_blank;
     private Button btn_back;
 
@@ -43,11 +44,13 @@ public class StudyFragment extends Fragment implements MenuActivity.OnBackPresse
         btn_m_to_w = viewGroup.findViewById(R.id.btn_m_to_w);
         btn_fill_blank = viewGroup.findViewById(R.id.btn_fill_blank);
         btn_match = viewGroup.findViewById(R.id.btn_match);
+        btn_sort = viewGroup.findViewById(R.id.btn_sort);
 
         btn_w_to_m.setOnClickListener(but_listener);
         btn_m_to_w.setOnClickListener(but_listener);
         btn_fill_blank.setOnClickListener(but_listener);
         btn_match.setOnClickListener(but_listener);
+        btn_sort.setOnClickListener(but_listener);
         return viewGroup;
     }
 
@@ -67,6 +70,9 @@ public class StudyFragment extends Fragment implements MenuActivity.OnBackPresse
                     break;
                 case R.id.btn_match:
                     intent = new Intent(getActivity(), SpellingMeanLink.class);
+                    break;
+                case R.id.btn_sort:
+                    intent = new Intent(getActivity(), SpellingSort.class);
                     break;
             }
             intent.putExtra("Token", ((MenuActivity) getActivity()).manager.getToken());
