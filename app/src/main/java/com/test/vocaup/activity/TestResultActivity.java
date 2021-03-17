@@ -25,6 +25,16 @@ public class TestResultActivity extends AppCompatActivity {
             @Override
             public void run() {
                 result = (ArrayList<Problem>)getIntent().getExtras().get("test_result");
+                int check=0;
+                for(Problem tmp_pro:result){
+                    if(tmp_pro.getAnswer()==tmp_pro.getChoice()){
+                        check++;
+                    }
+                }
+                if(check>=result.size()*0.9)
+                    System.out.println(true);
+                else
+                    System.out.println(false);
             }
         };
 
