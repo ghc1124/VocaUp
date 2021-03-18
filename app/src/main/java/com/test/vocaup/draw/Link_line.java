@@ -29,6 +29,14 @@ public class Link_line extends View {
         answer[0] = answer[1] = answer[2] = answer[3] = -1;
     }
 
+    public void setX(int[] x) {
+        this.x = x;
+    }
+
+    public void setY(int[] y) {
+        this.y = y;
+    }
+
     public void update(int[] check_answer){
         for(int i=0;i<4;i++){
             answer[i]=check_answer[i];

@@ -1,14 +1,9 @@
 package com.test.vocaup.quiz;
 
 import android.content.Intent;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.RectF;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,7 +32,10 @@ public class SpellingMeanLink extends AppCompatActivity {
     Button[] Select_but_array;
     Link_line line;
 
-    private int[] loc = new int[2];
+    private int[] locBtn = new int[2];
+    private int[] locLine = new int[2];
+    int[] x = new int[8];
+    int[] y = new int[8];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +88,32 @@ public class SpellingMeanLink extends AppCompatActivity {
             Select_but_array[i].setOnClickListener(but_listener);
         }
 
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+
+        line.getLocationOnScreen(locLine);
+
+        for(int i = 0; i < Show_but_array.length; i++) {
+            Show_but_array[i].getLocationOnScreen(locBtn);
+            x[i] = 0;
+            y[i] = (locBtn[1] + (Show_but_array[i].getHeight() / 2)) - locLine[1];
+
+//            System.out.println(x[i] + ", " + y[i]);
+        }
+
+        for(int j = 0; j < Select_but_array.length; j++) {
+            Select_but_array[j].getLocationOnScreen(locBtn);
+            x[j + 4] = line.getWidth();
+            y[j + 4] = y[j];
+
+//            System.out.println(x[j + 4] + ", " + y[j + 4]);
+        }
+
+        line.setX(x);
+        line.setY(y);
     }
 
     class SelectBtnOnClickListener implements Button.OnClickListener {
