@@ -36,6 +36,9 @@ public class SpellingMeanLink extends AppCompatActivity {
     Button[] Show_but_array;
     Button[] Select_but_array;
     Link_line line;
+
+    private int[] loc = new int[2];
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,7 +94,6 @@ public class SpellingMeanLink extends AppCompatActivity {
 
     class SelectBtnOnClickListener implements Button.OnClickListener {
         @Override
-
         public void onClick(View view) {
             int click_but = -1;
             for(int i=0;i<problem_list.size();i++){

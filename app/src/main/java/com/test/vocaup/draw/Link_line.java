@@ -10,7 +10,7 @@ import android.view.View;
 public class Link_line extends View {
     int [] x = new int[8];
     int [] y = new int[8];
-    int []answer = new  int[4];
+    int []answer = new int[4];
     public Link_line(Context context, AttributeSet attrs){
         super(context,attrs);
         for(int i=0;i<8;i++){
