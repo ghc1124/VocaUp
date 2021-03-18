@@ -3,9 +3,13 @@ package com.test.vocaup.quiz;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,7 +34,8 @@ public class SpellingSort extends AppCompatActivity {
     TextView answer;
     TextView mean;
     String alphabet;
-    LinearLayout but_array;
+    //    LinearLayout but_array;
+    TableLayout but_array;
     int user_cursor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +44,8 @@ public class SpellingSort extends AppCompatActivity {
 
         mean =(TextView)findViewById(R.id.mean);
         answer = (TextView)findViewById(R.id.answer);
-        but_array = (LinearLayout)findViewById(R.id.button_layout);
+//        but_array = (LinearLayout)findViewById(R.id.button_layout);
+        but_array = findViewById(R.id.button_layout);
 
         user_cursor = 0;
         what_problem = -1;
@@ -76,8 +82,9 @@ public class SpellingSort extends AppCompatActivity {
         @SuppressLint("ResourceType")
         @Override
         public void onClick(View view) {
-            View v = but_array.getChildAt(view.getId());
-            Button tmp_button = (Button)findViewById(v.getId());
+//            View v = but_array.getChildAt(view.getId());
+//            System.out.println(v.getId());
+            Button tmp_button = (Button)findViewById(view.getId());
             StringBuilder tmp_answer = new StringBuilder(answer.getText().toString());
             tmp_answer.setCharAt(user_cursor, tmp_button.getText().charAt(0));
             answer.setText(tmp_answer);
@@ -108,7 +115,7 @@ public class SpellingSort extends AppCompatActivity {
             problem_add.setAnswer(0);
             problem_add.setChoice(2);
             problem_add.addSelect(problem_add.getSentence());
-            problem_add.addSelect(problem_single.getString("alphabet"));    
+            problem_add.addSelect(problem_single.getString("alphabet"));
             //0 : 정답 스펠링 1: 알파벳들 2 : 이후 사용자가 적은 정답기입
 
             problem_list.add(problem_add);
@@ -129,16 +136,43 @@ public class SpellingSort extends AppCompatActivity {
         }
         answer.setText(count_underbar);
         but_array.removeAllViews();
+        but_array.setGravity(Gravity.CENTER);
         int count=0;
+        int count2 = 0;
+//        for(char alpha:alphabet.toCharArray()){
+//            Button tmp_but = new Button(this);
+//            tmp_but.setAllCaps(false);
+//            tmp_but.setId(count++);
+//            tmp_but.setText(alpha+"");
+//            tmp_but.setOnClickListener(but_listener);
+//            but_array.addView(tmp_but);
+//        }
+
+        TableRow[] tableRows = new TableRow[4];
+        for(int i = 0; i < tableRows.length; i++) {
+            tableRows[i] = new TableRow(this);
+            tableRows[i].setGravity(Gravity.CENTER);
+            tableRows[i].setLayoutParams(new TableRow.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+            ));
+        }
+
         for(char alpha:alphabet.toCharArray()){
             Button tmp_but = new Button(this);
             tmp_but.setAllCaps(false);
             tmp_but.setId(count++);
             tmp_but.setText(alpha+"");
             tmp_but.setOnClickListener(but_listener);
-            but_array.addView(tmp_but);
+            //System.out.println(alpha);
+            //System.out.println(count2 / 5);
+            tableRows[count2++ / 4].addView(tmp_but);
         }
-        
-        
+
+        for(int i = 0; i < count2 / 4 + 1; i++) {
+            but_array.addView(tableRows[i]);
+        }
+
+        count2 = 0;
     }
 }
