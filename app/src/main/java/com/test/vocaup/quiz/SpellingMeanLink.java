@@ -37,6 +37,8 @@ public class SpellingMeanLink extends AppCompatActivity {
     int[] x = new int[8];
     int[] y = new int[8];
 
+    private Boolean ExamFlag;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +63,7 @@ public class SpellingMeanLink extends AppCompatActivity {
         SpellingMeanLink.SelectBtnOnClickListener but_listener = new SpellingMeanLink.SelectBtnOnClickListener();
       //  line.setting(OX[0],OX[1],OX[2],OX[3]);
         Intent intent = getIntent();
+        ExamFlag = intent.getBooleanExtra("ExamFlag", false);
 
         Thread thread = new Thread() {
             @Override
@@ -168,6 +171,8 @@ public class SpellingMeanLink extends AppCompatActivity {
             else if(!(what_problem<=(problem_list.size()/4)-2)&&(OX[0]!=-1 && OX[1]!=-1 && OX[2]!=-1 && OX[3]!=-1)){
                 Intent intent = new Intent(SpellingMeanLink.this, TestResultActivity.class);
                 intent.putExtra("test_result",problem_list);
+                intent.putExtra("type", "spelling_mean_link");
+                intent.putExtra("ExamFlag", ExamFlag);
                 startActivity(intent);
             }
         }
