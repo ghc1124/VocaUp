@@ -17,6 +17,7 @@ import com.test.vocaup.R;
 import com.test.vocaup.activity.MenuActivity;
 import com.test.vocaup.quiz.BlankSpelling;
 import com.test.vocaup.quiz.MeanSpelling;
+import com.test.vocaup.quiz.PronMean;
 import com.test.vocaup.quiz.SpellingMean;
 import com.test.vocaup.quiz.SpellingMeanLink;
 import com.test.vocaup.quiz.SpellingSort;
@@ -45,6 +46,7 @@ public class ExamFragment extends Fragment implements MenuActivity.OnBackPressed
         btn_fill_blank = viewGroup.findViewById(R.id.btn_fill_blank);
         btn_match = viewGroup.findViewById(R.id.btn_match);
         btn_sort = viewGroup.findViewById(R.id.btn_sort);
+        btn_p_to_m = viewGroup.findViewById(R.id.btn_p_to_m);
 
         btn_back = viewGroup.findViewById(R.id.btn_back);
 
@@ -53,6 +55,7 @@ public class ExamFragment extends Fragment implements MenuActivity.OnBackPressed
         btn_fill_blank.setOnClickListener(but_listener);
         btn_match.setOnClickListener(but_listener);
         btn_sort.setOnClickListener(but_listener);
+        btn_p_to_m.setOnClickListener(but_listener);
 
         Manager current_manager = ((MenuActivity) getActivity()).manager;
         if(current_manager.getBlank_spelling() != 0) {
@@ -77,6 +80,11 @@ public class ExamFragment extends Fragment implements MenuActivity.OnBackPressed
 
         if(current_manager.getSpelling_sort() != 0) {
             btn_sort.setEnabled(false);
+            btn_sort.setBackgroundResource(R.drawable.button_blue_big4);
+        }
+
+        if(current_manager.getPron_mean() != 0) {
+            btn_p_to_m.setEnabled(false);
             btn_sort.setBackgroundResource(R.drawable.button_blue_big4);
         }
 
@@ -113,6 +121,9 @@ public class ExamFragment extends Fragment implements MenuActivity.OnBackPressed
                     break;
                 case R.id.btn_sort:
                     intent = new Intent(getActivity(), SpellingSort.class);
+                    break;
+                case R.id.btn_p_to_m:
+                    intent = new Intent(getActivity(), PronMean.class);
                     break;
             }
             intent.putExtra("Token", ((MenuActivity) getActivity()).manager.getToken());

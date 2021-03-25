@@ -19,8 +19,8 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class Connect_put implements Interceptor {
-    //private String url = "http://172.17.9.105:5000/";
-    private String url = "http://13.209.75.148:5000/";
+    private String url = "http://172.17.9.105:5000/";
+    //private String url = "http://13.209.75.148:5000/";
 
     private String userToken = "";
 
@@ -105,6 +105,10 @@ public class Connect_put implements Interceptor {
 
             if (manager.getSpelling_sort() != -1) {
                 object.put("spelling_sort", manager.getSpelling_sort());
+            }
+
+            if (manager.getPron_mean() != -1) {
+                object.put("pron_mean", manager.getPron_mean());
             }
 
             if (manager.getRecap() != -1) {

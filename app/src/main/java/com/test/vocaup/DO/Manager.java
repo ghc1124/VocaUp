@@ -12,6 +12,7 @@ public class Manager implements Serializable {
     private int spelling_mean = -1; // 단어 보고 뜻 맞추기
     private int spelling_mean_link = -1; // 단어 뜻 연결하기
     private int spelling_sort = -1; // 빈칸 채우기
+    private int pron_mean = -1; // 발음 듣고 뜻 맞추기
     private int recap = -1; // 복습
 
     public Manager(String token) {
@@ -24,6 +25,7 @@ public class Manager implements Serializable {
             spelling_mean == 1 &&
             spelling_mean_link == 1 &&
             spelling_sort == 1 &&
+            pron_mean == 1 &&
             recap == 5)
 
             return true;
@@ -37,6 +39,7 @@ public class Manager implements Serializable {
         spelling_mean = 0;
         spelling_mean_link = 0;
         spelling_sort = 0;
+        pron_mean = 0;
         recap = 0;
     }
 
@@ -110,6 +113,14 @@ public class Manager implements Serializable {
 
     public void setSpelling_sort(int spelling_sort) {
         this.spelling_sort = spelling_sort;
+    }
+
+    public int getPron_mean() {
+        return pron_mean;
+    }
+
+    public void setPron_mean(int pron_mean) {
+        this.pron_mean = pron_mean;
     }
 
     public int getRecap() {

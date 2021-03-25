@@ -12,8 +12,8 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class Connect_post {
-    //private String url = "http://172.17.9.105:5000/";
-    private String url = "http://13.209.75.148:5000/";
+    private String url = "http://172.17.9.105:5000/";
+    //private String url = "http://13.209.75.148:5000/";
 
     public Manager getUserInfo(Manager manager) {
         Manager result = new Manager(manager.getToken());
@@ -66,6 +66,10 @@ public class Connect_post {
                 object.put("spelling_sort", manager.getSpelling_sort());
             }
 
+            if (manager.getPron_mean() != -1) {
+                object.put("pron_mean", manager.getPron_mean());
+            }
+
             if (manager.getRecap() != -1) {
                 object.put("recap", manager.getRecap());
             }
@@ -103,6 +107,7 @@ public class Connect_post {
                     result.setSpelling_mean(jsonData.getInt("spelling_mean"));
                     result.setSpelling_mean_link(jsonData.getInt("spelling_mean_link"));
                     result.setSpelling_sort(jsonData.getInt("spelling_sort"));
+                    result.setPron_mean(jsonData.getInt("pron_mean"));
                     result.setRecap(jsonData.getInt("recap"));
                 }
             }

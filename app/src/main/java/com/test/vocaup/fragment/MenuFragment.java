@@ -93,10 +93,11 @@ public class MenuFragment extends Fragment  {
 
                         testManager.setRecap(5);
                         testManager.setBlank_spelling(1);
-                        testManager.setMean_spelling(0);
+                        testManager.setMean_spelling(1);
                         testManager.setSpelling_mean(1);
                         testManager.setSpelling_mean_link(1);
-                        testManager.setSpelling_sort(1);
+                        testManager.setSpelling_sort(0);
+                        testManager.setPron_mean(0);
 
                         Manager resultManager = connect_put.changeUserInfo(testManager);
                         ((MenuActivity)getActivity()).manager = ((MenuActivity)getActivity()).getManager();

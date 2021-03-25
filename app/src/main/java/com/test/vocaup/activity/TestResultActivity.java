@@ -57,6 +57,8 @@ public class TestResultActivity extends AppCompatActivity {
                         testManager.setSpelling_mean_link(1);
                     } else if (type.equals("spelling_sort")) {
                         testManager.setSpelling_sort(1);
+                    } else if (type.equals("pron_mean")) {
+                        testManager.setPron_mean(1);
                     }
 
                     Manager resultManager = connect_put.changeUserInfo(testManager);
