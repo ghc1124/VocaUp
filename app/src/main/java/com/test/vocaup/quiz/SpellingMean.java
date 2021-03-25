@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.test.vocaup.DO.Problem;
 import com.test.vocaup.R;
+import com.test.vocaup.activity.MenuActivity;
 import com.test.vocaup.activity.TestResultActivity;
 import com.test.vocaup.server.Connect_get;
 
@@ -41,7 +42,7 @@ public class SpellingMean extends AppCompatActivity {
         but_array[2] = (Button)findViewById(R.id.button2);
         but_array[3] = (Button)findViewById(R.id.button3);
         what_problem = -1;
-        level_info = 10;
+        level_info = ((MenuActivity)MenuActivity.context).manager.getLevel();
         test_json = "problem/spelling_mean";
         SelectBtnOnClickListener but_listener = new SelectBtnOnClickListener();
 

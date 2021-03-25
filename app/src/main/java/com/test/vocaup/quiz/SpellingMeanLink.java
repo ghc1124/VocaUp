@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.test.vocaup.DO.Problem;
 import com.test.vocaup.R;
+import com.test.vocaup.activity.MenuActivity;
 import com.test.vocaup.activity.TestResultActivity;
 import com.test.vocaup.draw.Link_line;
 import com.test.vocaup.server.Connect_get;
@@ -58,7 +59,7 @@ public class SpellingMeanLink extends AppCompatActivity {
         Select_but_array[3] = (Button)findViewById(R.id.select_3);
         line = (Link_line)findViewById(R.id.line);
         what_problem = -1;
-        level_info = 10;
+        level_info = ((MenuActivity)MenuActivity.context).manager.getLevel();
         test_json = "problem/spelling_mean_link";
         SpellingMeanLink.SelectBtnOnClickListener but_listener = new SpellingMeanLink.SelectBtnOnClickListener();
       //  line.setting(OX[0],OX[1],OX[2],OX[3]);
