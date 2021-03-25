@@ -96,6 +96,12 @@ public class SpellingSort extends AppCompatActivity {
             }
             else if((what_problem==problem_list.size()-1) && user_cursor == answer.getText().length()){
                 problem_list.get(what_problem).addSelect(answer.getText()+"");
+
+                for(int i=0;i<problem_list.size();i++){
+                    if(problem_list.get(i).getSelect(0).equals(problem_list.get(i).getSelect(2)))
+                        problem_list.get(i).setChoice(0);
+                }
+
                 Intent intent = new Intent(SpellingSort.this, TestResultActivity.class);
                 intent.putExtra("test_result",problem_list);
                 startActivity(intent);
