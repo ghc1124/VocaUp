@@ -85,7 +85,7 @@ public class ExamFragment extends Fragment implements MenuActivity.OnBackPressed
 
         if(current_manager.getPron_mean() != 0) {
             btn_p_to_m.setEnabled(false);
-            btn_sort.setBackgroundResource(R.drawable.button_blue_big4);
+            btn_p_to_m.setBackgroundResource(R.drawable.button_blue_big4);
         }
 
         btn_back.setOnClickListener(new View.OnClickListener() {
