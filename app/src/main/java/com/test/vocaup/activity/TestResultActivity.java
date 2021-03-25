@@ -152,14 +152,14 @@ public class TestResultActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     AlertDialog.Builder builder = new AlertDialog.Builder(TestResultActivity.this);
-                    builder.setTitle("레벨 업 실패!");
+                    builder.setTitle("통과 실패!");
                     builder.setMessage("좀 더 학습이 필요합니다.");
                     builder.setIcon(R.drawable.ic_failure);
 
                     builder.setPositiveButton("돌아가기", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            Toast.makeText(TestResultActivity.this, "레벨 업 실패", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(TestResultActivity.this, "통과 실패", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), MenuActivity.class));
                         }
                     });
