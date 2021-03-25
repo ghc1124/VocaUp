@@ -42,7 +42,7 @@ public class PronMean extends AppCompatActivity {
         but_array[3] = (Button)findViewById(R.id.button3);
         what_problem = -1;
         level_info = 10;
-        test_json = "problem/spelling_mean";
+        test_json = "problem/pron_mean";
         SelectBtnOnClickListener but_listener = new SelectBtnOnClickListener();
 
         Intent intent = getIntent();
@@ -99,6 +99,10 @@ public class PronMean extends AppCompatActivity {
                 next_problem(mp3_name, but_array, problem_list);
             }
             else{
+                for(int i=0;i<problem_list.size();i++){
+                    problem_list.get(i).setShow(problem_list.get(i).getShow().replace(".mp3",""));
+                }
+
                 Intent intent = new Intent(PronMean.this, TestResultActivity.class);
                 intent.putExtra("test_result",problem_list);
                 intent.putExtra("type", "pron_mean");
@@ -115,8 +119,7 @@ public class PronMean extends AppCompatActivity {
             JSONObject problem_single = (JSONObject) tmp_array.get(i);
             JSONArray select_list = problem_single.getJSONArray("select");
             problem_add.setAnswer(problem_single.getInt("answer"));
-            problem_add.setShow(problem_single.getString("show"));
-            problem_add.setLevel(problem_single.getInt("level"));
+            problem_add.setShow(problem_single.getString("mp3_path"));
             for(int j=0;j<select_list.length();j++){
                 problem_add.addSelect(select_list.getString(j));
             }
@@ -126,7 +129,8 @@ public class PronMean extends AppCompatActivity {
     //다음문제로 세팅
     protected void next_problem(String mp3_name, Button[] buttons, ArrayList<Problem> problem_list){
         what_problem++;
-        mp3_name=problem_list.get(what_problem).getLevel()+"/"+problem_list.get(what_problem).getShow();
+        mp3_name=problem_list.get(what_problem).getShow();
+        System.out.println(mp3_name);
         for(int i=0 ; i< problem_list.get(what_problem).getSelectSize() ; i++){
             buttons[i].setText(problem_list.get(what_problem).getSelect(i));
         }
