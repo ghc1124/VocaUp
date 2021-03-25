@@ -9,7 +9,7 @@ public class Problem implements Serializable {
     private int choice;
     private String show;
     private String sentence;
-
+    private int level;
 
     public Problem(){
 
@@ -28,6 +28,7 @@ public class Problem implements Serializable {
         return show;
     }
     public String getSentence(){return sentence;}
+    public int getLevel(){return level;}
 
     public void setSelect(ArrayList<String> select) {
         this.select = select;
@@ -39,6 +40,7 @@ public class Problem implements Serializable {
     public void setShow(String show) {
         this.show = show;
     }
+    public void setLevel(int level){this.level = level;}
 
     public void setSentence(String sentence) { this.sentence = sentence;}
     public void addSelect(String select){
