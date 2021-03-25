@@ -110,7 +110,7 @@
         android:layout_marginStart="28dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/button_blue_big3"
-        android:text="알파뱃 배열하기"
+        android:text="알파벳 배열하기"
         android:textColor="@color/black"
         android:textStyle="bold"
         android:typeface="normal"

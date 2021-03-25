@@ -78,6 +78,7 @@
                     android:background="@drawable/button_blue_big3"
                     android:text="spell1"
                     android:textAllCaps="false"
+                    android:textColor="@color/black"
                     android:textSize="12sp"
                     android:typeface="serif" />
             </TableRow>
@@ -95,6 +96,7 @@
                     android:background="@drawable/button_blue_big3"
                     android:text="spell2"
                     android:textAllCaps="false"
+                    android:textColor="@color/black"
                     android:textSize="12sp"
                     android:typeface="serif" />
             </TableRow>
@@ -112,6 +114,7 @@
                     android:background="@drawable/button_blue_big3"
                     android:text="spell3"
                     android:textAllCaps="false"
+                    android:textColor="@color/black"
                     android:textSize="12sp"
                     android:typeface="serif" />
             </TableRow>
@@ -129,6 +132,7 @@
                     android:background="@drawable/button_blue_big3"
                     android:text="spell4"
                     android:textAllCaps="false"
+                    android:textColor="@color/black"
                     android:textSize="12sp"
                     android:typeface="serif" />
             </TableRow>
@@ -161,6 +165,7 @@
                     android:background="@drawable/button_blue_big3"
                     android:text="mean1"
                     android:textAllCaps="false"
+                    android:textColor="@color/black"
                     android:textSize="12sp"
                     android:typeface="serif" />
             </TableRow>
@@ -178,6 +183,7 @@
                     android:background="@drawable/button_blue_big3"
                     android:text="mean2"
                     android:textAllCaps="false"
+                    android:textColor="@color/black"
                     android:textSize="12sp"
                     android:typeface="serif" />
             </TableRow>
@@ -195,6 +201,7 @@
                     android:background="@drawable/button_blue_big3"
                     android:text="mean3"
                     android:textAllCaps="false"
+                    android:textColor="@color/black"
                     android:textSize="12sp"
                     android:typeface="serif" />
             </TableRow>
@@ -212,6 +219,7 @@
                     android:background="@drawable/button_blue_big3"
                     android:text="mean4"
                     android:textAllCaps="false"
+                    android:textColor="@color/black"
                     android:textSize="12sp"
                     android:typeface="serif" />
             </TableRow>

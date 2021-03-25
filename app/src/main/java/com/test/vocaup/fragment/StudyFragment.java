@@ -21,7 +21,6 @@ import com.test.vocaup.quiz.SpellingMeanLink;
 import com.test.vocaup.quiz.SpellingSort;
 
 public class StudyFragment extends Fragment implements MenuActivity.OnBackPressedListener{
-
     private TextView text_level;
     private Button btn_w_to_m;
     private Button btn_m_to_w;
@@ -46,11 +45,24 @@ public class StudyFragment extends Fragment implements MenuActivity.OnBackPresse
         btn_match = viewGroup.findViewById(R.id.btn_match);
         btn_sort = viewGroup.findViewById(R.id.btn_sort);
 
+        btn_back = viewGroup.findViewById(R.id.btn_back);
+
         btn_w_to_m.setOnClickListener(but_listener);
         btn_m_to_w.setOnClickListener(but_listener);
         btn_fill_blank.setOnClickListener(but_listener);
         btn_match.setOnClickListener(but_listener);
         btn_sort.setOnClickListener(but_listener);
+
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MenuActivity) getActivity()).replaceFragment(MenuFragment.newInstance());
+            }
+        });
+
+        text_level = viewGroup.findViewById(R.id.text_level);
+        text_level.setText("lv. " + ((MenuActivity) getActivity()).manager.getLevel());
+
         return viewGroup;
     }
 
@@ -78,9 +90,8 @@ public class StudyFragment extends Fragment implements MenuActivity.OnBackPresse
             intent.putExtra("Token", ((MenuActivity) getActivity()).manager.getToken());
             startActivity(intent);
         }
-
-
     }
+
     @Override
     public void onBack() {
         Log.e("Other", "onBack()");

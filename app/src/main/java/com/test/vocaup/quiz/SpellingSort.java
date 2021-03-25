@@ -37,6 +37,9 @@ public class SpellingSort extends AppCompatActivity {
     //    LinearLayout but_array;
     TableLayout but_array;
     int user_cursor;
+
+    private Boolean ExamFlag;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +57,7 @@ public class SpellingSort extends AppCompatActivity {
         SelectBtnOnClickListener but_listener = new SelectBtnOnClickListener();
 
         Intent intent = getIntent();
+        ExamFlag = intent.getBooleanExtra("ExamFlag", false);
 
         Thread thread = new Thread() {
             @Override
@@ -98,6 +102,8 @@ public class SpellingSort extends AppCompatActivity {
                 problem_list.get(what_problem).addSelect(answer.getText()+"");
                 Intent intent = new Intent(SpellingSort.this, TestResultActivity.class);
                 intent.putExtra("test_result",problem_list);
+                intent.putExtra("type", "spelling_sort");
+                intent.putExtra("ExamFlag", ExamFlag);
                 startActivity(intent);
             }
             tmp_button.setEnabled(false);

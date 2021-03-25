@@ -27,6 +27,9 @@ public class BlankSpelling extends AppCompatActivity {
     String test_json;
     TextView sentence;
     Button[] but_array;
+
+    private Boolean ExamFlag;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +46,9 @@ public class BlankSpelling extends AppCompatActivity {
         SelectBtnOnClickListener but_listener = new SelectBtnOnClickListener();
 
         Intent intent = getIntent();
+        ExamFlag = intent.getBooleanExtra("ExamFlag", false);
+
+        System.out.println(ExamFlag);
 
         Thread thread = new Thread() {
             @Override
@@ -97,6 +103,8 @@ public class BlankSpelling extends AppCompatActivity {
             else{
                 Intent intent = new Intent(BlankSpelling.this, TestResultActivity.class);
                 intent.putExtra("test_result",problem_list);
+                intent.putExtra("type", "blank_spelling");
+                intent.putExtra("ExamFlag", ExamFlag);
                 startActivity(intent);
             }
         }

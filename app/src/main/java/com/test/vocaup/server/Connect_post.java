@@ -12,7 +12,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class Connect_post {
-    //private String url = "http://192.168.0.103:5000/";
+    //private String url = "http://172.17.9.105:5000/";
     private String url = "http://13.209.75.148:5000/";
 
     public Manager getUserInfo(Manager manager) {
@@ -38,21 +38,38 @@ public class Connect_post {
                 object.put("Level", manager.getLevel());
             }
 
-            if (manager.getExp() != 0.f) {
-                object.put("Exp", manager.getExp());
-            }
-
             if (manager.getUserWord() != null) {
                 object.put("UserWord", manager.getUserWord());
-            }
-
-            if (manager.getAct() != null) {
-                object.put("Activity", manager.getAct());
             }
 
             if (manager.getProblemSet() != null) {
                 object.put("ProblemSet", manager.getProblemSet());
             }
+
+            if (manager.getBlank_spelling() != -1) {
+                object.put("blank_spelling", manager.getBlank_spelling());
+            }
+
+            if (manager.getMean_spelling() != -1) {
+                object.put("mean_spelling", manager.getMean_spelling());
+            }
+
+            if (manager.getSpelling_mean() != -1) {
+                object.put("spelling_mean", manager.getSpelling_mean());
+            }
+
+            if (manager.getSpelling_mean_link() != -1) {
+                object.put("spelling_mean_link", manager.getSpelling_mean_link());
+            }
+
+            if (manager.getSpelling_sort() != -1) {
+                object.put("spelling_sort", manager.getSpelling_sort());
+            }
+
+            if (manager.getRecap() != -1) {
+                object.put("recap", manager.getRecap());
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -73,15 +90,20 @@ public class Connect_post {
                 data = response.body().string();
                 jsonData = new JSONObject(data);
 
+                System.out.println(jsonData);
+
                 if(jsonData.getString("Token").equals(result.getToken())) {
                     result.setLevel(jsonData.getInt("Level"));
-                    result.setExp(jsonData.getDouble("Exp"));
                     if(jsonData.getString("UserWord") != null)
                         result.setUserWord((String)jsonData.getString("UserWord"));
-                    if(jsonData.getString("Activity") != null)
-                        result.setAct((String)jsonData.getString("Activity"));
                     if(jsonData.getString("ProblemSet") != null)
                         result.setProblemSet((String)jsonData.getString("ProblemSet"));
+                    result.setBlank_spelling(jsonData.getInt("blank_spelling"));
+                    result.setMean_spelling(jsonData.getInt("mean_spelling"));
+                    result.setSpelling_mean(jsonData.getInt("spelling_mean"));
+                    result.setSpelling_mean_link(jsonData.getInt("spelling_mean_link"));
+                    result.setSpelling_sort(jsonData.getInt("spelling_sort"));
+                    result.setRecap(jsonData.getInt("recap"));
                 }
             }
         } catch (Exception e) {

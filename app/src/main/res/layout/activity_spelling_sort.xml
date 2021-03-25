@@ -65,6 +65,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="mean"
+            android:textColor="@color/black"
             android:textSize="40sp" />
 
         <ImageView
@@ -80,9 +81,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:letterSpacing="0.2"
             android:text="_______"
-            android:textSize="40sp"
-            android:letterSpacing="0.2"/>
+            android:textColor="@color/black"
+            android:textSize="40sp" />
 
         <TableLayout
             android:id="@+id/button_layout"

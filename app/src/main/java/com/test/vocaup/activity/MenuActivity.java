@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import com.test.vocaup.R;
 import com.test.vocaup.server.Connect_post;
 
 public class MenuActivity extends AppCompatActivity {
+    public static Context context;
 
     public static final String PREF = "Save";
 
@@ -41,6 +43,8 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+        context = this;
 
         text_name = (TextView)findViewById(R.id.text_name);
         image_profile = (ImageView)findViewById(R.id.image_profile);
@@ -88,8 +92,7 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void run() {
                 // 사용자 정보 등록 or 받아오기
-                Connect_post connectPost = new Connect_post();
-                manager = connectPost.getUserInfo(new Manager(token));
+                manager = getManager();
             }
         };
 
@@ -102,6 +105,11 @@ public class MenuActivity extends AppCompatActivity {
         }
 
         System.out.println(manager.getLevel());
+    }
+
+    public Manager getManager() {
+        Connect_post connectPost = new Connect_post();
+        return connectPost.getUserInfo(new Manager(token));
     }
 
     // 프래그먼트 전환하는 메소드. "fragment"에 이름 지정해주면 됨.

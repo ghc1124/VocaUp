@@ -82,9 +82,24 @@ public class MenuFragment extends Fragment  {
                         // 사용자 정보 등록 or 받아오기
                         Connect_put connect_put = new Connect_put();
                         Manager testManager = new Manager(((MenuActivity)getActivity()).token);
-                        testManager.setLevel(999);
-                        testManager.setExp(99.9f);
+                        testManager.setLevel(1);
+
+//                        testManager.setRecap(5);
+//                        testManager.setBlank_spelling(0);
+//                        testManager.setMean_spelling(0);
+//                        testManager.setSpelling_mean(0);
+//                        testManager.setSpelling_mean_link(0);
+//                        testManager.setSpelling_sort(0);
+
+                        testManager.setRecap(5);
+                        testManager.setBlank_spelling(1);
+                        testManager.setMean_spelling(0);
+                        testManager.setSpelling_mean(1);
+                        testManager.setSpelling_mean_link(1);
+                        testManager.setSpelling_sort(1);
+
                         Manager resultManager = connect_put.changeUserInfo(testManager);
+                        ((MenuActivity)getActivity()).manager = ((MenuActivity)getActivity()).getManager();
                     }
                 };
 

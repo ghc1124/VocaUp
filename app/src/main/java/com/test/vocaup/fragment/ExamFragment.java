@@ -1,18 +1,36 @@
 package com.test.vocaup.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.test.vocaup.DO.Manager;
 import com.test.vocaup.R;
 import com.test.vocaup.activity.MenuActivity;
+import com.test.vocaup.quiz.BlankSpelling;
+import com.test.vocaup.quiz.MeanSpelling;
+import com.test.vocaup.quiz.SpellingMean;
+import com.test.vocaup.quiz.SpellingMeanLink;
+import com.test.vocaup.quiz.SpellingSort;
 
 public class ExamFragment extends Fragment implements MenuActivity.OnBackPressedListener{
+    private TextView text_level;
+    private Button btn_w_to_m;
+    private Button btn_m_to_w;
+    private Button btn_match;
+    private Button btn_p_to_m;
+    private Button btn_sort;
+    private Button btn_fill_blank;
+    private Button btn_back;
+
     public static ExamFragment newInstance() {
         return new ExamFragment();
     }
@@ -20,7 +38,87 @@ public class ExamFragment extends Fragment implements MenuActivity.OnBackPressed
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_exam, container, false);
+        ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_exam, container, false);
+        StudyBtnOnClickListener but_listener = new StudyBtnOnClickListener();
+        btn_w_to_m = viewGroup.findViewById(R.id.btn_w_to_m);
+        btn_m_to_w = viewGroup.findViewById(R.id.btn_m_to_w);
+        btn_fill_blank = viewGroup.findViewById(R.id.btn_fill_blank);
+        btn_match = viewGroup.findViewById(R.id.btn_match);
+        btn_sort = viewGroup.findViewById(R.id.btn_sort);
+
+        btn_back = viewGroup.findViewById(R.id.btn_back);
+
+        btn_w_to_m.setOnClickListener(but_listener);
+        btn_m_to_w.setOnClickListener(but_listener);
+        btn_fill_blank.setOnClickListener(but_listener);
+        btn_match.setOnClickListener(but_listener);
+        btn_sort.setOnClickListener(but_listener);
+
+        Manager current_manager = ((MenuActivity) getActivity()).manager;
+        if(current_manager.getBlank_spelling() != 0) {
+            btn_fill_blank.setEnabled(false);
+            btn_fill_blank.setBackgroundResource(R.drawable.button_blue_big4);
+        }
+
+        if(current_manager.getMean_spelling() != 0) {
+            btn_m_to_w.setEnabled(false);
+            btn_m_to_w.setBackgroundResource(R.drawable.button_blue_big4);
+        }
+
+        if(current_manager.getSpelling_mean() != 0) {
+            btn_w_to_m.setEnabled(false);
+            btn_w_to_m.setBackgroundResource(R.drawable.button_blue_big4);
+        }
+
+        if(current_manager.getSpelling_mean_link() != 0) {
+            btn_match.setEnabled(false);
+            btn_match.setBackgroundResource(R.drawable.button_blue_big4);
+        }
+
+        if(current_manager.getSpelling_sort() != 0) {
+            btn_sort.setEnabled(false);
+            btn_sort.setBackgroundResource(R.drawable.button_blue_big4);
+        }
+
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MenuActivity) getActivity()).replaceFragment(MenuFragment.newInstance());
+            }
+        });
+
+        text_level = viewGroup.findViewById(R.id.text_level);
+        text_level.setText("현재: lv. " + ((MenuActivity) getActivity()).manager.getLevel() +
+                "\n승급 후: lv. " + (((MenuActivity) getActivity()).manager.getLevel() + 1));
+
+        return viewGroup;
+    }
+
+    class StudyBtnOnClickListener implements Button.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(getActivity(), SpellingMean.class);  //기본창
+            switch (view.getId()) {
+                case R.id.btn_w_to_m:
+                    intent = new Intent(getActivity(), SpellingMean.class);
+                    break;
+                case R.id.btn_m_to_w:
+                    intent = new Intent(getActivity(), MeanSpelling.class);
+                    break;
+                case R.id.btn_fill_blank:
+                    intent = new Intent(getActivity(), BlankSpelling.class);
+                    break;
+                case R.id.btn_match:
+                    intent = new Intent(getActivity(), SpellingMeanLink.class);
+                    break;
+                case R.id.btn_sort:
+                    intent = new Intent(getActivity(), SpellingSort.class);
+                    break;
+            }
+            intent.putExtra("Token", ((MenuActivity) getActivity()).manager.getToken());
+            intent.putExtra("ExamFlag", true);
+            startActivity(intent);
+        }
     }
 
     @Override

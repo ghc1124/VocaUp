@@ -27,6 +27,9 @@ public class SpellingMean extends AppCompatActivity {
     String test_json;
     TextView spelling;
     Button[] but_array;
+
+    private Boolean ExamFlag;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +46,7 @@ public class SpellingMean extends AppCompatActivity {
         SelectBtnOnClickListener but_listener = new SelectBtnOnClickListener();
 
         Intent intent = getIntent();
+        ExamFlag = intent.getBooleanExtra("ExamFlag", false);
 
         Thread thread = new Thread() {
             @Override
@@ -97,6 +101,8 @@ public class SpellingMean extends AppCompatActivity {
             else{
                 Intent intent = new Intent(SpellingMean.this, TestResultActivity.class);
                 intent.putExtra("test_result",problem_list);
+                intent.putExtra("type", "spelling_mean");
+                intent.putExtra("ExamFlag", ExamFlag);
                 startActivity(intent);
             }
         }
