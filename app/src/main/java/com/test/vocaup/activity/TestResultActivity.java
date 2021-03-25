@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +30,9 @@ public class TestResultActivity extends AppCompatActivity {
     private ArrayList<Problem> result = new ArrayList<>();
     TextView percent;
     TextView OX;
+
+    private Button btn_result;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_testresult);
@@ -40,6 +45,7 @@ public class TestResultActivity extends AppCompatActivity {
         Thread thread = new Thread() {
             @Override
             public void run() {
+                btn_result = findViewById(R.id.btn_result);
                 result = (ArrayList<Problem>)getIntent().getExtras().get("test_result");
                 int check=0;
                 for(Problem tmp_pro:result){
@@ -76,30 +82,14 @@ public class TestResultActivity extends AppCompatActivity {
                         Manager result2Manager = connect_put.changeUserInfo(testManager);
                         ((MenuActivity)MenuActivity.context).manager = ((MenuActivity)MenuActivity.context).getManager(); // Manager 객체 내용 업데이트
 
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                Toast.makeText(TestResultActivity.this, "테스트", Toast.LENGTH_SHORT).show();
+                        System.out.println(((MenuActivity)MenuActivity.context).manager.getLevel());
 
-                                AlertDialog.Builder builder = new AlertDialog.Builder(TestResultActivity.this);
-                                builder.setTitle("레벨 업!");
-                                builder.setMessage("축하합니다!!");
-                                builder.setIcon(android.R.drawable.ic_dialog_info);
-
-                                builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        Toast.makeText(TestResultActivity.this, "레벨 업", Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-
-                                AlertDialog dialog = builder.create();
-                                dialog.show();
-                            }
-                        });
+                        btn_result.setOnClickListener(new ResultButtonSuccessListener());
                     }
-                } else
-                    System.out.println(false);
+                } else if(ExamFlag)
+                    btn_result.setOnClickListener(new ResultButtonFailureListener());
+                else if(!ExamFlag)
+                    btn_result.setOnClickListener(new ResultButtonBasicListener());
             }
         };
 
@@ -129,4 +119,81 @@ public class TestResultActivity extends AppCompatActivity {
 
     }
 
+    class ResultButtonSuccessListener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(TestResultActivity.this);
+                    builder.setTitle("레벨 업!");
+                    builder.setMessage("축하합니다!! 이제 lv." + ((MenuActivity)MenuActivity.context).manager.getLevel() + "입니다!");
+                    builder.setIcon(R.drawable.ic_success);
+
+                    builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Toast.makeText(TestResultActivity.this, "레벨 업", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), MenuActivity.class));
+                        }
+                    });
+
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
+            });
+        }
+    }
+
+    class ResultButtonFailureListener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(TestResultActivity.this);
+                    builder.setTitle("레벨 업 실패!");
+                    builder.setMessage("좀 더 학습이 필요합니다.");
+                    builder.setIcon(R.drawable.ic_failure);
+
+                    builder.setPositiveButton("돌아가기", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Toast.makeText(TestResultActivity.this, "레벨 업 실패", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), MenuActivity.class));
+                        }
+                    });
+
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
+            });
+        }
+    }
+
+    class ResultButtonBasicListener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(TestResultActivity.this);
+                    builder.setTitle("퀴즈 종료!");
+                    builder.setMessage("메뉴로 돌아갑니다.");
+                    builder.setIcon(R.drawable.ic_failure);
+
+                    builder.setPositiveButton("돌아가기", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Toast.makeText(TestResultActivity.this, "학습 종료", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), MenuActivity.class));
+                        }
+                    });
+
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
+            });
+        }
+    }
 }
