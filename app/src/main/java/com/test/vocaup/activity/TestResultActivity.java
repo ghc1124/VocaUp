@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -25,7 +26,8 @@ import java.util.ArrayList;
 
 public class TestResultActivity extends AppCompatActivity {
     private ArrayList<Problem> result = new ArrayList<>();
-
+    TextView percent;
+    TextView OX;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_testresult);
@@ -33,7 +35,8 @@ public class TestResultActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String type = intent.getStringExtra("type");
         Boolean ExamFlag = intent.getBooleanExtra("ExamFlag", false);
-
+        percent=(TextView)findViewById(R.id.percent);
+        OX=(TextView)findViewById(R.id.OX);
         Thread thread = new Thread() {
             @Override
             public void run() {
@@ -44,6 +47,8 @@ public class TestResultActivity extends AppCompatActivity {
                         check++;
                     }
                 }
+                percent.setText("정답률 "+Math.round(((float)check/result.size())*100)+"%");
+                OX.setText("O = "+check+", X = "+(result.size()-check));
                 if(ExamFlag && check >= result.size() * 0.9) {
                     Connect_put connect_put = new Connect_put();
                     Manager testManager = new Manager(((MenuActivity)MenuActivity.context).token);
