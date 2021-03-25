@@ -19,7 +19,8 @@
         <activity android:name=".quiz.BlankSpelling"></activity>
         <activity android:name=".quiz.PronMean"></activity>
         <activity android:name=".activity.DetailActivity" />
-        <activity android:name=".activity.MenuActivity" />
+        <activity android:name=".activity.MenuActivity"
+            android:launchMode="singleTask" />
         <activity android:name=".activity.TestResultActivity" />
         <activity android:name=".activity.MainActivity">
             <intent-filter>

@@ -2,16 +2,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#FFFAF0">
+    android:background="#FFFAF0"
+    android:gravity="center_vertical">
 
     <TextView
         android:id="@+id/problem_word"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_weight="2"
+        android:gravity="start"
+        android:inputType="textMultiLine"
+        android:scrollHorizontally="false"
         android:text="단어"
+        android:textColor="@color/black"
         android:textSize="15sp"
-        android:gravity="center"
         android:textStyle="bold" />
 
     <TextView
@@ -21,18 +25,23 @@
         android:layout_marginStart="10dp"
         android:layout_weight="1"
         android:gravity="center"
+        android:inputType="textMultiLine"
+        android:scrollHorizontally="false"
         android:text="Word"
+        android:textColor="@color/black"
         android:textSize="15sp" />
 
     <TextView
         android:id="@+id/textView_check"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginBottom="-5dp"
+        android:layout_marginStart="20dp"
         android:layout_weight="1"
         android:gravity="center"
+        android:inputType="textMultiLine"
+        android:scrollHorizontally="false"
         android:text="오답"
+        android:textColor="@color/black"
         android:textSize="15sp"
         android:textStyle="bold" />
 
@@ -43,5 +52,6 @@
         android:layout_weight="0.2"
         android:gravity="right"
         android:text="O"
+        android:textColor="@color/black"
         android:textSize="25sp" />
 </LinearLayout>

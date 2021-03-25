@@ -144,6 +144,12 @@ public class MenuActivity extends AppCompatActivity {
             email = preferences.getString("email", "");
             token = preferences.getString("token", "");
         }
+
+        menu_fragment = new MenuFragment();
+
+        replaceFragment(menu_fragment);
+
+        System.out.println("onResume: " + manager.getLevel());
     }
 
     @Override
