@@ -22,6 +22,7 @@ import java.util.ArrayList;
 public class PronMean extends AppCompatActivity {
     private JSONObject result = new JSONObject();
     ArrayList<Problem> problem_list= new ArrayList<Problem>();
+
     int what_problem;
     int level_info;
     String test_json;
