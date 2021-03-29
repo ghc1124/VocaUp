@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.test.vocaup.DO.Problem;
 import com.test.vocaup.R;
+import com.test.vocaup.activity.MenuActivity;
 import com.test.vocaup.activity.TestResultActivity;
 import com.test.vocaup.server.Connect_get;
 
@@ -52,7 +53,7 @@ public class SpellingSort extends AppCompatActivity {
 
         user_cursor = 0;
         what_problem = -1;
-        level_info = 10;
+        level_info = ((MenuActivity)MenuActivity.context).manager.getLevel();
         test_json = "problem/spelling_sort";
         SelectBtnOnClickListener but_listener = new SelectBtnOnClickListener();
 
