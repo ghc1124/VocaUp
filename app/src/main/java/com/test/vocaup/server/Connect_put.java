@@ -19,7 +19,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class Connect_put implements Interceptor {
-    //private String url = "http://172.17.9.105:5000/";
+    //private String url = "http://172.17.9.82:5000/";
     private String url = "http://13.209.75.148:5000/";
 
     private String userToken = "";
@@ -29,31 +29,6 @@ public class Connect_put implements Interceptor {
     }
 
     public Connect_put() {
-    }
-
-    public void updateSet() {
-        OkHttpClient httpClient = new OkHttpClient
-                .Builder()
-                .retryOnConnectionFailure(true)
-                .addInterceptor(this::intercept)
-                .build();
-        RequestBody body = new FormBody
-                .Builder()
-                .add("UserToken", userToken)
-                .build();
-        Request request = null;
-
-        request = new Request.Builder().url(url + "problemSet").put(body).build();
-
-        try {
-            Response response = httpClient.newCall(request).execute();
-
-            String jsonData = response.body().string();
-
-            response.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     public Manager changeUserInfo(Manager manager) {

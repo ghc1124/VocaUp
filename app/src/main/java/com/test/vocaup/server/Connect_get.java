@@ -4,10 +4,12 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.bumptech.glide.load.PreferredColorSpace;
+import com.google.android.gms.common.util.Strings;
 import com.test.vocaup.DO.ListAll;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -16,13 +18,14 @@ import java.util.ArrayList;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Interceptor;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class Connect_get implements Interceptor {
-    //private String url = "http://172.17.9.105:5000/";
+    //private String url = "http://172.17.9.82:5000/";
     private String url = "http://13.209.75.148:5000/";
     private ArrayList<ListAll> result = new ArrayList<>();
 
@@ -33,6 +36,40 @@ public class Connect_get implements Interceptor {
     }
 
     public Connect_get() {
+    }
+
+    public void wordPron(JSONObject object, String... strings) {
+        OkHttpClient httpClient = new OkHttpClient
+                .Builder()
+                .retryOnConnectionFailure(true)
+                .addInterceptor(this::intercept)
+                .build();
+
+        JSONArray targetArr = null;
+        ArrayList<String> reqArr = new ArrayList<>();
+        Request request = null;
+        Response response = null;
+
+        try {
+            targetArr = object.getJSONArray("problem_list");
+
+            if(targetArr != null) {
+                for (int i = 0; i < targetArr.length(); i++) {
+                    JSONObject jsonObject = targetArr.getJSONObject(i);
+                    String word = jsonObject.getString("mp3_path");
+                    reqArr.add(word.replace(".mp3", ""));
+                }
+            }
+
+            request = new Request.Builder().url(url + strings[0] + "/" + reqArr.get(0) + "/" + strings[1]).get().build();
+
+            response = httpClient.newCall(request).execute();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        response.close();
     }
 
     public ArrayList get(String... strings) {

@@ -1,13 +1,9 @@
 package com.test.vocaup.activity;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.Menu;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -84,6 +80,8 @@ public class TestResultActivity extends AppCompatActivity {
 
                         System.out.println(((MenuActivity)MenuActivity.context).manager.getLevel());
 
+                        btn_result.setOnClickListener(new ResultButtonLevelUpListener());
+                    } else {
                         btn_result.setOnClickListener(new ResultButtonSuccessListener());
                     }
                 } else if(ExamFlag)
@@ -119,7 +117,7 @@ public class TestResultActivity extends AppCompatActivity {
 
     }
 
-    class ResultButtonSuccessListener implements View.OnClickListener {
+    class ResultButtonLevelUpListener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
             runOnUiThread(new Runnable() {
@@ -134,6 +132,32 @@ public class TestResultActivity extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             Toast.makeText(TestResultActivity.this, "레벨 업", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), MenuActivity.class));
+                        }
+                    });
+
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
+            });
+        }
+    }
+
+    class ResultButtonSuccessListener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(TestResultActivity.this);
+                    builder.setTitle("통과!");
+                    builder.setMessage("축하합니다!! 남은 시험을 계속하세요.");
+                    builder.setIcon(R.drawable.ic_success);
+
+                    builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Toast.makeText(TestResultActivity.this, "통과", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), MenuActivity.class));
                         }
                     });
