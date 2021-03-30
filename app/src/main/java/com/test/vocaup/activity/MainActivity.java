@@ -21,6 +21,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GetTokenResult;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.test.vocaup.R;
 
@@ -60,6 +62,22 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+
+        FirebaseUser currentUser = auth.getCurrentUser();
+        if(currentUser != null) {
+            Toast.makeText(this, "자동 로그인!", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+            intent.putExtra("token", auth.getUid());
+            intent.putExtra("name", currentUser.getDisplayName());
+            intent.putExtra("profile", String.valueOf(currentUser.getPhotoUrl())); // getPhotoUrl이 URI 형태
+            intent.putExtra("email", currentUser.getEmail());
+            startActivity(intent);
+        }
+    }
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         // 구글 인증 결과 받았을때
         super.onActivityResult(requestCode, resultCode, data);
@@ -83,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                             // 로그인 성공
                             Toast.makeText(MainActivity.this, "로그인 성공: " + account.getDisplayName(), Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
-                            intent.putExtra("token", account.getId());
+                            intent.putExtra("token", auth.getUid());
                             intent.putExtra("name", account.getDisplayName());
                             intent.putExtra("profile", String.valueOf(account.getPhotoUrl())); // getPhotoUrl이 URI 형태
                             intent.putExtra("email", account.getEmail());
