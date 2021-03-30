@@ -64,7 +64,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     @Override
     protected void onStart() {
         super.onStart();
-
         FirebaseUser currentUser = auth.getCurrentUser();
         if(currentUser != null) {
             Toast.makeText(this, "자동 로그인!", Toast.LENGTH_SHORT).show();

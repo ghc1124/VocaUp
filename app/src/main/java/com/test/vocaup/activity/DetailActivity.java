@@ -26,6 +26,14 @@ public class DetailActivity extends AppCompatActivity {
     private ImageView image_profile2;
     private TextView textView_level;
 
+    private TextView textView_blank_spelling;
+    private TextView textView_mean_spelling;
+    private TextView textView_spelling_mean;
+    private TextView textView_spelling_mean_link;
+    private TextView textView_spelling_sort;
+    private TextView textView_pron_mean;
+    private TextView textView_recap;
+
     private Manager manager;
 
     @Override
@@ -54,6 +62,23 @@ public class DetailActivity extends AppCompatActivity {
 
         textView_name.setText(name);
         textView_level.setText("lv. " + manager.getLevel());
+
+        textView_blank_spelling = findViewById(R.id.textView_blank_spelling);
+        textView_mean_spelling = findViewById(R.id.textView_mean_spelling);
+        textView_spelling_mean = findViewById(R.id.textView_spelling_mean);
+        textView_spelling_mean_link = findViewById(R.id.textView_spelling_mean_link);
+        textView_spelling_sort = findViewById(R.id.textView_spelling_sort);
+        textView_pron_mean = findViewById(R.id.textView_pron_mean);
+        textView_recap = findViewById(R.id.textView_recap);
+
+        textView_blank_spelling.setText(manager.getBlank_spelling() > 0 ? "통과" : "시험 필요");
+        textView_mean_spelling.setText(manager.getMean_spelling() > 0 ? "통과" : "시험 필요");
+        textView_spelling_mean.setText(manager.getSpelling_mean() > 0 ? "통과" : "시험 필요");
+        textView_spelling_mean_link.setText(manager.getSpelling_mean_link() > 0 ? "통과" : "시험 필요");
+        textView_spelling_sort.setText(manager.getSpelling_sort() > 0 ? "통과" : "시험 필요");
+        textView_pron_mean.setText(manager.getPron_mean() > 0 ? "통과" : "시험 필요");
+        textView_recap.setText(manager.getRecap() == 5 ? "통과" : manager.getRecap() + "회");
+
         Glide.with(this).load(profile).into(image_profile2);
     }
 
