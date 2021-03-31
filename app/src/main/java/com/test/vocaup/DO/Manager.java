@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Manager implements Serializable {
     private String Token; // 사용자 토큰
-    private int Level = 0; // 레벨
+    private int Level = 1; // 레벨
     private String UserWord; // 나만의 단어
     private String ProblemSet; // 풀었던 문제 Set
     private int blank_spelling = -1; // 빈칸 채우기

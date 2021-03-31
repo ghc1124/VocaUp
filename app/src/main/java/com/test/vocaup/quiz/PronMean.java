@@ -13,6 +13,8 @@ import com.test.vocaup.R;
 import com.test.vocaup.activity.MenuActivity;
 import com.test.vocaup.activity.TestResultActivity;
 import com.test.vocaup.server.Connect_get;
+import com.test.vocaup.server.Connect_post;
+import com.test.vocaup.server.Connect_put;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,12 +25,12 @@ import java.util.ArrayList;
 public class PronMean extends AppCompatActivity {
     private JSONObject result = new JSONObject();
     ArrayList<Problem> problem_list= new ArrayList<Problem>();
+
     int what_problem;
     int level_info;
     String test_json;
     String mp3_name;
     Button[] but_array;
-
     private Boolean ExamFlag;
 
     @Override
@@ -43,7 +45,7 @@ public class PronMean extends AppCompatActivity {
         but_array[3] = (Button)findViewById(R.id.button3);
         what_problem = -1;
         level_info = ((MenuActivity)MenuActivity.context).manager.getLevel();
-        test_json = "problem/spelling_mean";
+        test_json = "problem/pron_mean";
         SelectBtnOnClickListener but_listener = new SelectBtnOnClickListener();
 
         Intent intent = getIntent();
@@ -53,7 +55,7 @@ public class PronMean extends AppCompatActivity {
             @Override
             public void run() {
                 result = new Connect_get(intent.getStringExtra("Token"))
-                        .problem_get(test_json, (level_info+""));
+                        .problem_get(test_json, (level_info + ""));
                 try {
                     problem_list_fill(result,problem_list);
                     next_problem(mp3_name, but_array, problem_list);
@@ -61,7 +63,7 @@ public class PronMean extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                //new Connect_get(intent.getStringExtra("Token")).updateSet();
+                //new Connect_get().wordPron(result, "wordPron", (level_info + ""));
             }
         };
         thread.start();
@@ -93,44 +95,48 @@ public class PronMean extends AppCompatActivity {
                     click_but = 3;
                     break ;
             }
-            System.out.println(problem_list.size()+ " : "+ what_problem);
+            System.out.println(problem_list.size() + " : " + what_problem);
             problem_list.get(what_problem).setChoice(click_but);
 
-            if(what_problem<=problem_list.size()-2) {
+            if (what_problem <= problem_list.size() - 2) {
                 next_problem(mp3_name, but_array, problem_list);
-            }
-            else{
+            } else {
+                for (int i = 0; i < problem_list.size(); i++) {
+                    problem_list.get(i).setShow(problem_list.get(i).getShow().replace(".mp3", ""));
+                }
+
                 Intent intent = new Intent(PronMean.this, TestResultActivity.class);
-                intent.putExtra("test_result",problem_list);
+                intent.putExtra("test_result", problem_list);
                 intent.putExtra("type", "pron_mean");
                 intent.putExtra("ExamFlag", ExamFlag);
                 startActivity(intent);
             }
         }
     }
+
     //문제리스트를 받아서 배열에 저장함
     protected void problem_list_fill(JSONObject result_object, ArrayList<Problem> problem_list) throws JSONException {
-        JSONArray tmp_array= result_object.getJSONArray("problem_list");
-        for(int i=0;i<tmp_array.length();i++){
+        JSONArray tmp_array = result_object.getJSONArray("problem_list");
+        for (int i = 0; i < tmp_array.length(); i++) {
             Problem problem_add = new Problem();
             JSONObject problem_single = (JSONObject) tmp_array.get(i);
             JSONArray select_list = problem_single.getJSONArray("select");
             problem_add.setAnswer(problem_single.getInt("answer"));
-            problem_add.setShow(problem_single.getString("show"));
-            problem_add.setLevel(problem_single.getInt("level"));
-            for(int j=0;j<select_list.length();j++){
+            problem_add.setShow(problem_single.getString("mp3_path"));
+            for (int j = 0; j < select_list.length(); j++) {
                 problem_add.addSelect(select_list.getString(j));
             }
             problem_list.add(problem_add);
         }
     }
+
     //다음문제로 세팅
-    protected void next_problem(String mp3_name, Button[] buttons, ArrayList<Problem> problem_list){
+    protected void next_problem(String mp3_name, Button[] buttons, ArrayList<Problem> problem_list) {
         what_problem++;
-        mp3_name=problem_list.get(what_problem).getLevel()+"/"+problem_list.get(what_problem).getShow();
-        for(int i=0 ; i< problem_list.get(what_problem).getSelectSize() ; i++){
+        mp3_name = problem_list.get(what_problem).getShow();
+        System.out.println(mp3_name);
+        for (int i = 0; i < problem_list.get(what_problem).getSelectSize(); i++) {
             buttons[i].setText(problem_list.get(what_problem).getSelect(i));
         }
-
     }
 }

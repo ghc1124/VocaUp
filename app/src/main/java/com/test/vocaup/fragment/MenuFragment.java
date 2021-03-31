@@ -84,7 +84,7 @@ public class MenuFragment extends Fragment  {
                         Manager testManager = new Manager(((MenuActivity)getActivity()).token);
                         testManager.setLevel(1);
 
-                        testManager.setRecap(5);
+                        testManager.setRecap(4);
                         testManager.setBlank_spelling(1);
                         testManager.setMean_spelling(0);
                         testManager.setSpelling_mean(1);
