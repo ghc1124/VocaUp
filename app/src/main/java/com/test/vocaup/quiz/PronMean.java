@@ -63,7 +63,7 @@ public class PronMean extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                //new Connect_get().wordPron(result, "wordPron", (level_info + ""));
+                new Connect_get().wordPron(result, "wordPron", (level_info + ""));
             }
         };
         thread.start();
