@@ -88,7 +88,7 @@ public class MenuFragment extends Fragment  {
 
                     mediaPlayer = new MediaPlayer();
                     mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-                    mediaPlayer.setDataSource("http://13.209.75.148:5000/wordPron/hello/1");
+                    mediaPlayer.setDataSource("http://13.209.75.148:5000/wordPron/1/hello.mp3");
                     mediaPlayer.prepareAsync();
                     mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                         @Override
