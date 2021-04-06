@@ -1,9 +1,13 @@
 package com.test.vocaup.quiz;
 
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,8 +35,9 @@ public class PronMean extends AppCompatActivity {
     String test_json;
     String mp3_name;
     Button[] but_array;
+    ImageButton sound;
     private Boolean ExamFlag;
-
+    private MediaPlayer mediaPlayer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +48,7 @@ public class PronMean extends AppCompatActivity {
         but_array[1] = (Button)findViewById(R.id.button1);
         but_array[2] = (Button)findViewById(R.id.button2);
         but_array[3] = (Button)findViewById(R.id.button3);
+        sound = (ImageButton)findViewById(R.id.sound);
         what_problem = -1;
         level_info = ((MenuActivity)MenuActivity.context).manager.getLevel();
         test_json = "problem/pron_mean";
@@ -63,7 +69,7 @@ public class PronMean extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                //new Connect_get().wordPron(result, "wordPron", (level_info + ""));
+                new Connect_get().wordPron(result, "wordPron", (level_info + ""));
             }
         };
         thread.start();
@@ -75,6 +81,30 @@ public class PronMean extends AppCompatActivity {
         for(int i = 0; i < 4; i++){
             but_array[i].setOnClickListener(but_listener);
         }
+
+        sound.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    if(mediaPlayer != null) {
+                        mediaPlayer.stop();
+                    }
+                    int level = result.getInt("level");
+                    mediaPlayer = new MediaPlayer();
+                    mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+                    mediaPlayer.setDataSource("http://13.209.75.148:5000/wordPron/"+level+"/"+problem_list.get(what_problem).getShow());
+                    mediaPlayer.prepareAsync();
+                    mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                        @Override
+                        public void onPrepared(MediaPlayer mediaPlayer) {
+                            Log.e("PREPARED", "Start Music");
+                            mediaPlayer.start();
+                        }
+                    });
+                } catch(Exception e) {
+                    e.printStackTrace();
+                }
+            }});
 
     }
     class SelectBtnOnClickListener implements Button.OnClickListener {

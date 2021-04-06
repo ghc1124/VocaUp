@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import com.test.vocaup.R;
 import com.test.vocaup.quiz.BlankSpelling;
 import com.test.vocaup.quiz.MeanSpelling;
+import com.test.vocaup.quiz.PronMean;
 import com.test.vocaup.quiz.SpellingMean;
 import com.test.vocaup.activity.MenuActivity;
 import com.test.vocaup.quiz.SpellingMeanLink;
@@ -44,6 +45,7 @@ public class StudyFragment extends Fragment implements MenuActivity.OnBackPresse
         btn_fill_blank = viewGroup.findViewById(R.id.btn_fill_blank);
         btn_match = viewGroup.findViewById(R.id.btn_match);
         btn_sort = viewGroup.findViewById(R.id.btn_sort);
+        btn_p_to_m = viewGroup.findViewById(R.id.btn_p_to_m);
 
         btn_back = viewGroup.findViewById(R.id.btn_back);
 
@@ -52,6 +54,7 @@ public class StudyFragment extends Fragment implements MenuActivity.OnBackPresse
         btn_fill_blank.setOnClickListener(but_listener);
         btn_match.setOnClickListener(but_listener);
         btn_sort.setOnClickListener(but_listener);
+        btn_p_to_m.setOnClickListener(but_listener);
 
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +88,9 @@ public class StudyFragment extends Fragment implements MenuActivity.OnBackPresse
                     break;
                 case R.id.btn_sort:
                     intent = new Intent(getActivity(), SpellingSort.class);
+                    break;
+                case R.id.btn_p_to_m:
+                    intent = new Intent(getActivity(), PronMean.class);
                     break;
             }
             intent.putExtra("Token", ((MenuActivity) getActivity()).manager.getToken());

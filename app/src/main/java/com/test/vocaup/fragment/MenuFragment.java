@@ -2,6 +2,8 @@ package com.test.vocaup.fragment;
 
 import android.app.Activity;
 import android.content.Context;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
@@ -27,6 +29,7 @@ import com.test.vocaup.activity.MenuActivity;
 import com.test.vocaup.server.Connect_post;
 import com.test.vocaup.server.Connect_put;
 
+import java.io.IOException;
 import java.util.Stack;
 
 public class MenuFragment extends Fragment  {
@@ -38,6 +41,8 @@ public class MenuFragment extends Fragment  {
     private LottieAnimationView imgBtn_exam; // 시험 이미지 버튼
     private LottieAnimationView imgBtn_study; // 학습 이미지 버튼
     private ImageButton imgBtn_lab;
+
+    private MediaPlayer mediaPlayer;
 
     public static MenuFragment newInstance() { // 모든 프래그먼트에 공통으로 들어가야될 부분!!
         return new MenuFragment();
@@ -76,7 +81,28 @@ public class MenuFragment extends Fragment  {
         imgBtn_lab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Thread thread = new Thread() {
+                try {
+                    if(mediaPlayer != null) {
+                        mediaPlayer.stop();
+                    }
+
+                    mediaPlayer = new MediaPlayer();
+                    mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+                    mediaPlayer.setDataSource("http://13.209.75.148:5000/wordPron/1/hello.mp3");
+                    mediaPlayer.prepareAsync();
+                    mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                        @Override
+                        public void onPrepared(MediaPlayer mediaPlayer) {
+                            Log.e("PREPARED", "Start Music");
+                            mediaPlayer.start();
+                        }
+                    });
+                } catch(Exception e) {
+                    e.printStackTrace();
+                }
+
+
+                /*Thread thread = new Thread() {
                     @Override
                     public void run() {
                         // 사용자 정보 등록 or 받아오기
@@ -103,7 +129,7 @@ public class MenuFragment extends Fragment  {
                     thread.join();
                 } catch(Exception e) {
                     e.printStackTrace();
-                }
+                }*/
             }
         });
 
