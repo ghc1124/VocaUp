@@ -8,9 +8,15 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_word"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="640dp"
         android:scrollbars="vertical" />
 
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|bottom"
+        android:text="추가" />
 
 
 </FrameLayout>

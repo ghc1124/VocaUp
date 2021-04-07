@@ -28,6 +28,7 @@ public class TestResultActivity extends AppCompatActivity {
     TextView OX;
 
     private Button btn_result;
+    private Button btn_add;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +42,7 @@ public class TestResultActivity extends AppCompatActivity {
         Thread thread = new Thread() {
             @Override
             public void run() {
+                btn_add = findViewById(R.id.btn_add);
                 btn_result = findViewById(R.id.btn_result);
                 result = (ArrayList<Problem>)getIntent().getExtras().get("test_result");
                 int check=0;
@@ -88,6 +90,8 @@ public class TestResultActivity extends AppCompatActivity {
                     btn_result.setOnClickListener(new ResultButtonFailureListener());
                 else if(!ExamFlag)
                     btn_result.setOnClickListener(new ResultButtonBasicListener());
+
+                btn_add.setOnClickListener(new AddButtonListener());
             }
         };
 
@@ -218,6 +222,39 @@ public class TestResultActivity extends AppCompatActivity {
                     dialog.show();
                 }
             });
+        }
+    }
+
+    class AddButtonListener implements View.OnClickListener{
+        @Override
+        public void onClick(View view){
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(TestResultActivity.this);
+                    builder.setTitle("나만의 단어장 추가!");
+                    builder.setPositiveButton("추가", new DialogInterface.OnClickListener(){
+                        @Override
+                        public void onClick(DialogInterface dialog, int id)
+                        {
+                            Toast.makeText(getApplicationContext(), "나만의 단어장에 추가되었습니다.", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    builder.setNegativeButton("취소", new DialogInterface.OnClickListener(){
+                        @Override
+                        public void onClick(DialogInterface dialog, int id)
+                        {
+
+                        }
+                    });
+                    builder.setMessage("틀린문제를 나만의 단어장에 추가하시겠습니까?");
+                    builder.setIcon(R.drawable.ic_failure);
+
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
+            });
+
         }
     }
 }

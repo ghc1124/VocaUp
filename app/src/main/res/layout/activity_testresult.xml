@@ -55,9 +55,20 @@
     </androidx.recyclerview.widget.RecyclerView>
 
     <Button
+        android:id="@+id/btn_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|bottom"
+        android:text="틀린단어 단어장 추가" />
+
+    <Button
         android:id="@+id/btn_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center_horizontal"
-        android:text="Button" />
+        android:layout_gravity="center|bottom"
+        android:text="뒤로가기" />
+
+
+
+
 </LinearLayout>
