@@ -19,9 +19,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.bumptech.glide.Glide;
 import com.test.vocaup.DO.Manager;
 import com.test.vocaup.R;
 import com.test.vocaup.activity.MainActivity;
@@ -44,6 +46,8 @@ public class MenuFragment extends Fragment  {
 
     private MediaPlayer mediaPlayer;
 
+    private ImageView imageView_test;
+
     public static MenuFragment newInstance() { // 모든 프래그먼트에 공통으로 들어가야될 부분!!
         return new MenuFragment();
     }
@@ -52,6 +56,8 @@ public class MenuFragment extends Fragment  {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_menu, container, false);
+
+        imageView_test = viewGroup.findViewById(R.id.imageView_test);
 
         imgBtn_myWord = viewGroup.findViewById(R.id.imgBtn_myWord); // 나만의 단어장 버튼 할당
         imgBtn_myWord.setOnClickListener(new View.OnClickListener() {
@@ -81,7 +87,13 @@ public class MenuFragment extends Fragment  {
         imgBtn_lab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try {
+                Glide.with(getActivity())
+                        .load("http://13.209.75.148:5000/wordPic/1/bye.png")
+                        .fitCenter()
+                        .into(imageView_test);
+
+                // 발음 파일 통신 테스트
+                /*try {
                     if(mediaPlayer != null) {
                         mediaPlayer.stop();
                     }
@@ -99,7 +111,7 @@ public class MenuFragment extends Fragment  {
                     });
                 } catch(Exception e) {
                     e.printStackTrace();
-                }
+                }*/
 
 
                 /*Thread thread = new Thread() {
