@@ -6,11 +6,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
 import com.test.vocaup.DO.Manager;
 import com.test.vocaup.R;
 
@@ -34,6 +37,8 @@ public class DetailActivity extends AppCompatActivity {
     private TextView textView_pron_mean;
     private TextView textView_recap;
 
+    private Button btn_logout;
+
     private Manager manager;
 
     @Override
@@ -55,6 +60,16 @@ public class DetailActivity extends AppCompatActivity {
             email = savedInstanceState.getString("email");
             token = intent.getStringExtra("token");
         }
+
+        btn_logout = findViewById(R.id.btn_logout);
+        btn_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent1 = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent1);
+            }
+        });
 
         textView_name = (TextView)findViewById(R.id.textView_name);
         image_profile2 = (ImageView)findViewById(R.id.image_profile2);

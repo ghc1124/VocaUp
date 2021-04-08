@@ -37,22 +37,22 @@ public class TestResultActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String type = intent.getStringExtra("type");
         Boolean ExamFlag = intent.getBooleanExtra("ExamFlag", false);
-        percent=(TextView)findViewById(R.id.percent);
-        OX=(TextView)findViewById(R.id.OX);
+        percent = (TextView) findViewById(R.id.percent);
+        OX = (TextView) findViewById(R.id.OX);
         Thread thread = new Thread() {
             @Override
             public void run() {
                 btn_add = findViewById(R.id.btn_add);
                 btn_result = findViewById(R.id.btn_result);
                 result = (ArrayList<Problem>)getIntent().getExtras().get("test_result");
-                int check=0;
-                for(Problem tmp_pro:result){
-                    if(tmp_pro.getAnswer()==tmp_pro.getChoice()){
+                int check = 0;
+                for (Problem tmp_pro : result) {
+                    if (tmp_pro.getAnswer() == tmp_pro.getChoice()) {
                         check++;
                     }
                 }
-                percent.setText("정답률 "+Math.round(((float)check/result.size())*100)+"%");
-                OX.setText("O = "+check+", X = "+(result.size()-check));
+                percent.setText("정답률 " + Math.round(((float) check / result.size()) * 100) + "%");
+                OX.setText("O = " + check + ", X = " + (result.size() - check));
                 if(ExamFlag && check >= result.size() * 0.9) {
                     Connect_put connect_put = new Connect_put();
                     Manager testManager = new Manager(((MenuActivity)MenuActivity.context).token);
