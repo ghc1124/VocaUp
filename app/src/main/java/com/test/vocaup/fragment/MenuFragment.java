@@ -88,7 +88,7 @@ public class MenuFragment extends Fragment  {
             @Override
             public void onClick(View view) {
                 Glide.with(getActivity())
-                        .load("http://13.209.75.148:5000/wordPic/1/bye.png")
+                        .load("http://13.209.75.148:5000/wordPic/1/bye")
                         .fitCenter()
                         .into(imageView_test);
 

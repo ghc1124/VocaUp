@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.test.vocaup.DO.ListAll;
 import com.test.vocaup.R;
 import com.test.vocaup.activity.MenuActivity;
@@ -78,6 +79,12 @@ public class AllWordSinglyFragment extends Fragment implements MenuActivity.OnBa
         text_mean_s = viewGroup.findViewById(R.id.text_mean_s);
         text_mean_s.setText(result.get(0).getMean_s());
 
+        image_word = viewGroup.findViewById(R.id.image_word);
+        Glide.with(container.getContext())
+                .load("http://13.209.75.148:5000/wordPic/1/" + result.get(0).getWord())
+                .fitCenter()
+                .into(image_word);
+
         btn_pron = viewGroup.findViewById(R.id.btn_pron); // 발음 듣기 버튼 할당
         btn_pron.setText(result.get(0).getWord());
         btn_pron.setOnClickListener(new View.OnClickListener() {
@@ -103,6 +110,10 @@ public class AllWordSinglyFragment extends Fragment implements MenuActivity.OnBa
                     text_part.setText(result.get(now_index).getPart());
                     text_sentence.setText(result.get(now_index).getSentence());
                     text_mean_s.setText(result.get(now_index).getMean_s());
+                    Glide.with(container.getContext())
+                            .load("http://13.209.75.148:5000/wordPic/1/" + result.get(now_index).getWord())
+                            .fitCenter()
+                            .into(image_word);
                 }
             }
         });
@@ -122,6 +133,10 @@ public class AllWordSinglyFragment extends Fragment implements MenuActivity.OnBa
                     text_part.setText(result.get(now_index).getPart());
                     text_sentence.setText(result.get(now_index).getSentence());
                     text_mean_s.setText(result.get(now_index).getMean_s());
+                    Glide.with(container.getContext())
+                            .load("http://13.209.75.148:5000/wordPic/1/" + result.get(now_index).getWord())
+                            .fitCenter()
+                            .into(image_word);
                 }
             }
         });
@@ -147,4 +162,6 @@ public class AllWordSinglyFragment extends Fragment implements MenuActivity.OnBa
         Log.e("Other", "onAttach()");
         ((MenuActivity)context).setOnBackPressedListener(this);
     }
+
+
 }
