@@ -87,10 +87,11 @@ public class MenuFragment extends Fragment  {
         imgBtn_lab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Glide.with(getActivity())
+                // 사진 파일 통신 테스트
+                /*Glide.with(getActivity())
                         .load("http://13.209.75.148:5000/wordPic/1/bye")
                         .fitCenter()
-                        .into(imageView_test);
+                        .into(imageView_test);*/
 
                 // 발음 파일 통신 테스트
                 /*try {
@@ -113,8 +114,8 @@ public class MenuFragment extends Fragment  {
                     e.printStackTrace();
                 }*/
 
-
-                /*Thread thread = new Thread() {
+                // 정보 수정
+                Thread thread = new Thread() {
                     @Override
                     public void run() {
                         // 사용자 정보 등록 or 받아오기
@@ -122,13 +123,13 @@ public class MenuFragment extends Fragment  {
                         Manager testManager = new Manager(((MenuActivity)getActivity()).token);
                         testManager.setLevel(1);
 
-                        testManager.setRecap(4);
+                        /*testManager.setRecap(4);
                         testManager.setBlank_spelling(1);
                         testManager.setMean_spelling(0);
                         testManager.setSpelling_mean(1);
                         testManager.setSpelling_mean_link(1);
                         testManager.setSpelling_sort(1);
-                        testManager.setPron_mean(1);
+                        testManager.setPron_mean(1);*/
 
                         Manager resultManager = connect_put.changeUserInfo(testManager);
                         ((MenuActivity)getActivity()).manager = ((MenuActivity)getActivity()).getManager();
@@ -141,7 +142,7 @@ public class MenuFragment extends Fragment  {
                     thread.join();
                 } catch(Exception e) {
                     e.printStackTrace();
-                }*/
+                }
             }
         });
 

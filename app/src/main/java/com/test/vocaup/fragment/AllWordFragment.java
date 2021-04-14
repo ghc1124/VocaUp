@@ -34,7 +34,7 @@ public class AllWordFragment extends Fragment implements MenuActivity.OnBackPres
         Thread thread = new Thread() {
             @Override
             public void run() {
-                result = new Connect_get().get("list", "1");
+                result = new Connect_get().get("list", ((MenuActivity)MenuActivity.context).manager.getLevel() + "");
             }
         };
 

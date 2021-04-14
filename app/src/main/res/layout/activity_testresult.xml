@@ -54,19 +54,32 @@
 
     </androidx.recyclerview.widget.RecyclerView>
 
-    <Button
+    <android.widget.Button
         android:id="@+id/btn_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center|bottom"
-        android:text="틀린단어 단어장 추가" />
+        android:background="@drawable/button_bg"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:text="틀린단어 단어장 추가"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:typeface="serif" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/btn_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center|bottom"
-        android:text="뒤로가기" />
+        android:layout_marginTop="5dp"
+        android:background="@drawable/button_bg"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:text="뒤로가기"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:typeface="serif" />
 
 
 

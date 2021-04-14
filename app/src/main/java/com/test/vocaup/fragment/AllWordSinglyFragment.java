@@ -1,6 +1,7 @@
 package com.test.vocaup.fragment;
 
 import android.content.Context;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
@@ -50,10 +51,12 @@ public class AllWordSinglyFragment extends Fragment implements MenuActivity.OnBa
                              Bundle savedInstanceState) {
         ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_mywordlistsingly, container, false);
 
+        String level = ((MenuActivity)MenuActivity.context).manager.getLevel() + "";
+
         Thread thread = new Thread() {
             @Override
             public void run() {
-                result = new Connect_get().get("list", "1");
+                result = new Connect_get().get("list", level);
             }
         };
 
@@ -81,7 +84,7 @@ public class AllWordSinglyFragment extends Fragment implements MenuActivity.OnBa
 
         image_word = viewGroup.findViewById(R.id.image_word);
         Glide.with(container.getContext())
-                .load("http://13.209.75.148:5000/wordPic/1/" + result.get(0).getWord())
+                .load("http://13.209.75.148:5000/wordPic/" + level + "/" + result.get(0).getOrigin_word())
                 .fitCenter()
                 .into(image_word);
 
@@ -90,8 +93,25 @@ public class AllWordSinglyFragment extends Fragment implements MenuActivity.OnBa
         btn_pron.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mediaPlayer = MediaPlayer.create(getContext(), R.raw.success); //발음 파일 이름 변경하면 됨
-                mediaPlayer.start();
+                try {
+                    if(mediaPlayer != null) {
+                        mediaPlayer.stop();
+                    }
+
+                    mediaPlayer = new MediaPlayer();
+                    mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+                    mediaPlayer.setDataSource("http://13.209.75.148:5000/wordPron/" + level + "/" + btn_pron.getText() + ".mp3");
+                    mediaPlayer.prepareAsync();
+                    mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                        @Override
+                        public void onPrepared(MediaPlayer mediaPlayer) {
+                            Log.e("PREPARED", "Start Music");
+                            mediaPlayer.start();
+                        }
+                    });
+                } catch(Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -111,7 +131,7 @@ public class AllWordSinglyFragment extends Fragment implements MenuActivity.OnBa
                     text_sentence.setText(result.get(now_index).getSentence());
                     text_mean_s.setText(result.get(now_index).getMean_s());
                     Glide.with(container.getContext())
-                            .load("http://13.209.75.148:5000/wordPic/1/" + result.get(now_index).getWord())
+                            .load("http://13.209.75.148:5000/wordPic/" + level + "/" + result.get(now_index).getOrigin_word())
                             .fitCenter()
                             .into(image_word);
                 }
@@ -134,7 +154,7 @@ public class AllWordSinglyFragment extends Fragment implements MenuActivity.OnBa
                     text_sentence.setText(result.get(now_index).getSentence());
                     text_mean_s.setText(result.get(now_index).getMean_s());
                     Glide.with(container.getContext())
-                            .load("http://13.209.75.148:5000/wordPic/1/" + result.get(now_index).getWord())
+                            .load("http://13.209.75.148:5000/wordPic/" + level + "/" + result.get(now_index).getOrigin_word())
                             .fitCenter()
                             .into(image_word);
                 }

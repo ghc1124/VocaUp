@@ -68,8 +68,6 @@ public class PronMean extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-                new Connect_get().wordPron(result, "wordPron", (level_info + ""));
             }
         };
         thread.start();
@@ -92,7 +90,7 @@ public class PronMean extends AppCompatActivity {
                     int level = result.getInt("level");
                     mediaPlayer = new MediaPlayer();
                     mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-                    mediaPlayer.setDataSource("http://13.209.75.148:5000/wordPron/"+level+"/"+problem_list.get(what_problem).getShow());
+                    mediaPlayer.setDataSource("http://13.209.75.148:5000/wordPron/" + level + "/" + problem_list.get(what_problem).getShow());
                     mediaPlayer.prepareAsync();
                     mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                         @Override

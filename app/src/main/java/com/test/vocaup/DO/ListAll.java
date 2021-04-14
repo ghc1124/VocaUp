@@ -2,6 +2,7 @@ package com.test.vocaup.DO;
 
 public class ListAll {
     private String word;
+    private String origin_word;
     private String mean;
     private String part;
     private String level;
@@ -54,5 +55,13 @@ public class ListAll {
 
     public void setMean_s(String mean_s) {
         this.mean_s = mean_s;
+    }
+
+    public String getOrigin_word() {
+        return origin_word;
+    }
+
+    public void setOrigin_word(String origin_word) {
+        this.origin_word = origin_word;
     }
 }

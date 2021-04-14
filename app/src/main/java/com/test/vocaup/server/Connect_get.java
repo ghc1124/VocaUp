@@ -38,45 +38,6 @@ public class Connect_get implements Interceptor {
     public Connect_get() {
     }
 
-    public void wordPron(JSONObject object, String... strings) {
-        OkHttpClient httpClient = new OkHttpClient
-                .Builder()
-                .retryOnConnectionFailure(true)
-                .addInterceptor(this::intercept)
-                .build();
-
-        JSONArray targetArr = null;
-        ArrayList<String> reqArr = new ArrayList<>();
-        Request request = null;
-        Response response = null;
-
-        try {
-            targetArr = object.getJSONArray("problem_list");
-
-            if(targetArr != null) {
-                for (int i = 0; i < targetArr.length(); i++) {
-                    JSONObject jsonObject = targetArr.getJSONObject(i);
-                    String word = jsonObject.getString("mp3_path");
-                    reqArr.add(word.replace(".mp3", ""));
-                }
-            }
-
-            for(int i = 0; i < reqArr.size(); i++) {
-                System.out.println(reqArr.get(i));
-            }
-
-            request = new Request.Builder().url(url + strings[0] + "/" + reqArr.get(0) + "/" + strings[1]).get().build();
-
-            response = httpClient.newCall(request).execute();
-            System.out.println(url + strings[0] + "/" + reqArr.get(0) + "/" + strings[1]);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        response.close();
-    }
-
     public ArrayList get(String... strings) {
         OkHttpClient httpClient = new OkHttpClient
                 .Builder()
@@ -104,6 +65,7 @@ public class Connect_get implements Interceptor {
                     JSONObject jsonObject = array.getJSONObject(i);
                     ListAll listAll = new ListAll();
                     listAll.setWord(jsonObject.getString("word").replaceAll("[0-9]", ""));
+                    listAll.setOrigin_word(jsonObject.getString("word"));
                     listAll.setMean(jsonObject.getString("mean_w"));
                     listAll.setPart(jsonObject.getString("part"));
                     listAll.setLevel(jsonObject.getString("level"));
