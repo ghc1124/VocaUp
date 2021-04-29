@@ -19,7 +19,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class Connect_put implements Interceptor {
-    //private String url = "http://172.17.9.101:5000/";
+    //private String url = "http://10.0.2.2:5000/";
     private String url = "http://13.209.75.148:5000/";
 
     private String userToken = "";
@@ -133,6 +133,48 @@ public class Connect_put implements Interceptor {
         response.close();
 
         return result;
+    }
+
+    public void appendUserWord(int index) {
+        OkHttpClient httpClient = new OkHttpClient.Builder()
+                .addInterceptor(this::intercept)
+                .retryOnConnectionFailure(true)
+                .build();
+        RequestBody body = null;
+        Request request = null;
+        Response response = null;
+        String data = "";
+
+        body = RequestBody.create(null, "");
+
+        request = new Request.Builder().url(url + "/userWordA/" + index).put(body).build();
+
+        try {
+            response = httpClient.newCall(request).execute();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void removeUserWord(int index) {
+        OkHttpClient httpClient = new OkHttpClient.Builder()
+                .addInterceptor(this::intercept)
+                .retryOnConnectionFailure(true)
+                .build();
+        RequestBody body = null;
+        Request request = null;
+        Response response = null;
+        String data = "";
+
+        body = RequestBody.create(null, "");
+
+        request = new Request.Builder().url(url + "/userWordR/" + index).put(body).build();
+
+        try {
+            response = httpClient.newCall(request).execute();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @NotNull

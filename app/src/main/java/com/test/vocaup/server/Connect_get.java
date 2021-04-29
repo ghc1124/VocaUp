@@ -25,7 +25,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class Connect_get implements Interceptor {
-    //private String url = "http://172.17.9.101:5000/";
+    //private String url = "http://10.0.2.2:5000/";
     private String url = "http://13.209.75.148:5000/";
     private ArrayList<ListAll> result = new ArrayList<>();
 
@@ -59,11 +59,12 @@ public class Connect_get implements Interceptor {
                 String jsonData = response.body().string();
                 JSONObject object = new JSONObject(jsonData);
                 JSONArray array = object.getJSONArray("result");
-                System.out.println(jsonData);
+                //System.out.println(jsonData);
 
                 for (int i = 0; i < array.length(); i++) {
                     JSONObject jsonObject = array.getJSONObject(i);
                     ListAll listAll = new ListAll();
+                    listAll.setIndex(jsonObject.getInt("index"));
                     listAll.setWord(jsonObject.getString("word").replaceAll("[0-9]", ""));
                     listAll.setOrigin_word(jsonObject.getString("word"));
                     listAll.setMean(jsonObject.getString("mean_w"));
@@ -71,6 +72,69 @@ public class Connect_get implements Interceptor {
                     listAll.setLevel(jsonObject.getString("level"));
                     listAll.setSentence(jsonObject.getString("sentence"));
                     listAll.setMean_s(jsonObject.getString("mean_s"));
+                    listAll.setUserWord(jsonObject.getInt("userWord"));
+                    if(listAll.getUserWord() == 1) {
+                        listAll.setSelected(true);
+                    } else {
+                        listAll.setSelected(false);
+                    }
+
+                    result.add(listAll);
+                }
+
+                response.close();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return result;
+        }
+
+        return null;
+    }
+
+    public ArrayList UserWordget(String key) {
+        OkHttpClient httpClient = new OkHttpClient
+                .Builder()
+                .retryOnConnectionFailure(true)
+                .addInterceptor(this::intercept)
+                .build();
+        //RequestBody body = null;
+        Request request = null;
+        request = new Request.Builder().url(url + key).build();
+
+//        System.out.println(userToken);
+//        System.out.println(url + strings[0] + "/" + strings[1]);
+//      전체 리스트 요청할 때는 /list/{"레벨"}
+
+        if(key.equals("userWordList")) {
+            try {
+                Response response = httpClient.newCall(request).execute();
+
+                String jsonData = response.body().string();
+                JSONObject object = new JSONObject(jsonData);
+                JSONArray array = object.getJSONArray("result");
+                //System.out.println(jsonData);
+
+                for (int i = 0; i < array.length(); i++) {
+                    JSONObject jsonObject = array.getJSONObject(i);
+                    ListAll listAll = new ListAll();
+                    listAll.setIndex(jsonObject.getInt("index"));
+                    listAll.setWord(jsonObject.getString("word").replaceAll("[0-9]", ""));
+                    listAll.setOrigin_word(jsonObject.getString("word"));
+                    listAll.setMean(jsonObject.getString("mean_w"));
+                    listAll.setPart(jsonObject.getString("part"));
+                    listAll.setLevel(jsonObject.getString("level"));
+                    listAll.setSentence(jsonObject.getString("sentence"));
+                    listAll.setMean_s(jsonObject.getString("mean_s"));
+                    listAll.setUserWord(jsonObject.getInt("userWord"));
+                    if(listAll.getUserWord() == 1) {
+                        listAll.setSelected(true);
+                    } else {
+                        listAll.setSelected(false);
+                    }
+
                     result.add(listAll);
                 }
 

@@ -12,16 +12,18 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.test.vocaup.DO.ListAll;
 import com.test.vocaup.R;
 import com.test.vocaup.activity.MenuActivity;
 import com.test.vocaup.adapter.ListAdapter;
 import com.test.vocaup.server.Connect_get;
+import com.test.vocaup.server.Connect_put;
 
 import java.util.ArrayList;
 
-public class AllWordFragment extends Fragment implements MenuActivity.OnBackPressedListener{
+public class AllWordFragment extends Fragment implements MenuActivity.OnBackPressedListener, ListAdapter.OnItemClick {
     private ArrayList<ListAll> result = new ArrayList<>();
 
     public static AllWordFragment newInstance() { // 모든 프래그먼트에 공통으로 들어가야될 부분!!
@@ -34,7 +36,8 @@ public class AllWordFragment extends Fragment implements MenuActivity.OnBackPres
         Thread thread = new Thread() {
             @Override
             public void run() {
-                result = new Connect_get().get("list", ((MenuActivity)MenuActivity.context).manager.getLevel() + "");
+                result = new Connect_get(((MenuActivity)MenuActivity.context).manager.getToken())
+                        .get("list", ((MenuActivity)MenuActivity.context).manager.getLevel() + "");
             }
         };
 
@@ -60,8 +63,15 @@ public class AllWordFragment extends Fragment implements MenuActivity.OnBackPres
 
         recyclerView.setLayoutManager(linearLayoutManager); // 레이아웃 매니저 등록
 
-        ListAdapter adapter = new ListAdapter(); // 어댑터 객체 생성
+        ListAdapter adapter = new ListAdapter(this, "list"); // 어댑터 객체 생성
         adapter.setItems(result); // 어댑터 아이템 설정
+
+        adapter.setOnItemClickListener(new ListAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int pos) {
+                Toast.makeText(getActivity(), "" + pos, Toast.LENGTH_SHORT).show();
+            }
+        });
 
         recyclerView.setAdapter(adapter); // 어댑터 등록
 
@@ -87,4 +97,25 @@ public class AllWordFragment extends Fragment implements MenuActivity.OnBackPres
         ((MenuActivity)context).setOnBackPressedListener(this);
     }
 
+    @Override
+    public void onClick(int index) {
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+                if(index > 0) {
+                    new Connect_put(((MenuActivity)MenuActivity.context).manager.getToken()).appendUserWord(index);
+                } else {
+                    new Connect_put(((MenuActivity)MenuActivity.context).manager.getToken()).removeUserWord(-1 * index);
+                }
+            }
+        };
+
+        thread.start();
+
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }

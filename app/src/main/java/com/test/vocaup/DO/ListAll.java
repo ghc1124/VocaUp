@@ -1,6 +1,7 @@
 package com.test.vocaup.DO;
 
 public class ListAll {
+    private int index;
     private String word;
     private String origin_word;
     private String mean;
@@ -8,6 +9,32 @@ public class ListAll {
     private String level;
     private String sentence;
     private String mean_s;
+    private boolean isSelected;
+    private int userWord;
+
+    public int getUserWord() {
+        return userWord;
+    }
+
+    public void setUserWord(int userWord) {
+        this.userWord = userWord;
+    }
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
+    }
 
     public String getWord() {
         return word;
