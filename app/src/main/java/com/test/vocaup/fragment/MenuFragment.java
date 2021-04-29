@@ -2,6 +2,7 @@ package com.test.vocaup.fragment;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -28,6 +29,7 @@ import com.test.vocaup.DO.Manager;
 import com.test.vocaup.R;
 import com.test.vocaup.activity.MainActivity;
 import com.test.vocaup.activity.MenuActivity;
+import com.test.vocaup.quiz.CrossWord;
 import com.test.vocaup.server.Connect_post;
 import com.test.vocaup.server.Connect_put;
 
@@ -87,6 +89,9 @@ public class MenuFragment extends Fragment  {
         imgBtn_lab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), CrossWord.class);
+                startActivity(intent);
+            }
                 // 사진 파일 통신 테스트
                 /*Glide.with(getActivity())
                         .load("http://13.209.75.148:5000/wordPic/1/bye")
@@ -115,34 +120,34 @@ public class MenuFragment extends Fragment  {
                 }*/
 
                 // 정보 수정
-                Thread thread = new Thread() {
-                    @Override
-                    public void run() {
-                        // 사용자 정보 등록 or 받아오기
-                        Connect_put connect_put = new Connect_put();
-                        Manager testManager = new Manager(((MenuActivity)getActivity()).token);
-
-                        testManager.setRecap(5);
-                        testManager.setBlank_spelling(1);
-                        testManager.setMean_spelling(0);
-                        testManager.setSpelling_mean(1);
-                        testManager.setSpelling_mean_link(1);
-                        testManager.setSpelling_sort(1);
-                        testManager.setPron_mean(1);
-
-                        Manager resultManager = connect_put.changeUserInfo(testManager);
-                        ((MenuActivity)getActivity()).manager = ((MenuActivity)getActivity()).getManager();
-                    }
-                };
-
-                thread.start();
-
-                try {
-                    thread.join();
-                } catch(Exception e) {
-                    e.printStackTrace();
-                }
-            }
+//                Thread thread = new Thread() {
+//                    @Override
+//                    public void run() {
+//                        // 사용자 정보 등록 or 받아오기
+//                        Connect_put connect_put = new Connect_put();
+//                        Manager testManager = new Manager(((MenuActivity)getActivity()).token);
+//
+//                        testManager.setRecap(5);
+//                        testManager.setBlank_spelling(1);
+//                        testManager.setMean_spelling(0);
+//                        testManager.setSpelling_mean(1);
+//                        testManager.setSpelling_mean_link(1);
+//                        testManager.setSpelling_sort(1);
+//                        testManager.setPron_mean(1);
+//
+//                        Manager resultManager = connect_put.changeUserInfo(testManager);
+//                        ((MenuActivity)getActivity()).manager = ((MenuActivity)getActivity()).getManager();
+//                    }
+//                };
+//
+//                thread.start();
+//
+//                try {
+//                    thread.join();
+//                } catch(Exception e) {
+//                    e.printStackTrace();
+//                }
+//            }
         });
 
         return viewGroup;
