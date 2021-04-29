@@ -12,14 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VocaUp"
         android:usesCleartextTraffic="true">
-        <activity android:name=".quiz.SpellingMeanLink"></activity>
-        <activity android:name=".quiz.SpellingSort"></activity>
-        <activity android:name=".quiz.SpellingMean"></activity>
-        <activity android:name=".quiz.MeanSpelling"></activity>
-        <activity android:name=".quiz.BlankSpelling"></activity>
-        <activity android:name=".quiz.PronMean"></activity>
+        <activity android:name=".quiz.SpellingMeanLink" />
+        <activity android:name=".quiz.SpellingSort" />
+        <activity android:name=".quiz.SpellingMean" />
+        <activity android:name=".quiz.MeanSpelling" />
+        <activity android:name=".quiz.BlankSpelling" />
+        <activity android:name=".quiz.PronMean" />
+        <activity android:name=".quiz.CrossWord" />
         <activity android:name=".activity.DetailActivity" />
-        <activity android:name=".activity.MenuActivity"
+        <activity
+            android:name=".activity.MenuActivity"
             android:launchMode="singleTask" />
         <activity android:name=".activity.TestResultActivity" />
         <activity android:name=".activity.MainActivity">

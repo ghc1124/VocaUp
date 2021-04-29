@@ -1,39 +1,24 @@
 package com.test.vocaup.fragment;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
-import androidx.activity.OnBackPressedCallback;
-import androidx.activity.OnBackPressedDispatcher;
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
-import com.bumptech.glide.Glide;
-import com.test.vocaup.DO.Manager;
 import com.test.vocaup.R;
-import com.test.vocaup.activity.MainActivity;
 import com.test.vocaup.activity.MenuActivity;
 import com.test.vocaup.quiz.CrossWord;
-import com.test.vocaup.server.Connect_post;
-import com.test.vocaup.server.Connect_put;
 
-import java.io.IOException;
 import java.util.Stack;
 
 public class MenuFragment extends Fragment  {
