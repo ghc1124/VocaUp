@@ -56,7 +56,8 @@ public class AllWordSinglyFragment extends Fragment implements MenuActivity.OnBa
         Thread thread = new Thread() {
             @Override
             public void run() {
-                result = new Connect_get().get("list", level);
+                result = new Connect_get(((MenuActivity)MenuActivity.context).manager.getToken())
+                        .get("list", level);
             }
         };
 
