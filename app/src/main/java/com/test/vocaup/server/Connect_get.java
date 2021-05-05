@@ -25,8 +25,8 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class Connect_get implements Interceptor {
-    //private String url = "http://10.0.2.2:5000/";
-    private String url = "http://13.209.75.148:5000/";
+    private String url = "http://10.0.2.2:5000/";
+    //private String url = "http://13.209.75.148:5000/";
     private ArrayList<ListAll> result = new ArrayList<>();
 
     private String userToken = "";

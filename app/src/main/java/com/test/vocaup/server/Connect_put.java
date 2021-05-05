@@ -19,8 +19,8 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class Connect_put implements Interceptor {
-    //private String url = "http://10.0.2.2:5000/";
-    private String url = "http://13.209.75.148:5000/";
+    private String url = "http://10.0.2.2:5000/";
+    //private String url = "http://13.209.75.148:5000/";
 
     private String userToken = "";
 
@@ -135,6 +135,44 @@ public class Connect_put implements Interceptor {
         return result;
     }
 
+    public void appendWrongList(ArrayList<String> strings, int level) {
+        OkHttpClient httpClient = new OkHttpClient.Builder()
+                .addInterceptor(this::intercept)
+                .retryOnConnectionFailure(true)
+                .build();
+        RequestBody body = null;
+        Request request = null;
+        Response response = null;
+
+        JSONObject object = new JSONObject();
+        JSONArray array = new JSONArray();
+
+        for (String string : strings) {
+            array.put(string);
+        }
+
+        try {
+            object.put("wrongList", array);
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+
+        body = RequestBody.create(
+                MediaType.parse("application/json; charset=utf-8"),
+                object.toString()
+        );
+
+        request = new Request.Builder().url(url + "/wrongList/" + level).put(body).build();
+
+        try {
+            response = httpClient.newCall(request).execute();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+
+        response.close();
+    }
+
     public void appendUserWord(int index) {
         OkHttpClient httpClient = new OkHttpClient.Builder()
                 .addInterceptor(this::intercept)
@@ -154,6 +192,8 @@ public class Connect_put implements Interceptor {
         } catch(Exception e) {
             e.printStackTrace();
         }
+
+        response.close();
     }
 
     public void removeUserWord(int index) {
@@ -175,6 +215,8 @@ public class Connect_put implements Interceptor {
         } catch(Exception e) {
             e.printStackTrace();
         }
+
+        response.close();
     }
 
     @NotNull

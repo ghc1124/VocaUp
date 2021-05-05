@@ -30,6 +30,8 @@ public class TestResultActivity extends AppCompatActivity {
     private Button btn_result;
     private Button btn_add;
 
+    private checkAdapter adapter;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_testresult);
@@ -114,11 +116,10 @@ public class TestResultActivity extends AppCompatActivity {
 
         recyclerView.setLayoutManager(linearLayoutManager); // 레이아웃 매니저 등록
 
-        checkAdapter adapter = new checkAdapter(); // 어댑터 객체 생성
+        adapter = new checkAdapter(); // 어댑터 객체 생성
         adapter.setItems(result); // 어댑터 아이템 설정
 
         recyclerView.setAdapter(adapter); // 어댑터 등록
-
     }
 
     class ResultButtonLevelUpListener implements View.OnClickListener {
@@ -238,6 +239,23 @@ public class TestResultActivity extends AppCompatActivity {
                         public void onClick(DialogInterface dialog, int id)
                         {
                             Toast.makeText(getApplicationContext(), "나만의 단어장에 추가되었습니다.", Toast.LENGTH_SHORT).show();
+                            ArrayList<String> strings = adapter.getWrongList();
+
+                            Thread thread = new Thread() {
+                                @Override
+                                public void run() {
+                                    new Connect_put(((MenuActivity)MenuActivity.context).manager.getToken())
+                                            .appendWrongList(strings, ((MenuActivity)MenuActivity.context).manager.getLevel());
+                                }
+                            };
+
+                            thread.start();
+
+                            try {
+                                thread.join();
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
                         }
                     });
                     builder.setNegativeButton("취소", new DialogInterface.OnClickListener(){
