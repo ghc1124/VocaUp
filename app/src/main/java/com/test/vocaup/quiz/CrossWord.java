@@ -1,5 +1,6 @@
 package com.test.vocaup.quiz;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,9 +10,18 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.test.vocaup.DO.Problem;
 import com.test.vocaup.R;
 import com.test.vocaup.activity.MenuActivity;
+import com.test.vocaup.activity.TestResultActivity;
 import com.test.vocaup.fragment.MenuFragment;
+import com.test.vocaup.server.Connect_get;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class CrossWord extends AppCompatActivity {
     EditText et[] = new EditText[100];
@@ -19,13 +29,21 @@ public class CrossWord extends AppCompatActivity {
     private Button ok_btn;
     private TextView mean_text;
 
-    String test = "test";
-    String tmean = "테스트";
-    int x1 = 5; //x좌표
-    int y1 = 5; //y좌표
-    int len = test.length(); //길이
-    boolean tst = false; //가로면 true 세로면 false
+    String[] word = new String[]{null,null,null,null,null,null,null,null,null,null};
+    String[] mean = new String[]{null,null,null,null,null,null,null,null,null,null};
+    int[] x= new int[]{0,0,0,0,0,0,0,0,0,0}; //x좌표
+    int[] y= new int[]{0,0,0,0,0,0,0,0,0,0}; //y좌표
+    int[] len = new int[]{0,0,0,0,0,0,0,0,0,0}; //길이
+    boolean[] tst = new boolean[]{true,true,true,true,true,true,true,true,true,true}; //가로면 true 세로면 false
     int max_word = 1; //단어수
+
+    private JSONObject result = new JSONObject();
+    ArrayList<Problem> problem_list = new ArrayList<Problem>();
+    int what_problem;
+    int level_info;
+    String test_json;
+    private Boolean ExamFlag;
+    private Boolean RecapFlag;
 
     Integer[] Rid_editText = {
             R.id.et00,R.id.et01,R.id.et02,R.id.et03,R.id.et04,R.id.et05,R.id.et06,R.id.et07,R.id.et08,R.id.et09,R.id.et10,R.id.et11,R.id.et12
@@ -45,52 +63,90 @@ public class CrossWord extends AppCompatActivity {
         editText = findViewById(R.id.editText1);
         mean_text = findViewById(R.id.mean_text);
 
+        what_problem=-1;
+        test_json = "problem/cross_puz";
+        Intent intent = getIntent();
+        ExamFlag = intent.getBooleanExtra("ExamFlag", false);
+        RecapFlag = intent.getBooleanExtra("RecapFlag", false);
+        level_info = intent.getIntExtra("levelInfo", 0);
+
         for(int i=0; i<10; i++){
             for(int j=0; j<10; j++){
                 et[10*i+j] = (EditText) findViewById(Rid_editText[10*i+j]);
             }
         }
 
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+                result = new Connect_get(intent.getStringExtra("Token"))
+                        .problem_get(test_json, (level_info+""));
+                try {
+                    next_problem(result,word,mean,x,y,len,tst,max_word);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                //new Connect_get(intent.getStringExtra("Token")).updateSet();
+            }
+        };
+
+
+        ok_btn = findViewById(R.id.ok_btn);
+//        ok_btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                String temp="";
+//                temp=editText.getText().toString();
+//
+//                et[x1 * 10 + y1].setText("" + temp.charAt(0));
+//
+//                mean_text.setText(tmean); //옮겨야함
+//
+//                if (temp.length() == len){
+//                    for (int i = 1; i < len; i++) {
+//                        if (tst == true) {
+//                            et[x1 * 10 + y1 + i].setText("" + temp.charAt(i));
+//                        } else {
+//                            et[(x1 + i) * 10 + y1].setText("" + temp.charAt(i));
+//                        }
+//                    }
+//                }
+//                else
+//                    Toast.makeText(CrossWord.this, "길이가 달라요! ", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+    }
+
+
+    protected void next_problem(JSONObject result,String[] word,String[] mean,int[] x, int[] y,int[] len,boolean[] tst,int max_word) throws JSONException {
+        JSONArray tmp_array= result.getJSONArray("problem_list");
+        what_problem++;
+        JSONArray target_exam = (JSONArray)tmp_array.get(what_problem);
+        max_word=target_exam.length();
+        for(int i=0;i<max_word;i++){
+            word[i]=target_exam.getString(i);
+            mean[i]=target_exam.getString(i);
+            x[i]=target_exam.getInt(i);
+            y[i]=target_exam.getInt(i);
+            len[i]=target_exam.getInt(i);
+            tst[i]=target_exam.getBoolean(i);
+        }
+
         for(int i=0; i<max_word;i++){
-            if(tst==true){
-                et[x1*10+y1].setEnabled(true);
-                for(int j=1;j<len;j++) {
-                    et[x1 * 10 + y1 + j].setEnabled(true);
+            if(tst[i]==true){
+                et[x[i]*10+y[i]].setEnabled(true);
+                for(int j=1;j<len[i];j++) {
+                    et[x[i] * 10 + y[i] + j].setEnabled(true);
                 }
             }
             else {
-                et[x1*10+y1].setEnabled(true);
-                for(int j=1;j<len;j++) {
-                    et[(x1 + j) * 10 + y1].setEnabled(true);
+                et[x[i]*10+y[i]].setEnabled(true);
+                for(int j=1;j<len[i];j++) {
+                    et[(x[i] + j) * 10 + y[i]].setEnabled(true);
                 }
             }
         }
 
-        ok_btn = findViewById(R.id.ok_btn);
-        ok_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String temp="";
-                temp=editText.getText().toString();
-
-                et[x1 * 10 + y1].setText("" + temp.charAt(0));
-
-                mean_text.setText(tmean); //옮겨야함
-
-                if (temp.length() == len){
-                    for (int i = 1; i < len; i++) {
-                        if (tst == true) {
-                            et[x1 * 10 + y1 + i].setText("" + temp.charAt(i));
-                        } else {
-                            et[(x1 + i) * 10 + y1].setText("" + temp.charAt(i));
-                        }
-                    }
-                }
-                else
-                    Toast.makeText(CrossWord.this, "길이가 달라요! ", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        et[55] = findViewById(R.id.et55);
     }
+
 }
