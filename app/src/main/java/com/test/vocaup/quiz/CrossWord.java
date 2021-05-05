@@ -12,7 +12,7 @@ import com.test.vocaup.R;
 
 public class CrossWord extends AppCompatActivity {
     EditText et[] = new EditText[100];
-    EditText editText= (EditText)findViewById(R.id.editText1);
+    EditText editText;
     Button ok_btn;
 
     String test = "test";
@@ -59,6 +59,8 @@ public class CrossWord extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cross_word);
+
+        editText = findViewById(R.id.editText1);
 
         for(int i=0; i<10; i++){
             for(int j=0; j<10; j++){
