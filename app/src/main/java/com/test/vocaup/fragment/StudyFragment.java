@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 
 import com.test.vocaup.R;
 import com.test.vocaup.quiz.BlankSpelling;
+import com.test.vocaup.quiz.CrossWord;
 import com.test.vocaup.quiz.MeanSpelling;
 import com.test.vocaup.quiz.PronMean;
 import com.test.vocaup.quiz.SpellingMean;
@@ -37,6 +38,7 @@ public class StudyFragment extends Fragment implements MenuActivity.OnBackPresse
     private Button btn_fill_blank;
     private Button btn_back;
     private Button btn_recap;
+    private Button btn_cross;
 
     public static StudyFragment newInstance() { // 모든 프래그먼트에 공통으로 들어가야될 부분!!
         return new StudyFragment();
@@ -54,6 +56,7 @@ public class StudyFragment extends Fragment implements MenuActivity.OnBackPresse
         btn_sort = viewGroup.findViewById(R.id.btn_sort);
         btn_p_to_m = viewGroup.findViewById(R.id.btn_p_to_m);
         btn_recap = viewGroup.findViewById(R.id.btn_recap);
+        btn_cross = viewGroup.findViewById(R.id.btn_cross);
 
         btn_back = viewGroup.findViewById(R.id.btn_back);
 
@@ -63,6 +66,7 @@ public class StudyFragment extends Fragment implements MenuActivity.OnBackPresse
         btn_match.setOnClickListener(but_listener);
         btn_sort.setOnClickListener(but_listener);
         btn_p_to_m.setOnClickListener(but_listener);
+        btn_cross.setOnClickListener(but_listener);
         btn_recap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -129,6 +133,9 @@ public class StudyFragment extends Fragment implements MenuActivity.OnBackPresse
                     break;
                 case R.id.btn_p_to_m:
                     intent = new Intent(getActivity(), PronMean.class);
+                    break;
+                case R.id.btn_cross:
+                    intent = new Intent(getActivity(), CrossWord.class);
                     break;
             }
             intent.putExtra("Token", ((MenuActivity) getActivity()).manager.getToken());

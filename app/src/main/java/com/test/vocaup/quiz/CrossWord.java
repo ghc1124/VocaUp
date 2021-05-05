@@ -1,30 +1,59 @@
 package com.test.vocaup.quiz;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.test.vocaup.R;
 
 public class CrossWord extends AppCompatActivity {
-    Button button[] = new Button[100];
+    EditText et[] = new EditText[100];
+    EditText editText= (EditText)findViewById(R.id.editText1);
+    Button ok_btn;
 
     String test = "test";
-    int x1 = 5;
-    int y1 = 5;
-    int len = test.length();
-    boolean tst = true;
+    int x1 = 5; //x좌표
+    int y1 = 5; //y좌표
+    int len = test.length(); //길이
+    boolean tst = true; //가로면 true 세로면 false
 
-    Integer[] Rid_button = {
-            R.id.bt00,R.id.bt01,R.id.bt02,R.id.bt03,R.id.bt04,R.id.bt05,R.id.bt06,R.id.bt07,R.id.bt08,R.id.bt09,R.id.bt10,R.id.bt11,R.id.bt12
-            ,R.id.bt13,R.id.bt14,R.id.bt15,R.id.bt16,R.id.bt17,R.id.bt18,R.id.bt19,R.id.bt20,R.id.bt21,R.id.bt22,R.id.bt23,R.id.bt24,R.id.bt25
-            ,R.id.bt26,R.id.bt27,R.id.bt28,R.id.bt29,R.id.bt30,R.id.bt31,R.id.bt32,R.id.bt33,R.id.bt34,R.id.bt35,R.id.bt36,R.id.bt37,R.id.bt38,R.id.bt39,R.id.bt40
-            ,R.id.bt41,R.id.bt42,R.id.bt43,R.id.bt44,R.id.bt45,R.id.bt46,R.id.bt47,R.id.bt48,R.id.bt49,R.id.bt50,R.id.bt51,R.id.bt52,R.id.bt53,R.id.bt54,R.id.bt55
-            ,R.id.bt56,R.id.bt57,R.id.bt58,R.id.bt59,R.id.bt60,R.id.bt61,R.id.bt62,R.id.bt63,R.id.bt64,R.id.bt65,R.id.bt66,R.id.bt67,R.id.bt68,R.id.bt69,R.id.bt70
-            ,R.id.bt71,R.id.bt72,R.id.bt73,R.id.bt74,R.id.bt75,R.id.bt76,R.id.bt77,R.id.bt78,R.id.bt79,R.id.bt80,R.id.bt81,R.id.bt82,R.id.bt83,R.id.bt84,R.id.bt85
-            ,R.id.bt86,R.id.bt87,R.id.bt88,R.id.bt89,R.id.bt90,R.id.bt91,R.id.bt92,R.id.bt93,R.id.bt94,R.id.bt95,R.id.bt96,R.id.bt97,R.id.bt98,R.id.bt99
+    Integer[] Rid_editText = {
+            R.id.et00,R.id.et01,R.id.et02,R.id.et03,R.id.et04,R.id.et05,R.id.et06,R.id.et07,R.id.et08,R.id.et09,R.id.et10,R.id.et11,R.id.et12
+            ,R.id.et13,R.id.et14,R.id.et15,R.id.et16,R.id.et17,R.id.et18,R.id.et19,R.id.et20,R.id.et21,R.id.et22,R.id.et23,R.id.et24,R.id.et25
+            ,R.id.et26,R.id.et27,R.id.et28,R.id.et29,R.id.et30,R.id.et31,R.id.et32,R.id.et33,R.id.et34,R.id.et35,R.id.et36,R.id.et37,R.id.et38,R.id.et39,R.id.et40
+            ,R.id.et41,R.id.et42,R.id.et43,R.id.et44,R.id.et45,R.id.et46,R.id.et47,R.id.et48,R.id.et49,R.id.et50,R.id.et51,R.id.et52,R.id.et53,R.id.et54,R.id.et55
+            ,R.id.et56,R.id.et57,R.id.et58,R.id.et59,R.id.et60,R.id.et61,R.id.et62,R.id.et63,R.id.et64,R.id.et65,R.id.et66,R.id.et67,R.id.et68,R.id.et69,R.id.et70
+            ,R.id.et71,R.id.et72,R.id.et73,R.id.et74,R.id.et75,R.id.et76,R.id.et77,R.id.et78,R.id.et79,R.id.et80,R.id.et81,R.id.et82,R.id.et83,R.id.et84,R.id.et85
+            ,R.id.et86,R.id.et87,R.id.et88,R.id.et89,R.id.et90,R.id.et91,R.id.et92,R.id.et93,R.id.et94,R.id.et95,R.id.et96,R.id.et97,R.id.et98,R.id.et99
     };
+
+
+    class BtnOnClickListener implements View.OnClickListener{
+        @Override
+        public void onClick(View view){
+
+            String temp="";
+            temp=editText.getText().toString();
+
+            if (temp.length() == len){
+                for (int i = 1; i < len; i++) {
+                    if (tst = true) {
+                        et[x1 * 10 + y1 + i].setText("" + temp.charAt(i));
+                        et[x1 * 10 + y1 + i].setEnabled(true);
+                    } else {
+                        et[(x1 + i) * 10 + y1].setText("" + temp.charAt(i));
+                        et[(x1 + i) * 10 + y1].setEnabled(true);
+                    }
+                }
+            }
+            else
+                Toast.makeText(CrossWord.this, "길이가 달라요! ", Toast.LENGTH_SHORT).show();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,23 +62,13 @@ public class CrossWord extends AppCompatActivity {
 
         for(int i=0; i<10; i++){
             for(int j=0; j<10; j++){
-                button[10*i+j] = (Button)findViewById(Rid_button[10*i+j]);
+                et[10*i+j] = (EditText) findViewById(Rid_editText[10*i+j]);
             }
         }
 
-        button[55] = findViewById(R.id.bt55);
+        et[55] = findViewById(R.id.et55);
 
-        System.out.println(test.charAt(0));
-
-        button[55].setText("" + test.charAt(0));
-        for (int i = 1; i < len; i++) {
-            if (tst = true) {
-                button[x1 * 10 + y1 + i].setText("" + test.charAt(i));
-                button[x1 * 10 + y1 + i].setEnabled(true);
-            } else {
-                button[(x1 + i) * 10 + y1].setText("" + test.charAt(i));
-                button[(x1 + i) * 10 + y1].setEnabled(true);
-            }
-        }
+//        ok_btn = (Button)findViewById(R.id.ok_btn);
+//        ok_btn.setOnClickListener(BtnOnClickListener);
     }
 }

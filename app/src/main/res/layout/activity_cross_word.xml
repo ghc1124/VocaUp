@@ -14,516 +14,555 @@
         android:rowCount="10"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/bt00"
-            android:layout_width="41dp"
-            android:layout_height="45dp"
-            android:enabled="false" />
-        <Button
-            android:id="@+id/bt01"
+        <EditText
+            android:id="@+id/et00"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false"
-            />
-        <Button
-            android:id="@+id/bt02"
-            android:layout_width="41dp"
-            android:layout_height="45dp"
-            android:enabled="false" />
-        <Button
-            android:id="@+id/bt03"
-            android:layout_width="41dp"
-            android:layout_height="45dp"
-            android:enabled="false" />
-        <Button
-            android:id="@+id/bt04"
-            android:layout_width="41dp"
-            android:layout_height="45dp"
-            android:enabled="false" />
-        <Button
-            android:id="@+id/bt05"
-            android:layout_width="41dp"
-            android:layout_height="45dp"
-            android:enabled="false" />
-        <Button
-            android:id="@+id/bt06"
-            android:layout_width="41dp"
-            android:layout_height="45dp"
-            android:enabled="false" />
-        <Button
-            android:id="@+id/bt07"
-            android:layout_width="41dp"
-            android:layout_height="45dp"
-            android:enabled="false" />
-        <Button
-            android:id="@+id/bt08"
-            android:layout_width="41dp"
-            android:layout_height="45dp"
-            android:enabled="false" />
+            android:background="@drawable/edittext_rounded_corner"/>
 
-        <Button
-            android:id="@+id/bt09"
+        <EditText
+            android:id="@+id/et01"
+            android:layout_width="41dp"
+            android:layout_height="45dp"
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"
+            />
+        <EditText
+            android:id="@+id/et02"
+            android:layout_width="41dp"
+            android:layout_height="45dp"
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
+        <EditText
+            android:id="@+id/et03"
+            android:layout_width="41dp"
+            android:layout_height="45dp"
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
+        <EditText
+            android:id="@+id/et04"
+            android:layout_width="41dp"
+            android:layout_height="45dp"
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
+        <EditText
+            android:id="@+id/et05"
+            android:layout_width="41dp"
+            android:layout_height="45dp"
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
+        <EditText
+            android:id="@+id/et06"
+            android:layout_width="41dp"
+            android:layout_height="45dp"
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
+        <EditText
+            android:id="@+id/et07"
+            android:layout_width="41dp"
+            android:layout_height="45dp"
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
+        <EditText
+            android:id="@+id/et08"
+            android:layout_width="41dp"
+            android:layout_height="45dp"
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
+
+        <EditText
+            android:id="@+id/et09"
+            android:layout_width="41dp"
+            android:layout_height="45dp"
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
+        <EditText
+            android:id="@+id/et10"
+            android:layout_width="41dp"
+            android:layout_height="45dp"
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
+        <EditText
+            android:id="@+id/et11"
+            android:layout_width="41dp"
+            android:layout_height="45dp"
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
+        <EditText
+            android:id="@+id/et12"
+            android:layout_width="41dp"
+            android:layout_height="45dp"
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
+        <EditText
+            android:id="@+id/et13"
+            android:layout_width="41dp"
+            android:layout_height="45dp"
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
+        <EditText
+            android:id="@+id/et14"
+            android:layout_width="41dp"
+            android:layout_height="45dp"
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
+        <EditText
+            android:id="@+id/et15"
+            android:layout_width="41dp"
+            android:layout_height="45dp"
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
+        <EditText
+            android:id="@+id/et16"
+            android:layout_width="41dp"
+            android:layout_height="45dp"
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
+        <EditText
+            android:id="@+id/et17"
+            android:layout_width="41dp"
+            android:layout_height="45dp"
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
+        <EditText
+            android:id="@+id/et18"
+            android:layout_width="41dp"
+            android:layout_height="45dp"
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
+        <EditText
+            android:id="@+id/et19"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt10"
+        <EditText
+            android:id="@+id/et20"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt11"
+        <EditText
+            android:id="@+id/et21"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt12"
+        <EditText
+            android:id="@+id/et22"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt13"
+        <EditText
+            android:id="@+id/et23"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt14"
+        <EditText
+            android:id="@+id/et24"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt15"
+        <EditText
+            android:id="@+id/et25"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt16"
+        <EditText
+            android:id="@+id/et26"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt17"
+        <EditText
+            android:id="@+id/et27"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt18"
+        <EditText
+            android:id="@+id/et28"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt19"
+        <EditText
+            android:id="@+id/et29"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt20"
+        <EditText
+            android:id="@+id/et30"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt21"
+        <EditText
+            android:id="@+id/et31"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt22"
+        <EditText
+            android:id="@+id/et32"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt23"
+        <EditText
+            android:id="@+id/et33"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt24"
+        <EditText
+            android:id="@+id/et34"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt25"
-            android:layout_width="41dp"
-            android:layout_height="45dp"
-            android:enabled="false" />
-        <Button
-            android:id="@+id/bt26"
-            android:layout_width="41dp"
-            android:layout_height="45dp"
-            android:enabled="false" />
-        <Button
-            android:id="@+id/bt27"
-            android:layout_width="41dp"
-            android:layout_height="45dp"
-            android:enabled="false" />
-        <Button
-            android:id="@+id/bt28"
-            android:layout_width="41dp"
-            android:layout_height="45dp"
-            android:enabled="false" />
-        <Button
-            android:id="@+id/bt29"
-            android:layout_width="41dp"
-            android:layout_height="45dp"
-            android:enabled="false" />
-        <Button
-            android:id="@+id/bt30"
-            android:layout_width="41dp"
-            android:layout_height="45dp"
-            android:enabled="false" />
-        <Button
-            android:id="@+id/bt31"
-            android:layout_width="41dp"
-            android:layout_height="45dp"
-            android:enabled="false" />
-        <Button
-            android:id="@+id/bt32"
-            android:layout_width="41dp"
-            android:layout_height="45dp"
-            android:enabled="false" />
-        <Button
-            android:id="@+id/bt33"
-            android:layout_width="41dp"
-            android:layout_height="45dp"
-            android:enabled="false" />
-        <Button
-            android:id="@+id/bt34"
-            android:layout_width="41dp"
-            android:layout_height="45dp"
-            android:enabled="false" />
-        <Button
-            android:id="@+id/bt35"
+        <EditText
+            android:id="@+id/et35"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false"  />
-        <Button
-            android:id="@+id/bt36"
+        <EditText
+            android:id="@+id/et36"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt37"
+        <EditText
+            android:id="@+id/et37"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt38"
+        <EditText
+            android:id="@+id/et38"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt39"
+        <EditText
+            android:id="@+id/et39"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt40"
+        <EditText
+            android:id="@+id/et40"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt41"
+        <EditText
+            android:id="@+id/et41"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt42"
+        <EditText
+            android:id="@+id/et42"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt43"
+        <EditText
+            android:id="@+id/et43"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt44"
+        <EditText
+            android:id="@+id/et44"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt45"
+        <EditText
+            android:id="@+id/et45"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt46"
+        <EditText
+            android:id="@+id/et46"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt47"
+        <EditText
+            android:id="@+id/et47"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt48"
+        <EditText
+            android:id="@+id/et48"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt49"
+        <EditText
+            android:id="@+id/et49"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt50"
+        <EditText
+            android:id="@+id/et50"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt51"
+        <EditText
+            android:id="@+id/et51"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt52"
+        <EditText
+            android:id="@+id/et52"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt53"
+        <EditText
+            android:id="@+id/et53"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt54"
+        <EditText
+            android:id="@+id/et54"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt55"
+        <EditText
+            android:id="@+id/et55"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt56"
+        <EditText
+            android:id="@+id/et56"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt57"
+        <EditText
+            android:id="@+id/et57"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt58"
+        <EditText
+            android:id="@+id/et58"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt59"
+        <EditText
+            android:id="@+id/et59"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt60"
+        <EditText
+            android:id="@+id/et60"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt61"
+        <EditText
+            android:id="@+id/et61"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt62"
+        <EditText
+            android:id="@+id/et62"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt63"
+        <EditText
+            android:id="@+id/et63"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt64"
+        <EditText
+            android:id="@+id/et64"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt65"
+        <EditText
+            android:id="@+id/et65"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt66"
+        <EditText
+            android:id="@+id/et66"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt67"
+        <EditText
+            android:id="@+id/et67"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt68"
+        <EditText
+            android:id="@+id/et68"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt69"
+        <EditText
+            android:id="@+id/et69"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt70"
+        <EditText
+            android:id="@+id/et70"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt71"
+        <EditText
+            android:id="@+id/et71"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt72"
+        <EditText
+            android:id="@+id/et72"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt73"
+        <EditText
+            android:id="@+id/et73"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt74"
+        <EditText
+            android:id="@+id/et74"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt75"
+        <EditText
+            android:id="@+id/et75"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt76"
+        <EditText
+            android:id="@+id/et76"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt77"
+        <EditText
+            android:id="@+id/et77"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt78"
+        <EditText
+            android:id="@+id/et78"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt79"
+        <EditText
+            android:id="@+id/et79"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt80"
+        <EditText
+            android:id="@+id/et80"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt81"
+        <EditText
+            android:id="@+id/et81"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt82"
+        <EditText
+            android:id="@+id/et82"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt83"
+        <EditText
+            android:id="@+id/et83"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt84"
+        <EditText
+            android:id="@+id/et84"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt85"
+        <EditText
+            android:id="@+id/et85"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt86"
+        <EditText
+            android:id="@+id/et86"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt87"
+        <EditText
+            android:id="@+id/et87"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt88"
+        <EditText
+            android:id="@+id/et88"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt89"
+        <EditText
+            android:id="@+id/et89"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt90"
+        <EditText
+            android:id="@+id/et90"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt91"
+        <EditText
+            android:id="@+id/et91"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt92"
+        <EditText
+            android:id="@+id/et92"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt93"
+        <EditText
+            android:id="@+id/et93"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt94"
+        <EditText
+            android:id="@+id/et94"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt95"
+        <EditText
+            android:id="@+id/et95"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt96"
+        <EditText
+            android:id="@+id/et96"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt97"
+        <EditText
+            android:id="@+id/et97"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt98"
+        <EditText
+            android:id="@+id/et98"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
-        <Button
-            android:id="@+id/bt99"
+        <EditText
+            android:id="@+id/et99"
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false" />
     </GridLayout>
 
+
     <TextView
         android:id="@+id/textView21"
         android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_row="2"
+        android:layout_column="0"
+        android:gravity="center|center_horizontal"
+        android:text="테스트입니다." />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="140dp"
+        android:layout_height="32dp"
+        android:layout_row="3"
+        android:layout_column="0"
+        android:layout_gravity="center" />
+
+    <Button
+        android:id="@+id/ok_btn"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:text="TextView" />
-
-
+        android:layout_row="3"
+        android:layout_column="0"
+        android:layout_gravity="right"
+        android:text="확인" />
 
 </LinearLayout>
