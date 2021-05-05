@@ -4,22 +4,28 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.test.vocaup.R;
+import com.test.vocaup.activity.MenuActivity;
+import com.test.vocaup.fragment.MenuFragment;
 
 public class CrossWord extends AppCompatActivity {
     EditText et[] = new EditText[100];
     EditText editText;
-    Button ok_btn;
+    private Button ok_btn;
+    private TextView mean_text;
 
     String test = "test";
+    String tmean = "테스트";
     int x1 = 5; //x좌표
     int y1 = 5; //y좌표
     int len = test.length(); //길이
-    boolean tst = true; //가로면 true 세로면 false
+    boolean tst = false; //가로면 true 세로면 false
+    int max_word = 1; //단어수
 
     Integer[] Rid_editText = {
             R.id.et00,R.id.et01,R.id.et02,R.id.et03,R.id.et04,R.id.et05,R.id.et06,R.id.et07,R.id.et08,R.id.et09,R.id.et10,R.id.et11,R.id.et12
@@ -32,35 +38,12 @@ public class CrossWord extends AppCompatActivity {
     };
 
 
-    class BtnOnClickListener implements View.OnClickListener{
-        @Override
-        public void onClick(View view){
-
-            String temp="";
-            temp=editText.getText().toString();
-
-            if (temp.length() == len){
-                for (int i = 1; i < len; i++) {
-                    if (tst = true) {
-                        et[x1 * 10 + y1 + i].setText("" + temp.charAt(i));
-                        et[x1 * 10 + y1 + i].setEnabled(true);
-                    } else {
-                        et[(x1 + i) * 10 + y1].setText("" + temp.charAt(i));
-                        et[(x1 + i) * 10 + y1].setEnabled(true);
-                    }
-                }
-            }
-            else
-                Toast.makeText(CrossWord.this, "길이가 달라요! ", Toast.LENGTH_SHORT).show();
-        }
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cross_word);
-
         editText = findViewById(R.id.editText1);
+        mean_text = findViewById(R.id.mean_text);
 
         for(int i=0; i<10; i++){
             for(int j=0; j<10; j++){
@@ -68,9 +51,46 @@ public class CrossWord extends AppCompatActivity {
             }
         }
 
-        et[55] = findViewById(R.id.et55);
+        for(int i=0; i<max_word;i++){
+            if(tst==true){
+                et[x1*10+y1].setEnabled(true);
+                for(int j=1;j<len;j++) {
+                    et[x1 * 10 + y1 + j].setEnabled(true);
+                }
+            }
+            else {
+                et[x1*10+y1].setEnabled(true);
+                for(int j=1;j<len;j++) {
+                    et[(x1 + j) * 10 + y1].setEnabled(true);
+                }
+            }
+        }
 
-//        ok_btn = (Button)findViewById(R.id.ok_btn);
-//        ok_btn.setOnClickListener(BtnOnClickListener);
+        ok_btn = findViewById(R.id.ok_btn);
+        ok_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String temp="";
+                temp=editText.getText().toString();
+
+                et[x1 * 10 + y1].setText("" + temp.charAt(0));
+
+                mean_text.setText(tmean); //옮겨야함
+
+                if (temp.length() == len){
+                    for (int i = 1; i < len; i++) {
+                        if (tst == true) {
+                            et[x1 * 10 + y1 + i].setText("" + temp.charAt(i));
+                        } else {
+                            et[(x1 + i) * 10 + y1].setText("" + temp.charAt(i));
+                        }
+                    }
+                }
+                else
+                    Toast.makeText(CrossWord.this, "길이가 달라요! ", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        et[55] = findViewById(R.id.et55);
     }
 }
