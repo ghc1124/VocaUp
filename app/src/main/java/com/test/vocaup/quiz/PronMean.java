@@ -28,7 +28,7 @@ import java.util.ArrayList;
 
 public class PronMean extends AppCompatActivity {
     private JSONObject result = new JSONObject();
-    ArrayList<Problem> problem_list= new ArrayList<Problem>();
+    ArrayList<Problem> problem_list = new ArrayList<Problem>();
 
     int what_problem;
     int level_info;
@@ -36,7 +36,10 @@ public class PronMean extends AppCompatActivity {
     String mp3_name;
     Button[] but_array;
     ImageButton sound;
+
     private Boolean ExamFlag;
+    private Boolean RecapFlag;
+
     private MediaPlayer mediaPlayer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,12 +53,14 @@ public class PronMean extends AppCompatActivity {
         but_array[3] = (Button)findViewById(R.id.button3);
         sound = (ImageButton)findViewById(R.id.sound);
         what_problem = -1;
-        level_info = ((MenuActivity)MenuActivity.context).manager.getLevel();
+
         test_json = "problem/pron_mean";
         SelectBtnOnClickListener but_listener = new SelectBtnOnClickListener();
 
         Intent intent = getIntent();
         ExamFlag = intent.getBooleanExtra("ExamFlag", false);
+        RecapFlag = intent.getBooleanExtra("RecapFlag", false);
+        level_info = intent.getIntExtra("levelInfo", 0);
 
         Thread thread = new Thread() {
             @Override
@@ -137,6 +142,7 @@ public class PronMean extends AppCompatActivity {
                 intent.putExtra("test_result", problem_list);
                 intent.putExtra("type", "pron_mean");
                 intent.putExtra("ExamFlag", ExamFlag);
+                intent.putExtra("RecapFlag", RecapFlag);
                 startActivity(intent);
             }
         }

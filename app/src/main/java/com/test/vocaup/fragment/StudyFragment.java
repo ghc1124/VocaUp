@@ -21,6 +21,12 @@ import com.test.vocaup.activity.MenuActivity;
 import com.test.vocaup.quiz.SpellingMeanLink;
 import com.test.vocaup.quiz.SpellingSort;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Random;
+import java.util.logging.Level;
+
 public class StudyFragment extends Fragment implements MenuActivity.OnBackPressedListener{
     private TextView text_level;
     private Button btn_w_to_m;
@@ -30,6 +36,7 @@ public class StudyFragment extends Fragment implements MenuActivity.OnBackPresse
     private Button btn_sort;
     private Button btn_fill_blank;
     private Button btn_back;
+    private Button btn_recap;
 
     public static StudyFragment newInstance() { // 모든 프래그먼트에 공통으로 들어가야될 부분!!
         return new StudyFragment();
@@ -38,7 +45,7 @@ public class StudyFragment extends Fragment implements MenuActivity.OnBackPresse
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_study, container, false);
+        ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_exam, container, false);
         StudyBtnOnClickListener but_listener = new StudyBtnOnClickListener();
         btn_w_to_m = viewGroup.findViewById(R.id.btn_w_to_m);
         btn_m_to_w = viewGroup.findViewById(R.id.btn_m_to_w);
@@ -46,6 +53,7 @@ public class StudyFragment extends Fragment implements MenuActivity.OnBackPresse
         btn_match = viewGroup.findViewById(R.id.btn_match);
         btn_sort = viewGroup.findViewById(R.id.btn_sort);
         btn_p_to_m = viewGroup.findViewById(R.id.btn_p_to_m);
+        btn_recap = viewGroup.findViewById(R.id.btn_recap);
 
         btn_back = viewGroup.findViewById(R.id.btn_back);
 
@@ -55,6 +63,36 @@ public class StudyFragment extends Fragment implements MenuActivity.OnBackPresse
         btn_match.setOnClickListener(but_listener);
         btn_sort.setOnClickListener(but_listener);
         btn_p_to_m.setOnClickListener(but_listener);
+        btn_recap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ArrayList<Class> strings = new ArrayList<>();
+                int CurrentLevel = ((MenuActivity) getActivity()).manager.getLevel();
+                int LevelInfo = 0;
+                Random random = new Random();
+
+                strings.add(SpellingMean.class);
+                strings.add(MeanSpelling.class);
+                strings.add(BlankSpelling.class);
+                strings.add(SpellingMeanLink.class);
+                strings.add(SpellingSort.class);
+                strings.add(PronMean.class);
+
+                Collections.shuffle(strings);
+                if (CurrentLevel == 1) {
+                    LevelInfo = 1;
+                } else if (CurrentLevel < 4) {
+                    LevelInfo = 1 + random.nextInt(CurrentLevel);
+                } else {
+                    LevelInfo = (CurrentLevel - 3) + random.nextInt(4);
+                }
+
+                Intent intent = new Intent(getActivity(), strings.get(0));
+                intent.putExtra("Token", ((MenuActivity) getActivity()).manager.getToken());
+                intent.putExtra("levelInfo", LevelInfo);
+                startActivity(intent);
+            }
+        });
 
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,6 +132,7 @@ public class StudyFragment extends Fragment implements MenuActivity.OnBackPresse
                     break;
             }
             intent.putExtra("Token", ((MenuActivity) getActivity()).manager.getToken());
+            intent.putExtra("levelInfo", ((MenuActivity) getActivity()).manager.getLevel());
             startActivity(intent);
         }
     }

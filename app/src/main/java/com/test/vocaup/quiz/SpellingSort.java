@@ -28,7 +28,8 @@ import java.util.ArrayList;
 
 public class SpellingSort extends AppCompatActivity {
     private JSONObject result = new JSONObject();
-    ArrayList<Problem> problem_list= new ArrayList<Problem>();
+    ArrayList<Problem> problem_list = new ArrayList<Problem>();
+
     int what_problem;
     int level_info;
     String test_json;
@@ -40,6 +41,7 @@ public class SpellingSort extends AppCompatActivity {
     int user_cursor;
 
     private Boolean ExamFlag;
+    private Boolean RecapFlag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,12 +55,14 @@ public class SpellingSort extends AppCompatActivity {
 
         user_cursor = 0;
         what_problem = -1;
-        level_info = ((MenuActivity)MenuActivity.context).manager.getLevel();
+
         test_json = "problem/spelling_sort";
         SelectBtnOnClickListener but_listener = new SelectBtnOnClickListener();
 
         Intent intent = getIntent();
         ExamFlag = intent.getBooleanExtra("ExamFlag", false);
+        RecapFlag = intent.getBooleanExtra("RecapFlag", false);
+        level_info = intent.getIntExtra("levelInfo", 0);
 
         Thread thread = new Thread() {
             @Override
@@ -111,6 +115,7 @@ public class SpellingSort extends AppCompatActivity {
                 intent.putExtra("test_result",problem_list);
                 intent.putExtra("type", "spelling_sort");
                 intent.putExtra("ExamFlag", ExamFlag);
+                intent.putExtra("RecapFlag", RecapFlag);
                 startActivity(intent);
             }
             tmp_button.setEnabled(false);
@@ -118,8 +123,8 @@ public class SpellingSort extends AppCompatActivity {
     }
 
     protected void problem_list_fill(JSONObject result_object, ArrayList<Problem> problem_list) throws JSONException {
-        JSONArray tmp_array= result_object.getJSONArray("problem_list");
-        for(int i=0;i<tmp_array.length();i++){
+        JSONArray tmp_array = result_object.getJSONArray("problem_list");
+        for (int i = 0; i < tmp_array.length(); i++) {
             Problem problem_add = new Problem();
             JSONObject problem_single = (JSONObject) tmp_array.get(i);
 
@@ -137,20 +142,20 @@ public class SpellingSort extends AppCompatActivity {
 
     protected void next_problem(TextView mean, TextView answer, ArrayList<Problem> problem_list){
         SelectBtnOnClickListener but_listener = new SelectBtnOnClickListener();
-        String count_underbar="";
+        String count_underbar = "";
         int length = 0;
         user_cursor = 0;
         what_problem++;
         mean.setText(problem_list.get(what_problem).getShow());
         length = problem_list.get(what_problem).getSentence().length();
-        alphabet= problem_list.get(what_problem).getSelect(1);
-        for(int i=0;i<length;i++){
-            count_underbar+="_";
+        alphabet = problem_list.get(what_problem).getSelect(1);
+        for (int i = 0; i < length; i++) {
+            count_underbar += "_";
         }
         answer.setText(count_underbar);
         but_array.removeAllViews();
         but_array.setGravity(Gravity.CENTER);
-        int count=0;
+        int count = 0;
         int count2 = 0;
 //        for(char alpha:alphabet.toCharArray()){
 //            Button tmp_but = new Button(this);

@@ -22,6 +22,10 @@ import com.test.vocaup.quiz.SpellingMean;
 import com.test.vocaup.quiz.SpellingMeanLink;
 import com.test.vocaup.quiz.SpellingSort;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
+
 public class ExamFragment extends Fragment implements MenuActivity.OnBackPressedListener{
     private TextView text_level;
     private Button btn_w_to_m;
@@ -31,6 +35,7 @@ public class ExamFragment extends Fragment implements MenuActivity.OnBackPressed
     private Button btn_sort;
     private Button btn_fill_blank;
     private Button btn_back;
+    private Button btn_recap;
 
     public static ExamFragment newInstance() {
         return new ExamFragment();
@@ -47,6 +52,7 @@ public class ExamFragment extends Fragment implements MenuActivity.OnBackPressed
         btn_match = viewGroup.findViewById(R.id.btn_match);
         btn_sort = viewGroup.findViewById(R.id.btn_sort);
         btn_p_to_m = viewGroup.findViewById(R.id.btn_p_to_m);
+        btn_recap = viewGroup.findViewById(R.id.btn_recap);
 
         btn_back = viewGroup.findViewById(R.id.btn_back);
 
@@ -88,6 +94,44 @@ public class ExamFragment extends Fragment implements MenuActivity.OnBackPressed
             btn_p_to_m.setBackgroundResource(R.drawable.button_blue_big4);
         }
 
+        if(current_manager.getRecap() == 5) {
+            btn_recap.setEnabled(false);
+            btn_recap.setBackgroundResource(R.drawable.button_blue_big4);
+        }
+
+        btn_recap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ArrayList<Class> strings = new ArrayList<>();
+                int CurrentLevel = ((MenuActivity) getActivity()).manager.getLevel();
+                int LevelInfo = 0;
+                Random random = new Random();
+
+                strings.add(SpellingMean.class);
+                strings.add(MeanSpelling.class);
+                strings.add(BlankSpelling.class);
+                strings.add(SpellingMeanLink.class);
+                strings.add(SpellingSort.class);
+                strings.add(PronMean.class);
+
+                Collections.shuffle(strings);
+                if (CurrentLevel == 1) {
+                    LevelInfo = 1;
+                } else if (CurrentLevel < 4) {
+                    LevelInfo = 1 + random.nextInt(CurrentLevel);
+                } else {
+                    LevelInfo = (CurrentLevel - 3) + random.nextInt(4);
+                }
+
+                Intent intent = new Intent(getActivity(), strings.get(0));
+                intent.putExtra("Token", ((MenuActivity) getActivity()).manager.getToken());
+                intent.putExtra("levelInfo", LevelInfo);
+                intent.putExtra("ExamFlag", true);
+                intent.putExtra("RecapFlag", true);
+                startActivity(intent);
+            }
+        });
+
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -127,7 +171,9 @@ public class ExamFragment extends Fragment implements MenuActivity.OnBackPressed
                     break;
             }
             intent.putExtra("Token", ((MenuActivity) getActivity()).manager.getToken());
+            intent.putExtra("levelInfo", ((MenuActivity) getActivity()).manager.getLevel());
             intent.putExtra("ExamFlag", true);
+            intent.putExtra("RecapFlag", true);
             startActivity(intent);
         }
     }

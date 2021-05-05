@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 public class MeanSpelling extends AppCompatActivity {
     private JSONObject result = new JSONObject();
-    ArrayList<Problem> problem_list= new ArrayList<Problem>();
+    ArrayList<Problem> problem_list = new ArrayList<Problem>();
     int what_problem;
     int level_info;
     String test_json;
@@ -30,6 +30,7 @@ public class MeanSpelling extends AppCompatActivity {
     Button[] but_array;
 
     private Boolean ExamFlag;
+    private Boolean RecapFlag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +43,14 @@ public class MeanSpelling extends AppCompatActivity {
         but_array[2] = (Button)findViewById(R.id.button2);
         but_array[3] = (Button)findViewById(R.id.button3);
         what_problem = -1;
-        level_info = ((MenuActivity)MenuActivity.context).manager.getLevel();
+
         test_json = "problem/mean_spelling";
         SelectBtnOnClickListener but_listener = new SelectBtnOnClickListener();
 
         Intent intent = getIntent();
         ExamFlag = intent.getBooleanExtra("ExamFlag", false);
+        RecapFlag = intent.getBooleanExtra("RecapFlag", false);
+        level_info = intent.getIntExtra("levelInfo", 0);
 
         Thread thread = new Thread() {
             @Override
@@ -104,6 +107,7 @@ public class MeanSpelling extends AppCompatActivity {
                 intent.putExtra("test_result",problem_list);
                 intent.putExtra("type", "mean_spelling");
                 intent.putExtra("ExamFlag", ExamFlag);
+                intent.putExtra("RecapFlag", RecapFlag);
                 startActivity(intent);
             }
         }

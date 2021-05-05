@@ -23,7 +23,7 @@ import java.util.ArrayList;
 
 public class SpellingMeanLink extends AppCompatActivity {
     private JSONObject result = new JSONObject();
-    ArrayList<Problem> problem_list= new ArrayList<Problem>();
+    ArrayList<Problem> problem_list = new ArrayList<Problem>();
     int what_problem;
     int level_info;
     String test_json;
@@ -39,6 +39,7 @@ public class SpellingMeanLink extends AppCompatActivity {
     int[] y = new int[8];
 
     private Boolean ExamFlag;
+    private Boolean RecapFlag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,12 +60,14 @@ public class SpellingMeanLink extends AppCompatActivity {
         Select_but_array[3] = (Button)findViewById(R.id.select_3);
         line = (Link_line)findViewById(R.id.line);
         what_problem = -1;
-        level_info = ((MenuActivity)MenuActivity.context).manager.getLevel();
+
         test_json = "problem/spelling_mean_link";
         SpellingMeanLink.SelectBtnOnClickListener but_listener = new SpellingMeanLink.SelectBtnOnClickListener();
       //  line.setting(OX[0],OX[1],OX[2],OX[3]);
         Intent intent = getIntent();
         ExamFlag = intent.getBooleanExtra("ExamFlag", false);
+        RecapFlag = intent.getBooleanExtra("RecapFlag", false);
+        level_info = intent.getIntExtra("levelInfo", 0);
 
         Thread thread = new Thread() {
             @Override
@@ -174,6 +177,7 @@ public class SpellingMeanLink extends AppCompatActivity {
                 intent.putExtra("test_result",problem_list);
                 intent.putExtra("type", "spelling_mean_link");
                 intent.putExtra("ExamFlag", ExamFlag);
+                intent.putExtra("RecapFlag", RecapFlag);
                 startActivity(intent);
             }
         }

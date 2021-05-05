@@ -39,8 +39,10 @@ public class TestResultActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String type = intent.getStringExtra("type");
         Boolean ExamFlag = intent.getBooleanExtra("ExamFlag", false);
+        Boolean RecapFlag = intent.getBooleanExtra("RecapFlag", false);
         percent = (TextView) findViewById(R.id.percent);
         OX = (TextView) findViewById(R.id.OX);
+
         Thread thread = new Thread() {
             @Override
             public void run() {
@@ -58,7 +60,10 @@ public class TestResultActivity extends AppCompatActivity {
                 if(ExamFlag && check >= result.size() * 0.9) {
                     Connect_put connect_put = new Connect_put();
                     Manager testManager = new Manager(((MenuActivity)MenuActivity.context).token);
-                    if (type.equals("blank_spelling")) {
+                    if (RecapFlag) {
+                        System.out.println("test!!!");
+                        testManager.setRecap(((MenuActivity)MenuActivity.context).manager.getRecap() + 1);
+                    } else if (type.equals("blank_spelling")) {
                         testManager.setBlank_spelling(1);
                     } else if (type.equals("mean_spelling")) {
                         testManager.setMean_spelling(1);

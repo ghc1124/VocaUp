@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 public class SpellingMean extends AppCompatActivity {
     private JSONObject result = new JSONObject();
-    ArrayList<Problem> problem_list= new ArrayList<Problem>();
+    ArrayList<Problem> problem_list = new ArrayList<Problem>();
     int what_problem;
     int level_info;
     String test_json;
@@ -30,6 +30,7 @@ public class SpellingMean extends AppCompatActivity {
     Button[] but_array;
 
     private Boolean ExamFlag;
+    private Boolean RecapFlag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,20 +43,21 @@ public class SpellingMean extends AppCompatActivity {
         but_array[2] = (Button)findViewById(R.id.button2);
         but_array[3] = (Button)findViewById(R.id.button3);
         what_problem = -1;
-        level_info = ((MenuActivity)MenuActivity.context).manager.getLevel();
+
         test_json = "problem/spelling_mean";
         SelectBtnOnClickListener but_listener = new SelectBtnOnClickListener();
 
         Intent intent = getIntent();
         ExamFlag = intent.getBooleanExtra("ExamFlag", false);
-
+        RecapFlag = intent.getBooleanExtra("RecapFlag", false);
+        level_info = intent.getIntExtra("levelInfo", 0);
         Thread thread = new Thread() {
             @Override
             public void run() {
                 result = new Connect_get(intent.getStringExtra("Token"))
                         .problem_get(test_json, (level_info+""));
                 try {
-                    problem_list_fill(result,problem_list);
+                    problem_list_fill(result, problem_list);
                     next_problem(spelling, but_array, problem_list);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -104,6 +106,7 @@ public class SpellingMean extends AppCompatActivity {
                 intent.putExtra("test_result",problem_list);
                 intent.putExtra("type", "spelling_mean");
                 intent.putExtra("ExamFlag", ExamFlag);
+                intent.putExtra("RecapFlag", RecapFlag);
                 startActivity(intent);
             }
         }
