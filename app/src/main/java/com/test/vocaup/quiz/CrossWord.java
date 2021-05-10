@@ -78,19 +78,20 @@ public class CrossWord extends AppCompatActivity {
             }
         }
 
-//        Thread thread = new Thread() {
-//            @Override
-//            public void run() {
-//                result = new Connect_get(intent.getStringExtra("Token"))
-//                        .problem_get(test_json, (level_info+""));
-//                try {
-//                    next_problem(result,word,mean,x,y,len,tst,max_word);
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//                new Connect_get(intent.getStringExtra("Token")).updateSet();
-//            }
-//        };
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+                result = new Connect_get(intent.getStringExtra("Token"))
+                        .problem_get(test_json, (2+""));
+                try {
+                    next_problem(result,word,mean,x,y,len,tst);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                //new Connect_get(intent.getStringExtra("Token")).updateSet();
+            }
+        };
+
 
 
         ok_btn = findViewById(R.id.ok_btn);
@@ -118,21 +119,7 @@ public class CrossWord extends AppCompatActivity {
 //            }
 //        });
 
-        Thread thread = new Thread() {
-            @Override
-            public void run() {
-                result = new Connect_get(intent.getStringExtra("Token"))
-                        .problem_get(test_json, (level_info+""));
-//                try {
-//                    problem_list_fill(result,problem_list);
-//                    next_problem(sentence, but_array, problem_list);
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
 
-                //new Connect_get(intent.getStringExtra("Token")).updateSet();
-            }
-        };
         thread.start();
         try {
             thread.join();
@@ -142,22 +129,23 @@ public class CrossWord extends AppCompatActivity {
     }
 
 
-    protected void next_problem(JSONObject result,String[] word,String[] mean,int[] x, int[] y,int[] len,boolean[] tst,int max_word) throws JSONException {
+    protected void next_problem(JSONObject result,String[] word,String[] mean,int[] x, int[] y,int[] len,boolean[] tst) throws JSONException {
         JSONArray tmp_array= result.getJSONArray("problem_list");
         what_problem++;
         JSONArray target_exam = (JSONArray)tmp_array.get(what_problem);
         max_word=target_exam.length();
         for(int i=0;i<max_word;i++){
-            word[i]=target_exam.getString(i);
-            mean[i]=target_exam.getString(i);
-            x[i]=target_exam.getInt(i);
-            y[i]=target_exam.getInt(i);
-            len[i]=target_exam.getInt(i);
-            tst[i]=target_exam.getBoolean(i);
+            JSONObject tmp_object=target_exam.getJSONObject(i);
+            word[i]=tmp_object.getString("word");
+            mean[i]=tmp_object.getString("mean");
+            x[i]=tmp_object.getInt("x");
+            y[i]=tmp_object.getInt("y");
+            len[i]=word[i].length();
+            tst[i]=tmp_object.getBoolean("position");
         }
 
         for(int i=0; i<max_word;i++){
-            if(tst[i]==true){
+            if(tst[i]==false){
                 et[x[i]*10+y[i]].setEnabled(true);
                 for(int j=1;j<len[i];j++) {
                     et[x[i] * 10 + y[i] + j].setEnabled(true);

@@ -44,7 +44,7 @@ public class MeanSpelling extends AppCompatActivity {
         but_array[3] = (Button)findViewById(R.id.button3);
         what_problem = -1;
 
-        test_json = "problem/cross_puz";
+        test_json = "problem/mean_spelling";
         SelectBtnOnClickListener but_listener = new SelectBtnOnClickListener();
 
         Intent intent = getIntent();
