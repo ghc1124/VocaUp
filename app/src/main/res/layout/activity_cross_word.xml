@@ -19,7 +19,8 @@
             android:layout_width="41dp"
             android:layout_height="45dp"
             android:enabled="false"
-            android:background="@drawable/edittext_rounded_corner"/>
+            android:background="@drawable/edittext_rounded_corner"
+            />
 
         <EditText
             android:id="@+id/et01"
@@ -135,412 +136,493 @@
             android:id="@+id/et19"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et20"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et21"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et22"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et23"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et24"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et25"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et26"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et27"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et28"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et29"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et30"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et31"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et32"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et33"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et34"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et35"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false"  />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et36"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et37"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et38"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et39"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et40"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et41"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et42"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et43"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et44"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et45"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et46"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et47"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et48"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et49"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et50"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et51"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et52"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et53"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et54"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et55"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et56"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et57"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et58"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et59"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et60"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et61"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et62"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et63"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et64"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et65"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et66"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et67"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et68"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et69"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et70"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et71"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et72"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et73"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et74"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et75"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et76"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et77"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et78"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et79"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et80"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et81"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et82"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et83"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et84"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et85"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et86"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et87"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et88"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et89"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et90"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et91"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et92"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et93"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et94"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et95"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et96"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et97"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et98"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
         <EditText
             android:id="@+id/et99"
             android:layout_width="41dp"
             android:layout_height="45dp"
-            android:enabled="false" />
+            android:enabled="false"
+            android:background="@drawable/edittext_rounded_corner"/>
     </GridLayout>
 
 
     <TextView
-        android:id="@+id/textView21"
+        android:id="@+id/mean_text"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_row="2"
@@ -564,5 +646,11 @@
         android:layout_column="0"
         android:layout_gravity="right"
         android:text="확인" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button" />
 
 </LinearLayout>
