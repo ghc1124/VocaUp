@@ -42,6 +42,7 @@ public class CrossWord extends AppCompatActivity {
     int what_problem;
     int level_info;
     String test_json;
+
     private Boolean ExamFlag;
     private Boolean RecapFlag;
 
@@ -65,6 +66,7 @@ public class CrossWord extends AppCompatActivity {
 
         what_problem=-1;
         test_json = "problem/cross_puz";
+
         Intent intent = getIntent();
         ExamFlag = intent.getBooleanExtra("ExamFlag", false);
         RecapFlag = intent.getBooleanExtra("RecapFlag", false);
@@ -76,19 +78,19 @@ public class CrossWord extends AppCompatActivity {
             }
         }
 
-        Thread thread = new Thread() {
-            @Override
-            public void run() {
-                result = new Connect_get(intent.getStringExtra("Token"))
-                        .problem_get(test_json, (level_info+""));
-                try {
-                    next_problem(result,word,mean,x,y,len,tst,max_word);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                //new Connect_get(intent.getStringExtra("Token")).updateSet();
-            }
-        };
+//        Thread thread = new Thread() {
+//            @Override
+//            public void run() {
+//                result = new Connect_get(intent.getStringExtra("Token"))
+//                        .problem_get(test_json, (level_info+""));
+//                try {
+//                    next_problem(result,word,mean,x,y,len,tst,max_word);
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//                new Connect_get(intent.getStringExtra("Token")).updateSet();
+//            }
+//        };
 
 
         ok_btn = findViewById(R.id.ok_btn);
@@ -115,6 +117,28 @@ public class CrossWord extends AppCompatActivity {
 //                    Toast.makeText(CrossWord.this, "길이가 달라요! ", Toast.LENGTH_SHORT).show();
 //            }
 //        });
+
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+                result = new Connect_get(intent.getStringExtra("Token"))
+                        .problem_get(test_json, (level_info+""));
+//                try {
+//                    problem_list_fill(result,problem_list);
+//                    next_problem(sentence, but_array, problem_list);
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+
+                //new Connect_get(intent.getStringExtra("Token")).updateSet();
+            }
+        };
+        thread.start();
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 
