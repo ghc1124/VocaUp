@@ -1,5 +1,6 @@
 package com.test.vocaup.quiz;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,8 +10,20 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.test.vocaup.R;
+import com.test.vocaup.server.Connect_get;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class CrossWord extends AppCompatActivity {
+    private JSONObject result = new JSONObject();
+
+    private Boolean ExamFlag;
+    private Boolean RecapFlag;
+
+    int level_info;
+    String test_json;
+
     EditText et[] = new EditText[100];
     EditText editText;
     Button ok_btn;
@@ -69,6 +82,28 @@ public class CrossWord extends AppCompatActivity {
         }
 
         et[55] = findViewById(R.id.et55);
+
+        test_json = "problem/cross_puz";
+
+
+        Intent intent = getIntent();
+        ExamFlag = intent.getBooleanExtra("ExamFlag", false);
+        RecapFlag = intent.getBooleanExtra("RecapFlag", false);
+        level_info = intent.getIntExtra("levelInfo", 0);
+
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+                result = new Connect_get(intent.getStringExtra("Token"))
+                        .problem_get(test_json, (level_info+""));
+            }
+        };
+        thread.start();
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
 //        ok_btn = (Button)findViewById(R.id.ok_btn);
 //        ok_btn.setOnClickListener(BtnOnClickListener);

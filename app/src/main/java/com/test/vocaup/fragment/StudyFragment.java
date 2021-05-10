@@ -106,7 +106,7 @@ public class StudyFragment extends Fragment implements MenuActivity.OnBackPresse
         });
 
         text_level = viewGroup.findViewById(R.id.text_level);
-        text_level.setText("lv. " + ((MenuActivity) getActivity()).manager.getLevel());
+        text_level.setText("VocaUp lv. " + ((MenuActivity) getActivity()).manager.getLevel());
 
         return viewGroup;
     }

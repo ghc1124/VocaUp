@@ -73,6 +73,7 @@ public class BlankSpelling extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
         for(int i = 0; i < 4; i++){
             but_array[i].setOnClickListener(but_listener);
         }

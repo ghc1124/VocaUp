@@ -140,8 +140,8 @@ public class ExamFragment extends Fragment implements MenuActivity.OnBackPressed
         });
 
         text_level = viewGroup.findViewById(R.id.text_level);
-        text_level.setText("현재: lv. " + ((MenuActivity) getActivity()).manager.getLevel() +
-                "\n승급 후: lv. " + (((MenuActivity) getActivity()).manager.getLevel() + 1));
+        text_level.setText("현재 VocaUp lv. " + ((MenuActivity) getActivity()).manager.getLevel() +
+                "\n승급 후 VocaUp lv. " + (((MenuActivity) getActivity()).manager.getLevel() + 1));
 
         return viewGroup;
     }
