@@ -64,6 +64,7 @@ public class CrossWord extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cross_word);
         editText = findViewById(R.id.editText1);
+        editText.requestFocus();
         mean_text = findViewById(R.id.mean_text);
 
         what_problem=-1;
@@ -143,9 +144,10 @@ public class CrossWord extends AppCompatActivity {
         JSONArray target_exam = (JSONArray)tmp_array.get(what_problem);
         max_word=target_exam.length();
 
-        for(int i=1;i<et.length;i++) {
+        for(int i=0;i<et.length;i++) {
             et[i].setEnabled(false);
         }
+
         for(int i=0;i<max_word;i++){
             JSONObject tmp_object=target_exam.getJSONObject(i);
             word[i]=tmp_object.getString("word");
@@ -158,13 +160,12 @@ public class CrossWord extends AppCompatActivity {
 
         for(int i=0; i<max_word;i++){
             if(tst[i]==false){
-                for(int j=1;j<len[i];j++) {
+                for(int j=0;j<len[i];j++) {
                     et[x[i] * 10 + y[i] + j].setEnabled(true);
                 }
             }
             else {
-                et[x[i]*10+y[i]].setEnabled(true);
-                for(int j=1;j<len[i];j++) {
+                for(int j=0;j<len[i];j++) {
                     et[(x[i] + j) * 10 + y[i]].setEnabled(true);
                 }
             }
