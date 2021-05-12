@@ -27,8 +27,7 @@
             android:paddingLeft="5dp"
             android:text="문제 정보:"
             android:textColor="@color/white"
-            android:textSize="20sp"
-            android:typeface="serif" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/textView_count"
@@ -41,8 +40,7 @@
             android:paddingRight="5dp"
             android:text="문제/문제"
             android:textColor="@color/white"
-            android:textSize="20sp"
-            android:typeface="serif" />
+            android:textSize="20sp" />
 
     </LinearLayout>
 
@@ -86,7 +84,8 @@
                 android:scrollHorizontally="false"
                 android:text="B"
                 android:textAllCaps="false"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textSize="18sp" />
 
             <android.widget.Button
                 android:id="@+id/button1"
@@ -98,7 +97,8 @@
                 android:scrollHorizontally="false"
                 android:text="B"
                 android:textAllCaps="false"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textSize="18sp" />
         </TableRow>
 
         <TableRow
@@ -116,7 +116,8 @@
                 android:scrollHorizontally="false"
                 android:text="B"
                 android:textAllCaps="false"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textSize="18sp" />
 
             <android.widget.Button
                 android:id="@+id/button3"
@@ -128,7 +129,8 @@
                 android:scrollHorizontally="false"
                 android:text="B"
                 android:textAllCaps="false"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textSize="18sp" />
         </TableRow>
 
     </TableLayout>

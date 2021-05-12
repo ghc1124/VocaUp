@@ -40,7 +40,7 @@ public class MeanSpelling extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mean_spelling);
-        mean =  (TextView)findViewById(R.id.look);
+        mean = (TextView)findViewById(R.id.look);
         but_array = new Button[4];
         but_array[0] = (Button)findViewById(R.id.button0);
         but_array[1] = (Button)findViewById(R.id.button1);

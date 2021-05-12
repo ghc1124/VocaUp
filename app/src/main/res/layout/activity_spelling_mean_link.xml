@@ -27,8 +27,7 @@
             android:paddingLeft="5dp"
             android:text="문제 정보:"
             android:textColor="@color/white"
-            android:textSize="20sp"
-            android:typeface="serif" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/textView_count"
@@ -41,8 +40,7 @@
             android:paddingRight="5dp"
             android:text="문제/문제"
             android:textColor="@color/white"
-            android:textSize="20sp"
-            android:typeface="serif" />
+            android:textSize="20sp" />
 
     </LinearLayout>
 
