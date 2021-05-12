@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -143,52 +144,52 @@ public class SpellingMeanLink extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             int click_but = -1;
-            for(int i=0;i<problem_list.size();i++){
+            for (int i = 0; i < problem_list.size(); i++) {
                 System.out.println(problem_list.get(i).getAnswer() + " : " + problem_list.get(i).getChoice());
             }
+
             switch (view.getId()) {
                 case R.id.show_0:
-                    OX[4]=0;
-                    break ;
-                case R.id.show_1 :
-                    OX[4]=1;
-                    break ;
-                case R.id.show_2 :
-                    OX[4]=2;
-                    break ;
-                case R.id.show_3 :
-                    OX[4]=3;
-                    break ;
-                case R.id.select_0 :
+                    OX[4] = 0;
+                    break;
+                case R.id.show_1:
+                    OX[4] = 1;
+                    break;
+                case R.id.show_2:
+                    OX[4] = 2;
+                    break;
+                case R.id.show_3:
+                    OX[4] = 3;
+                    break;
+                case R.id.select_0:
                     OX[5] = 0;
-                    break ;
-                case R.id.select_1 :
+                    break;
+                case R.id.select_1:
                     OX[5] = 1;
-                    break ;
-                case R.id.select_2 :
+                    break;
+                case R.id.select_2:
                     OX[5] = 2;
-                    break ;
-                case R.id.select_3 :
+                    break;
+                case R.id.select_3:
                     OX[5] = 3;
-                    break ;
+                    break;
             }
 
-            if(OX[4]!=-1 && OX[5]!=-1){
-                OX[OX[4]]=OX[5];
-                problem_list.get(what_problem*4+OX[4]).setChoice(OX[5]);
+            if (OX[4] != -1 && OX[5] != -1) {
+                OX[OX[4]] = OX[5];
+                problem_list.get(what_problem * 4 + OX[4]).setChoice(OX[5]);
                 line.update(OX);
                 OX[4] = -1;
                 OX[5] = -1;
             }
 
-            System.out.println();
-            if(what_problem<=(problem_list.size()/4)-2 && (OX[0]!=-1 && OX[1]!=-1 && OX[2]!=-1 && OX[3]!=-1) ) {
-                next_problem(spelling, Show_but_array,Select_but_array, problem_list);
+            // System.out.println();
+            if (what_problem <= (problem_list.size() / 4) - 2 && (OX[0] != -1 && OX[1] != -1 && OX[2] != -1 && OX[3] != -1)) {
+                next_problem(spelling, Show_but_array, Select_but_array, problem_list);
                 line.update(OX);
-            }
-            else if(!(what_problem<=(problem_list.size()/4)-2)&&(OX[0]!=-1 && OX[1]!=-1 && OX[2]!=-1 && OX[3]!=-1)){
+            } else if (!(what_problem <= (problem_list.size() / 4) - 2) && (OX[0] != -1 && OX[1] != -1 && OX[2] != -1 && OX[3] != -1)) {
                 Intent intent = new Intent(SpellingMeanLink.this, TestResultActivity.class);
-                intent.putExtra("test_result",problem_list);
+                intent.putExtra("test_result", problem_list);
                 intent.putExtra("type", "spelling_mean_link");
                 intent.putExtra("ExamFlag", ExamFlag);
                 intent.putExtra("RecapFlag", RecapFlag);
@@ -197,20 +198,18 @@ public class SpellingMeanLink extends AppCompatActivity {
         }
     }
 
-
-
     //문제리스트를 받아서 배열에 저장함
     protected void problem_list_fill(JSONObject result_object, ArrayList<Problem> problem_list) throws JSONException {
-        JSONArray tmp_array= result_object.getJSONArray("problem_list");
-        for(int i=0;i<tmp_array.length();i++){
+        JSONArray tmp_array = result_object.getJSONArray("problem_list");
+        for (int i = 0; i < tmp_array.length(); i++) {
             JSONObject problem_single = (JSONObject) tmp_array.get(i);
             JSONArray select_list = problem_single.getJSONArray("select");
             JSONArray answer_list = problem_single.getJSONArray("answer");
             JSONArray show_list = problem_single.getJSONArray("show");
 
-            for(int j=0;j<select_list.length();j++){
+            for (int j = 0; j < select_list.length(); j++) {
                 Problem problem_add = new Problem();
-                for(int k=0;k<select_list.length();k++){
+                for (int k = 0; k < select_list.length(); k++) {
                     problem_add.addSelect(select_list.getString(k));
                 }
                 problem_add.setShow(show_list.getString(j));
@@ -226,9 +225,11 @@ public class SpellingMeanLink extends AppCompatActivity {
         if ((what_problem + 1) <= problem_list.size())
             textView_count.setText((what_problem + 1) + "/" + (problem_list.size() / 4));
 
-        for(int i=0 ; i< problem_list.get(what_problem).getSelectSize() ; i++){
-            show_buttons[i].setText(problem_list.get(what_problem*4+i).getShow());
-            select_buttons[i].setText(problem_list.get(what_problem*4+i).getSelect(i));
+        for (int i = 0; i < problem_list.get(what_problem).getSelectSize(); i++) {
+            show_buttons[i].setText(problem_list.get(what_problem * 4 + i).getShow());
+            select_buttons[i].setText((problem_list.get(what_problem * 4 + i).getSelect(i)).replace("\n", " "));
+            /*show_buttons[i].setText("test");
+            select_buttons[i].setText("test");*/
         }
         OX[0] = OX[1] = OX[2] = OX[3] = OX[4] = OX[5] = -1;
     }
