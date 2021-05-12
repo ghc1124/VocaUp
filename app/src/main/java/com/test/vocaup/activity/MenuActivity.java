@@ -62,7 +62,6 @@ public class MenuActivity extends AppCompatActivity {
             token = intent.getStringExtra("token");
         }
 
-        text_name.setText(name + " 님");
         Glide.with(this).load(profile).into(image_profile);
 
         toolbar = findViewById(R.id.toolbar);
@@ -103,6 +102,8 @@ public class MenuActivity extends AppCompatActivity {
         } catch(Exception e) {
             e.printStackTrace();
         }
+
+        text_name.setText(name + " 님 " + "lv. " + manager.getLevel());
 
         System.out.println(manager.getLevel());
     }

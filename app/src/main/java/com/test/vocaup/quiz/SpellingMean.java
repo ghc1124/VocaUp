@@ -30,6 +30,7 @@ public class SpellingMean extends AppCompatActivity {
     private TextView spelling;
     private Button[] but_array;
     private TextView textView_count;
+    private TextView textView_info;
 
     private Boolean ExamFlag;
     private Boolean RecapFlag;
@@ -47,6 +48,7 @@ public class SpellingMean extends AppCompatActivity {
         what_problem = -1;
 
         textView_count = findViewById(R.id.textView_count);
+        textView_info = findViewById(R.id.textView_info);
 
         test_json = "problem/spelling_mean";
         SelectBtnOnClickListener but_listener = new SelectBtnOnClickListener();
@@ -79,6 +81,12 @@ public class SpellingMean extends AppCompatActivity {
         }
 
         textView_count.setText("1/" + problem_list.size());
+
+        try {
+            textView_info.setText("문제 정보: " + result.getString("meta").substring(0, result.getString("meta").length() - 5));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         for(int i = 0; i < 4; i++){
             but_array[i].setOnClickListener(but_listener);

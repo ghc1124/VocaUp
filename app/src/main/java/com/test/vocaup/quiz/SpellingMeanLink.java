@@ -40,6 +40,7 @@ public class SpellingMeanLink extends AppCompatActivity {
     private int[] x = new int[8];
     private int[] y = new int[8];
     private TextView textView_count;
+    private TextView textView_info;
 
     private Boolean ExamFlag;
     private Boolean RecapFlag;
@@ -65,6 +66,7 @@ public class SpellingMeanLink extends AppCompatActivity {
         what_problem = -1;
 
         textView_count = findViewById(R.id.textView_count);
+        textView_info = findViewById(R.id.textView_info);
 
         test_json = "problem/spelling_mean_link";
         SpellingMeanLink.SelectBtnOnClickListener but_listener = new SpellingMeanLink.SelectBtnOnClickListener();
@@ -97,6 +99,12 @@ public class SpellingMeanLink extends AppCompatActivity {
         }
 
         textView_count.setText("1/" + problem_list.size() / 4);
+
+        try {
+            textView_info.setText("문제 정보: " + result.getString("meta").substring(0, result.getString("meta").length() - 5));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         for(int i = 0; i < 4; i++){
             Show_but_array[i].setOnClickListener(but_listener);

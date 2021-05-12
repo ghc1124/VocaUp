@@ -40,6 +40,7 @@ public class SpellingSort extends AppCompatActivity {
     private TableLayout but_array;
     private int user_cursor;
     private TextView textView_count;
+    private TextView textView_info;
 
     private Boolean ExamFlag;
     private Boolean RecapFlag;
@@ -58,6 +59,7 @@ public class SpellingSort extends AppCompatActivity {
         what_problem = -1;
 
         textView_count = findViewById(R.id.textView_count);
+        textView_info = findViewById(R.id.textView_info);
 
         test_json = "problem/spelling_sort";
         SelectBtnOnClickListener but_listener = new SelectBtnOnClickListener();
@@ -91,6 +93,12 @@ public class SpellingSort extends AppCompatActivity {
         }
 
         textView_count.setText("1/" + problem_list.size());
+
+        try {
+            textView_info.setText("문제 정보: " + result.getString("meta").substring(0, result.getString("meta").length() - 5));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     class SelectBtnOnClickListener implements Button.OnClickListener {
