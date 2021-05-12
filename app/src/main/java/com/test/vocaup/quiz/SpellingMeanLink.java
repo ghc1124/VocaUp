@@ -1,5 +1,7 @@
 package com.test.vocaup.quiz;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -23,20 +25,21 @@ import java.util.ArrayList;
 
 public class SpellingMeanLink extends AppCompatActivity {
     private JSONObject result = new JSONObject();
-    ArrayList<Problem> problem_list = new ArrayList<Problem>();
-    int what_problem;
-    int level_info;
-    String test_json;
-    TextView spelling;
-    int[] OX;
-    Button[] Show_but_array;
-    Button[] Select_but_array;
-    Link_line line;
+    private ArrayList<Problem> problem_list = new ArrayList<Problem>();
+    private int what_problem;
+    private int level_info;
+    private String test_json;
+    private TextView spelling;
+    private int[] OX;
+    private Button[] Show_but_array;
+    private Button[] Select_but_array;
+    private Link_line line;
 
     private int[] locBtn = new int[2];
     private int[] locLine = new int[2];
-    int[] x = new int[8];
-    int[] y = new int[8];
+    private int[] x = new int[8];
+    private int[] y = new int[8];
+    private TextView textView_count;
 
     private Boolean ExamFlag;
     private Boolean RecapFlag;
@@ -60,6 +63,8 @@ public class SpellingMeanLink extends AppCompatActivity {
         Select_but_array[3] = (Button)findViewById(R.id.select_3);
         line = (Link_line)findViewById(R.id.line);
         what_problem = -1;
+
+        textView_count = findViewById(R.id.textView_count);
 
         test_json = "problem/spelling_mean_link";
         SpellingMeanLink.SelectBtnOnClickListener but_listener = new SpellingMeanLink.SelectBtnOnClickListener();
@@ -90,6 +95,9 @@ public class SpellingMeanLink extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+        textView_count.setText("1/" + problem_list.size() / 4);
+
         for(int i = 0; i < 4; i++){
             Show_but_array[i].setOnClickListener(but_listener);
             Select_but_array[i].setOnClickListener(but_listener);
@@ -155,8 +163,6 @@ public class SpellingMeanLink extends AppCompatActivity {
                 case R.id.select_3 :
                     OX[5] = 3;
                     break ;
-
-
             }
 
             if(OX[4]!=-1 && OX[5]!=-1){
@@ -208,6 +214,10 @@ public class SpellingMeanLink extends AppCompatActivity {
     //다음문제로 세팅
     protected void next_problem(TextView show, Button[] show_buttons, Button[] select_buttons, ArrayList<Problem> problem_list){
         what_problem++;
+
+        if ((what_problem + 1) <= problem_list.size())
+            textView_count.setText((what_problem + 1) + "/" + (problem_list.size() / 4));
+
         for(int i=0 ; i< problem_list.get(what_problem).getSelectSize() ; i++){
             show_buttons[i].setText(problem_list.get(what_problem*4+i).getShow());
             select_buttons[i].setText(problem_list.get(what_problem*4+i).getSelect(i));
@@ -215,6 +225,26 @@ public class SpellingMeanLink extends AppCompatActivity {
         OX[0] = OX[1] = OX[2] = OX[3] = OX[4] = OX[5] = -1;
     }
 
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("").setMessage("포기하시겠습니까?");
+        builder.setPositiveButton("확인", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int id)
+            {
+                SpellingMeanLink.super.onBackPressed();
+            }
+        });
 
+        builder.setNegativeButton("취소", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int id)
+            {
 
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
 }

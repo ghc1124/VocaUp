@@ -1,5 +1,7 @@
 package com.test.vocaup.quiz;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -7,11 +9,15 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.test.vocaup.DO.Problem;
 import com.test.vocaup.R;
 import com.test.vocaup.activity.MenuActivity;
 import com.test.vocaup.activity.TestResultActivity;
+import com.test.vocaup.fragment.MyWordListFragment;
+import com.test.vocaup.fragment.StudyFragment;
+import com.test.vocaup.fragment.StudyListFragment;
 import com.test.vocaup.server.Connect_get;
 
 import org.json.JSONArray;
@@ -22,12 +28,13 @@ import java.util.ArrayList;
 
 public class BlankSpelling extends AppCompatActivity {
     private JSONObject result = new JSONObject();
-    ArrayList<Problem> problem_list = new ArrayList<Problem>();
-    int what_problem;
-    int level_info;
-    String test_json;
-    TextView sentence;
-    Button[] but_array;
+    private ArrayList<Problem> problem_list = new ArrayList<Problem>();
+    private int what_problem;
+    private int level_info;
+    private String test_json;
+    private TextView sentence;
+    private Button[] but_array;
+    private TextView textView_count;
 
     private Boolean ExamFlag;
     private Boolean RecapFlag;
@@ -43,6 +50,8 @@ public class BlankSpelling extends AppCompatActivity {
         but_array[2] = (Button)findViewById(R.id.button2);
         but_array[3] = (Button)findViewById(R.id.button3);
         what_problem = -1;
+
+        textView_count = findViewById(R.id.textView_count);
 
         test_json = "problem/blank_spelling";
         SelectBtnOnClickListener but_listener = new SelectBtnOnClickListener();
@@ -74,11 +83,14 @@ public class BlankSpelling extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        textView_count.setText("1/" + problem_list.size());
+
         for(int i = 0; i < 4; i++){
             but_array[i].setOnClickListener(but_listener);
         }
 
     }
+
     class SelectBtnOnClickListener implements Button.OnClickListener {
         @Override
         public void onClick(View view) {
@@ -139,11 +151,37 @@ public class BlankSpelling extends AppCompatActivity {
 
     protected void next_problem(TextView sentence, Button[] buttons, ArrayList<Problem> problem_list){
         what_problem++;
+
+        if ((what_problem + 1) <= problem_list.size())
+            textView_count.setText((what_problem + 1) + "/" + problem_list.size());
+
         sentence.setText(problem_list.get(what_problem).getSentence());
 
         for(int i=0 ; i< problem_list.get(what_problem).getSelectSize() ; i++){
             buttons[i].setText(problem_list.get(what_problem).getSelect(i));
         }
+    }
 
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("").setMessage("포기하시겠습니까?");
+        builder.setPositiveButton("확인", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int id)
+            {
+                BlankSpelling.super.onBackPressed();
+            }
+        });
+
+        builder.setNegativeButton("취소", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int id)
+            {
+
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 }

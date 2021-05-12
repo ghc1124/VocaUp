@@ -50,7 +50,7 @@ public class MyWordListFragment extends Fragment implements MenuActivity.OnBackP
 
     @Override
     public void onBack() {
-        Log.e("Other", "onBack()");
+        // Log.e("Other", "onBack()");
         // 리스너를 설정하기 위해 Activity 를 받아옴
         MenuActivity activity = (MenuActivity)getActivity();
         // 한번 뒤로가기 버튼을 눌렀다면 Listener 를 null로 설정
@@ -63,7 +63,7 @@ public class MyWordListFragment extends Fragment implements MenuActivity.OnBackP
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        Log.e("Other", "onAttach()");
+        // Log.e("Other", "onAttach()");
         ((MenuActivity)context).setOnBackPressedListener(this);
     }
 }

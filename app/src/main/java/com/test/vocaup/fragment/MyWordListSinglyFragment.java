@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -28,6 +29,7 @@ import com.test.vocaup.DO.ListAll;
 import com.test.vocaup.R;
 import com.test.vocaup.activity.MainActivity;
 import com.test.vocaup.activity.MenuActivity;
+import com.test.vocaup.activity.TestResultActivity;
 import com.test.vocaup.server.Connect_get;
 
 import java.io.IOException;
@@ -61,6 +63,13 @@ public class MyWordListSinglyFragment extends Fragment implements MenuActivity.O
 
         String level = ((MenuActivity)MenuActivity.context).manager.getLevel() + "";
 
+        checkBox_single = viewGroup.findViewById(R.id.checkBox_single);
+        text_mean = viewGroup.findViewById(R.id.text_mean);
+        text_part = viewGroup.findViewById(R.id.text_part);
+        text_sentence = viewGroup.findViewById(R.id.text_sentence);
+        text_mean_s = viewGroup.findViewById(R.id.text_mean_s);
+        btn_pron = viewGroup.findViewById(R.id.btn_pron); // 발음 듣기 버튼 할당
+
         Thread thread = new Thread() {
             @Override
             public void run() {
@@ -82,31 +91,26 @@ public class MyWordListSinglyFragment extends Fragment implements MenuActivity.O
 
             last_index = result.size() - 1;
 
-            checkBox_single = viewGroup.findViewById(R.id.checkBox_single);
             checkBox_single.setOnCheckedChangeListener(null);
-
-            text_mean = viewGroup.findViewById(R.id.text_mean);
             checkBox_single.setChecked(result.get(0).isSelected());
-
             text_mean.setText(result.get(0).getMean());
-
-            text_part = viewGroup.findViewById(R.id.text_part);
             text_part.setText(result.get(0).getPart());
-
-            text_sentence = viewGroup.findViewById(R.id.text_sentence);
             text_sentence.setText(result.get(0).getSentence());
-
-            text_mean_s = viewGroup.findViewById(R.id.text_mean_s);
             text_mean_s.setText(result.get(0).getMean_s());
-
             image_word = viewGroup.findViewById(R.id.image_word);
             Glide.with(container.getContext())
                     .load("http://13.209.75.148:5000/wordPic/" + level + "/" + result.get(0).getOrigin_word())
                     .fitCenter()
                     .into(image_word);
 
-            btn_pron = viewGroup.findViewById(R.id.btn_pron); // 발음 듣기 버튼 할당
             btn_pron.setText(result.get(0).getWord());
+        } else {
+            text_mean.setText("단어장이 비었습니다!");
+            text_part.setText("");
+            text_sentence.setText("");
+            text_mean_s.setText("");
+            btn_pron.setText("");
+            checkBox_single.setEnabled(false);
         }
 
         btn_pron.setOnClickListener(new View.OnClickListener() {
@@ -200,15 +204,9 @@ public class MyWordListSinglyFragment extends Fragment implements MenuActivity.O
 
     @Override
     public void onBack() {
-        Log.e("Other", "onBack()");
-        // 리스너를 설정하기 위해 Activity 를 받아옴
-        MenuActivity activity = (MenuActivity)getActivity();
-        // 한번 뒤로가기 버튼을 눌렀다면 Listener 를 null로 설정
-        activity.setOnBackPressedListener(null);
-        //alert 다이얼로그로 재확인
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle("확인").setMessage("뒤로 가시겠습니까?");
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener(){
+        builder.setTitle("").setMessage("뒤로 가시겠습니까?");
+        builder.setPositiveButton("확인", new DialogInterface.OnClickListener(){
             @Override
             public void onClick(DialogInterface dialog, int id)
             {
@@ -217,12 +215,14 @@ public class MyWordListSinglyFragment extends Fragment implements MenuActivity.O
             }
         });
 
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
+        builder.setNegativeButton("취소", new DialogInterface.OnClickListener(){
             @Override
             public void onClick(DialogInterface dialog, int id)
             {
+
             }
         });
+
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }

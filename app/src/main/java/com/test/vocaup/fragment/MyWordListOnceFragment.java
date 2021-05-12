@@ -81,15 +81,9 @@ public class MyWordListOnceFragment extends Fragment implements MenuActivity.OnB
 
     @Override
     public void onBack() {
-        Log.e("Other", "onBack()");
-        // 리스너를 설정하기 위해 Activity 를 받아옴
-        MenuActivity activity = (MenuActivity)getActivity();
-        // 한번 뒤로가기 버튼을 눌렀다면 Listener 를 null로 설정
-        activity.setOnBackPressedListener(null);
-        //alert 다이얼로그로 재확인
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle("확인").setMessage("뒤로 가시겠습니까?");
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener(){
+        builder.setTitle("").setMessage("뒤로 가시겠습니까?");
+        builder.setPositiveButton("확인", new DialogInterface.OnClickListener(){
             @Override
             public void onClick(DialogInterface dialog, int id)
             {
@@ -98,7 +92,7 @@ public class MyWordListOnceFragment extends Fragment implements MenuActivity.OnB
             }
         });
 
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
+        builder.setNegativeButton("취소", new DialogInterface.OnClickListener(){
             @Override
             public void onClick(DialogInterface dialog, int id)
             {

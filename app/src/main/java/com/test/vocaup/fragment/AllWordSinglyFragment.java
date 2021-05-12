@@ -1,6 +1,8 @@
 package com.test.vocaup.fragment;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -193,13 +195,26 @@ public class AllWordSinglyFragment extends Fragment implements MenuActivity.OnBa
 
     @Override
     public void onBack() {
-        Log.e("Other", "onBack()");
-        // 리스너를 설정하기 위해 Activity 를 받아옴
-        MenuActivity activity = (MenuActivity)getActivity();
-        // 한번 뒤로가기 버튼을 눌렀다면 Listener 를 null로 설정
-        activity.setOnBackPressedListener(null);
-        // MainFragment 로 교체
-        ((MenuActivity) getActivity()).replaceFragment(StudyListFragment.newInstance());
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("").setMessage("뒤로 가시겠습니까?");
+        builder.setPositiveButton("확인", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int id)
+            {
+                // MainFragment 로 교체
+                ((MenuActivity) getActivity()).replaceFragment(StudyListFragment.newInstance());
+            }
+        });
+
+        builder.setNegativeButton("취소", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int id)
+            {
+
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 
     // Fragment 호출 시 반드시 호출되는 오버라이드 메소드

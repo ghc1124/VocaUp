@@ -1,6 +1,8 @@
 package com.test.vocaup.quiz;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -28,17 +30,16 @@ import java.util.ArrayList;
 
 public class SpellingSort extends AppCompatActivity {
     private JSONObject result = new JSONObject();
-    ArrayList<Problem> problem_list = new ArrayList<Problem>();
-
-    int what_problem;
-    int level_info;
-    String test_json;
-    TextView answer;
-    TextView mean;
-    String alphabet;
-    //    LinearLayout but_array;
-    TableLayout but_array;
-    int user_cursor;
+    private ArrayList<Problem> problem_list = new ArrayList<Problem>();
+    private int what_problem;
+    private int level_info;
+    private String test_json;
+    private TextView answer;
+    private TextView mean;
+    private String alphabet;
+    private TableLayout but_array;
+    private int user_cursor;
+    private TextView textView_count;
 
     private Boolean ExamFlag;
     private Boolean RecapFlag;
@@ -55,6 +56,8 @@ public class SpellingSort extends AppCompatActivity {
 
         user_cursor = 0;
         what_problem = -1;
+
+        textView_count = findViewById(R.id.textView_count);
 
         test_json = "problem/spelling_sort";
         SelectBtnOnClickListener but_listener = new SelectBtnOnClickListener();
@@ -80,11 +83,14 @@ public class SpellingSort extends AppCompatActivity {
             }
         };
         thread.start();
+
         try {
             thread.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+        textView_count.setText("1/" + problem_list.size());
     }
 
     class SelectBtnOnClickListener implements Button.OnClickListener {
@@ -146,6 +152,10 @@ public class SpellingSort extends AppCompatActivity {
         int length = 0;
         user_cursor = 0;
         what_problem++;
+
+        if ((what_problem + 1) <= problem_list.size())
+            textView_count.setText((what_problem + 1) + "/" + problem_list.size());
+
         mean.setText(problem_list.get(what_problem).getShow());
         length = problem_list.get(what_problem).getSentence().length();
         alphabet = problem_list.get(what_problem).getSelect(1);
@@ -192,5 +202,28 @@ public class SpellingSort extends AppCompatActivity {
         }
 
         count2 = 0;
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("").setMessage("포기하시겠습니까?");
+        builder.setPositiveButton("확인", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int id)
+            {
+                SpellingSort.super.onBackPressed();
+            }
+        });
+
+        builder.setNegativeButton("취소", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int id)
+            {
+
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 }

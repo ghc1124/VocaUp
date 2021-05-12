@@ -40,7 +40,7 @@
             android:typeface="serif" />
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/textView_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -149,18 +149,6 @@
         android:layout_height="match_parent"
         android:layout_weight="15"
         android:gravity="bottom|right"
-        android:orientation="horizontal">
-
-        <android.widget.Button
-            android:id="@+id/pass"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:layout_marginBottom="5dp"
-            android:background="@drawable/button_pass"
-            android:text="문제 넘기기"
-            android:textColor="@color/black"
-            android:typeface="normal" />
-    </LinearLayout>
+        android:orientation="horizontal"/>
 
 </LinearLayout>
