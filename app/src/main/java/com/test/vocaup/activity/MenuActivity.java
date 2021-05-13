@@ -195,19 +195,17 @@ public class MenuActivity extends AppCompatActivity {
             if ( pressedTime == 0 ) {
                 Toast.makeText(this,"한번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show();
                 pressedTime = System.currentTimeMillis();
-            }
-            else {
+            } else {
                 int seconds = (int) (System.currentTimeMillis() - pressedTime);
 
                 if ( seconds > 2000 ) {
                     Toast.makeText(this,"한번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show();
                     pressedTime = 0 ;
-                }
-                else {
+                } else {
                     super.onBackPressed();
                     Log.e("!!!", "onBackPressed : finish, killProcess");
                     finish();
-                    android.os.Process.killProcess(android.os.Process.myPid());
+                    //android.os.Process.killProcess(android.os.Process.myPid());
                 }
             }
         }

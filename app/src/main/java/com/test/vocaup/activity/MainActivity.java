@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             intent.putExtra("name", currentUser.getDisplayName());
             intent.putExtra("profile", String.valueOf(currentUser.getPhotoUrl())); // getPhotoUrl이 URI 형태
             intent.putExtra("email", currentUser.getEmail());
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         }
     }
@@ -104,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                             intent.putExtra("name", account.getDisplayName());
                             intent.putExtra("profile", String.valueOf(account.getPhotoUrl())); // getPhotoUrl이 URI 형태
                             intent.putExtra("email", account.getEmail());
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
                         } else {
                             Toast.makeText(MainActivity.this, "로그인 실패", Toast.LENGTH_SHORT).show();
