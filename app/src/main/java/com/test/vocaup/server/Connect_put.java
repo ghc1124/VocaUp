@@ -105,27 +105,6 @@ public class Connect_put implements Interceptor {
 
         try {
             response = httpClient.newCall(request).execute();
-
-//            Thread.sleep(100);
-
-//            if(response != null) {
-//                data = response.body().string();
-//                jsonData = new JSONObject(data);
-//
-//                if(jsonData.getString("Token").equals(result.getToken())) {
-//                    result.setLevel(jsonData.getInt("Level"));
-//                    if(jsonData.getString("UserWord") != null)
-//                        result.setUserWord((String)jsonData.getString("UserWord"));
-//                    if(jsonData.getString("ProblemSet") != null)
-//                        result.setProblemSet((String)jsonData.getString("ProblemSet"));
-//                    result.setBlank_spelling(jsonData.getInt("blank_spelling"));
-//                    result.setMean_spelling(jsonData.getInt("mean_spelling"));
-//                    result.setSpelling_mean(jsonData.getInt("spelling_mean"));
-//                    result.setSpelling_mean_link(jsonData.getInt("spelling_mean_link"));
-//                    result.setSpelling_sort(jsonData.getInt("spelling_sort"));
-//                    result.setRecap(jsonData.getInt("recap"));
-//                }
-//            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -161,6 +140,8 @@ public class Connect_put implements Interceptor {
                 MediaType.parse("application/json; charset=utf-8"),
                 object.toString()
         );
+
+        System.out.println(body);
 
         request = new Request.Builder().url(url + "/wrongList/" + level).put(body).build();
 

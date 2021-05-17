@@ -30,7 +30,6 @@ import java.util.ArrayList;
 
 public class AllWordSinglyFragment extends Fragment implements MenuActivity.OnBackPressedListener{
     private ArrayList<ListAll> result = new ArrayList<>();
-
     private ImageView image_word;
     private Button btn_pron;
     private Button btn_back;
@@ -40,7 +39,7 @@ public class AllWordSinglyFragment extends Fragment implements MenuActivity.OnBa
     private TextView text_mean_s;
     private TextView text_sentence;
     private CheckBox checkBox_single;
-    MediaPlayer mediaPlayer;
+    private MediaPlayer mediaPlayer;
 
     private int now_index = 0;
     private int last_index = 0;

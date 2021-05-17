@@ -47,7 +47,7 @@ public class MyWordListSinglyFragment extends Fragment implements MenuActivity.O
     private TextView text_mean_s;
     private TextView text_sentence;
     private CheckBox checkBox_single;
-    MediaPlayer mediaPlayer;
+    private MediaPlayer mediaPlayer;
 
     private int now_index = 0;
     private int last_index = 0;

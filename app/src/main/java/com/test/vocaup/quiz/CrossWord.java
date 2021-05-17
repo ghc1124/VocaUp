@@ -31,12 +31,12 @@ public class CrossWord extends AppCompatActivity {
     private Button ok_btn;
     private TextView mean_text;
 
-    String[] word = new String[]{null,null,null,null,null,null,null,null,null,null};
-    String[] mean = new String[]{null,null,null,null,null,null,null,null,null,null};
-    int[] x= new int[]{0,0,0,0,0,0,0,0,0,0}; //x좌표
-    int[] y= new int[]{0,0,0,0,0,0,0,0,0,0}; //y좌표
-    int[] len = new int[]{0,0,0,0,0,0,0,0,0,0}; //길이
-    boolean[] tst = new boolean[]{true,true,true,true,true,true,true,true,true,true}; //가로면 true 세로면 false
+    String[] word = new String[]{null, null, null, null, null, null, null, null, null, null};
+    String[] mean = new String[]{null, null, null, null, null, null, null, null, null, null};
+    int[] x = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; //x좌표
+    int[] y = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; //y좌표
+    int[] len = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; //길이
+    boolean[] tst = new boolean[]{true, true, true, true, true, true, true, true, true, true}; //가로면 true 세로면 false
     int max_word = 1; //단어수
 
     private JSONObject result = new JSONObject();
@@ -49,13 +49,13 @@ public class CrossWord extends AppCompatActivity {
     private Boolean RecapFlag;
 
     Integer[] Rid_editText = {
-            R.id.et00,R.id.et01,R.id.et02,R.id.et03,R.id.et04,R.id.et05,R.id.et06,R.id.et07,R.id.et08,R.id.et09,R.id.et10,R.id.et11,R.id.et12
-            ,R.id.et13,R.id.et14,R.id.et15,R.id.et16,R.id.et17,R.id.et18,R.id.et19,R.id.et20,R.id.et21,R.id.et22,R.id.et23,R.id.et24,R.id.et25
-            ,R.id.et26,R.id.et27,R.id.et28,R.id.et29,R.id.et30,R.id.et31,R.id.et32,R.id.et33,R.id.et34,R.id.et35,R.id.et36,R.id.et37,R.id.et38,R.id.et39,R.id.et40
-            ,R.id.et41,R.id.et42,R.id.et43,R.id.et44,R.id.et45,R.id.et46,R.id.et47,R.id.et48,R.id.et49,R.id.et50,R.id.et51,R.id.et52,R.id.et53,R.id.et54,R.id.et55
-            ,R.id.et56,R.id.et57,R.id.et58,R.id.et59,R.id.et60,R.id.et61,R.id.et62,R.id.et63,R.id.et64,R.id.et65,R.id.et66,R.id.et67,R.id.et68,R.id.et69,R.id.et70
-            ,R.id.et71,R.id.et72,R.id.et73,R.id.et74,R.id.et75,R.id.et76,R.id.et77,R.id.et78,R.id.et79,R.id.et80,R.id.et81,R.id.et82,R.id.et83,R.id.et84,R.id.et85
-            ,R.id.et86,R.id.et87,R.id.et88,R.id.et89,R.id.et90,R.id.et91,R.id.et92,R.id.et93,R.id.et94,R.id.et95,R.id.et96,R.id.et97,R.id.et98,R.id.et99
+            R.id.et00, R.id.et01, R.id.et02, R.id.et03, R.id.et04, R.id.et05, R.id.et06, R.id.et07, R.id.et08, R.id.et09, R.id.et10, R.id.et11, R.id.et12
+            , R.id.et13, R.id.et14, R.id.et15, R.id.et16, R.id.et17, R.id.et18, R.id.et19, R.id.et20, R.id.et21, R.id.et22, R.id.et23, R.id.et24, R.id.et25
+            , R.id.et26, R.id.et27, R.id.et28, R.id.et29, R.id.et30, R.id.et31, R.id.et32, R.id.et33, R.id.et34, R.id.et35, R.id.et36, R.id.et37, R.id.et38, R.id.et39, R.id.et40
+            , R.id.et41, R.id.et42, R.id.et43, R.id.et44, R.id.et45, R.id.et46, R.id.et47, R.id.et48, R.id.et49, R.id.et50, R.id.et51, R.id.et52, R.id.et53, R.id.et54, R.id.et55
+            , R.id.et56, R.id.et57, R.id.et58, R.id.et59, R.id.et60, R.id.et61, R.id.et62, R.id.et63, R.id.et64, R.id.et65, R.id.et66, R.id.et67, R.id.et68, R.id.et69, R.id.et70
+            , R.id.et71, R.id.et72, R.id.et73, R.id.et74, R.id.et75, R.id.et76, R.id.et77, R.id.et78, R.id.et79, R.id.et80, R.id.et81, R.id.et82, R.id.et83, R.id.et84, R.id.et85
+            , R.id.et86, R.id.et87, R.id.et88, R.id.et89, R.id.et90, R.id.et91, R.id.et92, R.id.et93, R.id.et94, R.id.et95, R.id.et96, R.id.et97, R.id.et98, R.id.et99
     };
 
 
@@ -67,7 +67,7 @@ public class CrossWord extends AppCompatActivity {
         editText.requestFocus();
         mean_text = findViewById(R.id.mean_text);
 
-        what_problem=-1;
+        what_problem = -1;
         test_json = "problem/cross_puz";
 
         Intent intent = getIntent();
@@ -75,9 +75,9 @@ public class CrossWord extends AppCompatActivity {
         RecapFlag = intent.getBooleanExtra("RecapFlag", false);
         level_info = intent.getIntExtra("levelInfo", 0);
 
-        for(int i=0; i<10; i++){
-            for(int j=0; j<10; j++){
-                et[10*i+j] = (EditText) findViewById(Rid_editText[10*i+j]);
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                et[10 * i + j] = (EditText) findViewById(Rid_editText[10 * i + j]);
             }
         }
 
@@ -85,9 +85,9 @@ public class CrossWord extends AppCompatActivity {
             @Override
             public void run() {
                 result = new Connect_get(intent.getStringExtra("Token"))
-                        .problem_get(test_json, (2+""));
+                        .problem_get(test_json, (2 + ""));
                 try {
-                    next_problem(result,word,mean,x,y,len,tst);
+                    next_problem(result, word, mean, x, y, len, tst);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -96,14 +96,13 @@ public class CrossWord extends AppCompatActivity {
         };
 
 
-
         ok_btn = findViewById(R.id.ok_btn);
         ok_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 try {
-                    next_problem(result,word,mean,x,y,len,tst);
+                    next_problem(result, word, mean, x, y, len, tst);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -138,34 +137,33 @@ public class CrossWord extends AppCompatActivity {
     }
 
 
-    protected void next_problem(JSONObject result,String[] word,String[] mean,int[] x, int[] y,int[] len,boolean[] tst) throws JSONException {
-        JSONArray tmp_array= result.getJSONArray("problem_list");
+    protected void next_problem(JSONObject result, String[] word, String[] mean, int[] x, int[] y, int[] len, boolean[] tst) throws JSONException {
+        JSONArray tmp_array = result.getJSONArray("problem_list");
         what_problem++;
-        JSONArray target_exam = (JSONArray)tmp_array.get(what_problem);
-        max_word=target_exam.length();
+        JSONArray target_exam = (JSONArray) tmp_array.get(what_problem);
+        max_word = target_exam.length();
 
-        for(int i=0;i<et.length;i++) {
+        for (int i = 0; i < et.length; i++) {
             et[i].setEnabled(false);
         }
 
-        for(int i=0;i<max_word;i++){
-            JSONObject tmp_object=target_exam.getJSONObject(i);
-            word[i]=tmp_object.getString("word");
-            mean[i]=tmp_object.getString("mean");
-            x[i]=tmp_object.getInt("x");
-            y[i]=tmp_object.getInt("y");
-            len[i]=word[i].length();
-            tst[i]=tmp_object.getBoolean("position");
+        for (int i = 0; i < max_word; i++) {
+            JSONObject tmp_object = target_exam.getJSONObject(i);
+            word[i] = tmp_object.getString("word");
+            mean[i] = tmp_object.getString("mean");
+            x[i] = tmp_object.getInt("x");
+            y[i] = tmp_object.getInt("y");
+            len[i] = word[i].length();
+            tst[i] = tmp_object.getBoolean("position");
         }
 
-        for(int i=0; i<max_word;i++){
-            if(tst[i]==false){
-                for(int j=0;j<len[i];j++) {
+        for (int i = 0; i < max_word; i++) {
+            if (tst[i] == false) {
+                for (int j = 0; j < len[i]; j++) {
                     et[x[i] * 10 + y[i] + j].setEnabled(true);
                 }
-            }
-            else {
-                for(int j=0;j<len[i];j++) {
+            } else {
+                for (int j = 0; j < len[i]; j++) {
                     et[(x[i] + j) * 10 + y[i]].setEnabled(true);
                 }
             }
@@ -177,18 +175,16 @@ public class CrossWord extends AppCompatActivity {
     public void onBackPressed() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("").setMessage("포기하시겠습니까?");
-        builder.setPositiveButton("확인", new DialogInterface.OnClickListener(){
+        builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int id)
-            {
+            public void onClick(DialogInterface dialog, int id) {
                 CrossWord.super.onBackPressed();
             }
         });
 
-        builder.setNegativeButton("취소", new DialogInterface.OnClickListener(){
+        builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int id)
-            {
+            public void onClick(DialogInterface dialog, int id) {
 
             }
         });

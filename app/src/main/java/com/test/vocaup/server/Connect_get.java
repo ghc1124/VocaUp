@@ -115,7 +115,7 @@ public class Connect_get implements Interceptor {
                 String jsonData = response.body().string();
                 JSONObject object = new JSONObject(jsonData);
                 JSONArray array = object.getJSONArray("result");
-                //System.out.println(jsonData);
+                System.out.println(jsonData);
 
                 for (int i = 0; i < array.length(); i++) {
                     JSONObject jsonObject = array.getJSONObject(i);
