@@ -126,6 +126,7 @@ public class MenuActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         System.out.println("onPause()");
+
         SharedPreferences preferences = getSharedPreferences(PREF, 0);
         SharedPreferences.Editor editor = preferences.edit();
         if(name != null && profile != null & email != null) {
@@ -147,11 +148,11 @@ public class MenuActivity extends AppCompatActivity {
             token = preferences.getString("token", "");
         }
 
-        menu_fragment = new MenuFragment();
+        /*menu_fragment = new MenuFragment();
 
         replaceFragment(menu_fragment);
 
-        System.out.println("onResume: " + manager.getLevel());
+        System.out.println("onResume: " + manager.getLevel());*/
     }
 
     @Override
@@ -211,4 +212,26 @@ public class MenuActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onNewIntent(Intent intent) {
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+                // 사용자 정보 등록 or 받아오기
+                manager = getManager();
+            }
+        };
+
+        thread.start();
+
+        try {
+            thread.join();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+
+        text_name.setText(name + " 님 " + "lv. " + manager.getLevel());
+
+        super.onNewIntent(intent);
+    }
 }

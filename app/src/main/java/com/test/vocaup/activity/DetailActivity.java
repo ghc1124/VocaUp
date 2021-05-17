@@ -65,9 +65,7 @@ public class DetailActivity extends AppCompatActivity {
         btn_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                Intent intent1 = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent1);
+                finish();
             }
         });
 
@@ -114,6 +112,7 @@ public class DetailActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
         SharedPreferences preferences = getSharedPreferences(PREF, 0);
         if((preferences != null) && (preferences.contains("name"))) {
             name = preferences.getString("name", "");

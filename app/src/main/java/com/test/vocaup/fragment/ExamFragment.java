@@ -37,6 +37,8 @@ public class ExamFragment extends Fragment implements MenuActivity.OnBackPressed
     private Button btn_back;
     private Button btn_recap;
 
+    private Manager current_manager;
+
     public static ExamFragment newInstance() {
         return new ExamFragment();
     }
@@ -63,7 +65,8 @@ public class ExamFragment extends Fragment implements MenuActivity.OnBackPressed
         btn_sort.setOnClickListener(but_listener);
         btn_p_to_m.setOnClickListener(but_listener);
 
-        Manager current_manager = ((MenuActivity) getActivity()).manager;
+        /*current_manager = ((MenuActivity) getActivity()).manager;
+
         if(current_manager.getBlank_spelling() != 0) {
             btn_fill_blank.setEnabled(false);
             btn_fill_blank.setBackgroundResource(R.drawable.button_blue_big4);
@@ -97,7 +100,7 @@ public class ExamFragment extends Fragment implements MenuActivity.OnBackPressed
         if(current_manager.getRecap() == 5) {
             btn_recap.setEnabled(false);
             btn_recap.setBackgroundResource(R.drawable.button_blue_big4);
-        }
+        }*/
 
         btn_recap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -140,8 +143,8 @@ public class ExamFragment extends Fragment implements MenuActivity.OnBackPressed
         });
 
         text_level = viewGroup.findViewById(R.id.text_level);
-        text_level.setText("현재 VocaUp lv. " + ((MenuActivity) getActivity()).manager.getLevel() +
-                "\n승급 후 VocaUp lv. " + (((MenuActivity) getActivity()).manager.getLevel() + 1));
+        /*text_level.setText("현재 VocaUp lv. " + current_manager.getLevel() +
+                "\n승급 후 VocaUp lv. " + (current_manager.getLevel() + 1));*/
 
         return viewGroup;
     }
@@ -173,7 +176,7 @@ public class ExamFragment extends Fragment implements MenuActivity.OnBackPressed
             intent.putExtra("Token", ((MenuActivity) getActivity()).manager.getToken());
             intent.putExtra("levelInfo", ((MenuActivity) getActivity()).manager.getLevel());
             intent.putExtra("ExamFlag", true);
-            intent.putExtra("RecapFlag", true);
+            intent.putExtra("RecapFlag", false);
             startActivity(intent);
         }
     }
@@ -195,5 +198,71 @@ public class ExamFragment extends Fragment implements MenuActivity.OnBackPressed
         super.onAttach(context);
         Log.e("Other", "onAttach()");
         ((MenuActivity)context).setOnBackPressedListener(this);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        current_manager = ((MenuActivity) getActivity()).manager;
+
+        text_level.setText("현재 VocaUp lv. " + current_manager.getLevel() +
+                "\n승급 후 VocaUp lv. " + (current_manager.getLevel() + 1));
+
+        if(current_manager.getBlank_spelling() != 0) {
+            btn_fill_blank.setEnabled(false);
+            btn_fill_blank.setBackgroundResource(R.drawable.button_blue_big4);
+        } else {
+            btn_fill_blank.setEnabled(true);
+            btn_fill_blank.setBackgroundResource(R.drawable.button_blue_big3);
+        }
+
+        if(current_manager.getMean_spelling() != 0) {
+            btn_m_to_w.setEnabled(false);
+            btn_m_to_w.setBackgroundResource(R.drawable.button_blue_big4);
+        } else {
+            btn_m_to_w.setEnabled(true);
+            btn_m_to_w.setBackgroundResource(R.drawable.button_blue_big3);
+        }
+
+        if(current_manager.getSpelling_mean() != 0) {
+            btn_w_to_m.setEnabled(false);
+            btn_w_to_m.setBackgroundResource(R.drawable.button_blue_big4);
+        } else {
+            btn_w_to_m.setEnabled(true);
+            btn_w_to_m.setBackgroundResource(R.drawable.button_blue_big3);
+        }
+
+        if(current_manager.getSpelling_mean_link() != 0) {
+            btn_match.setEnabled(false);
+            btn_match.setBackgroundResource(R.drawable.button_blue_big4);
+        } else {
+            btn_match.setEnabled(true);
+            btn_match.setBackgroundResource(R.drawable.button_blue_big3);
+        }
+
+        if(current_manager.getSpelling_sort() != 0) {
+            btn_sort.setEnabled(false);
+            btn_sort.setBackgroundResource(R.drawable.button_blue_big4);
+        } else {
+            btn_sort.setEnabled(true);
+            btn_sort.setBackgroundResource(R.drawable.button_blue_big3);
+        }
+
+        if(current_manager.getPron_mean() != 0) {
+            btn_p_to_m.setEnabled(false);
+            btn_p_to_m.setBackgroundResource(R.drawable.button_blue_big4);
+        } else {
+            btn_p_to_m.setEnabled(true);
+            btn_p_to_m.setBackgroundResource(R.drawable.button_blue_big3);
+        }
+
+        if(current_manager.getRecap() == 5) {
+            btn_recap.setEnabled(false);
+            btn_recap.setBackgroundResource(R.drawable.button_blue_big4);
+        } else {
+            btn_recap.setEnabled(true);
+            btn_recap.setBackgroundResource(R.drawable.button_blue_big3);
+        }
     }
 }
