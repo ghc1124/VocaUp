@@ -83,6 +83,7 @@ public class ExamFragment extends Fragment implements MenuActivity.OnBackPressed
                 strings.add(SpellingMeanLink.class);
                 strings.add(SpellingSort.class);
                 strings.add(PronMean.class);
+                strings.add(CrossWord.class);
 
                 Collections.shuffle(strings);
                 if (CurrentLevel == 1) {

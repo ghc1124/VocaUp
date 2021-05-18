@@ -81,6 +81,7 @@ public class StudyFragment extends Fragment implements MenuActivity.OnBackPresse
                 strings.add(SpellingMeanLink.class);
                 strings.add(SpellingSort.class);
                 strings.add(PronMean.class);
+                strings.add(CrossWord.class);
 
                 Collections.shuffle(strings);
                 if (CurrentLevel == 1) {
