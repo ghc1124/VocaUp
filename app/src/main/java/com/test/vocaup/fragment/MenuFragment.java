@@ -112,15 +112,16 @@ public class MenuFragment extends Fragment  {
                     public void run() {
                         // 사용자 정보 등록 or 받아오기
                         Connect_put connect_put = new Connect_put();
-                        Manager testManager = new Manager(((MenuActivity)getActivity()).token);
+                        Manager testManager = new Manager(((MenuActivity)MenuActivity.context).manager.getToken(),
+                                ((MenuActivity)MenuActivity.context).manager.getLevel());
 
-                        testManager.setRecap(5);
-                        testManager.setBlank_spelling(1);
+                        testManager.setRecap(0);
+                        testManager.setBlank_spelling(0);
                         testManager.setMean_spelling(0);
                         testManager.setSpelling_mean(0);
-                        testManager.setSpelling_mean_link(1);
-                        testManager.setSpelling_sort(1);
-                        testManager.setPron_mean(1);
+                        testManager.setSpelling_mean_link(0);
+                        testManager.setSpelling_sort(0);
+                        testManager.setPron_mean(0);
 
                         Manager resultManager = connect_put.changeUserInfo(testManager);
                         ((MenuActivity)getActivity()).manager = ((MenuActivity)getActivity()).getManager();

@@ -43,11 +43,12 @@ public class TestResultActivity extends AppCompatActivity {
         percent = (TextView) findViewById(R.id.percent);
         OX = (TextView) findViewById(R.id.OX);
 
+        btn_add = findViewById(R.id.btn_add);
+        btn_result = findViewById(R.id.btn_result);
+
         Thread thread = new Thread() {
             @Override
             public void run() {
-                btn_add = findViewById(R.id.btn_add);
-                btn_result = findViewById(R.id.btn_result);
                 result = (ArrayList<Problem>)getIntent().getExtras().get("test_result");
                 int check = 0;
                 for (Problem tmp_pro : result) {
@@ -126,6 +127,11 @@ public class TestResultActivity extends AppCompatActivity {
         adapter.setItems(result); // 어댑터 아이템 설정
 
         recyclerView.setAdapter(adapter); // 어댑터 등록
+
+        if (adapter.getWrongList().size() == 0) {
+            btn_add.setEnabled(false);
+            btn_add.setBackgroundResource(R.drawable.button_bg2);
+        }
     }
 
     class ResultButtonLevelUpListener implements View.OnClickListener {
