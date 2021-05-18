@@ -15,6 +15,11 @@ public class Manager implements Serializable {
     private int pron_mean = -1; // 발음 듣고 뜻 맞추기
     private int recap = -1; // 복습
 
+    public Manager(String token, int level) {
+        Token = token;
+        Level = level;
+    }
+
     public Manager(String token) {
         Token = token;
     }

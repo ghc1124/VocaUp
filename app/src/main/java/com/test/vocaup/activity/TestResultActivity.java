@@ -59,7 +59,8 @@ public class TestResultActivity extends AppCompatActivity {
                 OX.setText("O = " + check + ", X = " + (result.size() - check));
                 if(ExamFlag && check >= result.size() * 0.9) {
                     Connect_put connect_put = new Connect_put();
-                    Manager testManager = new Manager(((MenuActivity)MenuActivity.context).token);
+                    Manager testManager = new Manager(((MenuActivity)MenuActivity.context).manager.getToken(),
+                            ((MenuActivity)MenuActivity.context).manager.getLevel());
                     if (RecapFlag) {
                         System.out.println("test!!!");
                         testManager.setRecap(((MenuActivity)MenuActivity.context).manager.getRecap() + 1);
