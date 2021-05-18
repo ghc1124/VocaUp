@@ -3,7 +3,9 @@ package com.test.vocaup.quiz;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,7 +31,12 @@ public class CrossWord extends AppCompatActivity {
     EditText et[] = new EditText[100];
     EditText editText;
     private Button ok_btn;
+    private Button submit_btn;
     private TextView mean_text;
+    String wordTemp;
+    int temp;
+    int recentX, recentY;
+    int target;
 
     String[] word = new String[]{null, null, null, null, null, null, null, null, null, null};
     String[] mean = new String[]{null, null, null, null, null, null, null, null, null, null};
@@ -70,6 +77,7 @@ public class CrossWord extends AppCompatActivity {
 
         what_problem = -1;
         test_json = "problem/cross_puz";
+        target= -1;
 
         Intent intent = getIntent();
         ExamFlag = intent.getBooleanExtra("ExamFlag", false);
@@ -79,8 +87,10 @@ public class CrossWord extends AppCompatActivity {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 et[10 * i + j] = (EditText) findViewById(Rid_editText[10 * i + j]);
+                et[10*i+j].setOnTouchListener(new setOnTouchListener());
             }
         }
+
 
         Thread thread = new Thread() {
             @Override
@@ -96,9 +106,48 @@ public class CrossWord extends AppCompatActivity {
             }
         };
 
-
         ok_btn = findViewById(R.id.ok_btn);
         ok_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                try{
+                    View currentView = getCurrentFocus();
+                    for(int i=0;i<100;i++){
+                        if(Rid_editText[i]==currentView.getId()) {
+                            temp=i;
+                        }
+                    }
+                    recentX = temp%10;
+                    recentY = temp/10;
+
+                    wordTemp = editText.getText().toString();
+
+                    System.out.println(target);
+
+                    if(target != -1){
+                        if(!tst[target]){
+                            for(int i=0;i<len[target];i++){
+                                et[x[target]*10 + y[target]+i].setText(wordTemp.charAt(i)+"");
+                                System.out.println("좌표:" +(x[target]*10 + y[target]+i));
+                            }
+                        }
+                        else{
+                            for(int i=0;i<len[target];i++){
+                                et[(x[target]+i)*10 + y[target]].setText(wordTemp.charAt(i)+"");
+                                System.out.println("우표:" +(x[target]*10 + y[target]+i));
+                            }
+                        }
+                    }
+
+                }catch(Exception e){ }
+
+
+            }
+        });
+
+        submit_btn = findViewById(R.id.submit_btn);
+        submit_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -117,6 +166,8 @@ public class CrossWord extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+
+
 //                String temp="";
 //                temp=editText.getText().toString();
 //
@@ -144,6 +195,77 @@ public class CrossWord extends AppCompatActivity {
             thread.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
+        }
+    }
+
+    class setOnTouchListener implements View.OnTouchListener {
+
+        @Override
+        public boolean onTouch(View view, MotionEvent motionEvent) {
+
+            if (target != -1) {
+                if (!tst[target]) {
+                    for (int j = 0; j < len[target]; j++) {
+                        et[x[target] * 10 + y[target] + j].setBackground(getResources().getDrawable(R.drawable.edittext_rounded_corner));
+                    }
+                } else
+                    for (int j = 0; j < len[target]; j++) {
+                        et[(x[target] + j) * 10 + y[target]].setBackground(getResources().getDrawable(R.drawable.edittext_rounded_corner));
+                    }
+            }
+
+
+            target = -1;
+            System.out.println("시작");
+            for (int i = 0; i < 100; i++) {
+                if (Rid_editText[i] == view.getId()) {
+                    temp = i;
+                }
+            }
+            recentX = temp / 10;
+            recentY = temp % 10;
+
+            for (int i = 0; i < max_word; i++) {
+                if (tst[i]) {
+                    for (int j = 0; j < len[i]; j++) {
+                        if (((x[i] + j) == recentX) && (y[i] == recentY)) {
+                            if (target == -1)
+                                target = i;
+                            else
+                                target = -1;
+                        }
+
+
+                    }
+
+                } else {
+                    for (int j = 0; j < len[i]; j++) {
+                        if (((x[i]) == recentX) && ((y[i] + j) == recentY)) {
+                            if (target == -1)
+                                target = i;
+                            else
+                                target = -1;
+                        }
+                    }
+                }
+            }
+            System.out.println(target + "번째 단어");
+            if (target != -1) {
+                if (!tst[target]) {
+                    for (int i = 0; i < len[target]; i++) {
+                        et[x[target] * 10 + y[target] + i].setBackground(getResources().getDrawable(R.drawable.edittext_select_rounded_corner));
+
+                    }
+                } else {
+                    for (int i = 0; i < len[target]; i++) {
+                        et[(x[target] + i) * 10 + y[target]].setBackground(getResources().getDrawable(R.drawable.edittext_select_rounded_corner));
+
+                    }
+                }
+
+
+            }
+            return false;
         }
     }
 
