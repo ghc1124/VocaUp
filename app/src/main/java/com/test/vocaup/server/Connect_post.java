@@ -35,7 +35,7 @@ public class Connect_post {
                 object.put("Token", manager.getToken());
             }
 
-            if (manager.getLevel() != 0) {
+            /*if (manager.getLevel() != 0) {
                 object.put("Level", manager.getLevel());
             }
 
@@ -73,7 +73,7 @@ public class Connect_post {
 
             if (manager.getRecap() != -1) {
                 object.put("recap", manager.getRecap());
-            }
+            }*/
 
         } catch (Exception e) {
             e.printStackTrace();
