@@ -44,13 +44,8 @@ public class Connect_get implements Interceptor {
                 .retryOnConnectionFailure(true)
                 .addInterceptor(this::intercept)
                 .build();
-        //RequestBody body = null;
         Request request = null;
         request = new Request.Builder().url(url + strings[0] + "/" + strings[1]).build();
-
-//        System.out.println(userToken);
-//        System.out.println(url + strings[0] + "/" + strings[1]);
-//      전체 리스트 요청할 때는 /list/{"레벨"}
 
         if(strings[0].equals("list")) {
             try {
@@ -100,13 +95,8 @@ public class Connect_get implements Interceptor {
                 .retryOnConnectionFailure(true)
                 .addInterceptor(this::intercept)
                 .build();
-        //RequestBody body = null;
         Request request = null;
         request = new Request.Builder().url(url + key).build();
-
-//        System.out.println(userToken);
-//        System.out.println(url + strings[0] + "/" + strings[1]);
-//      전체 리스트 요청할 때는 /list/{"레벨"}
 
         if(key.equals("userWordList")) {
             try {
@@ -171,9 +161,6 @@ public class Connect_get implements Interceptor {
         Request request = null;
         JSONObject result = null;
         request = new Request.Builder().url(url + strings[0] + "/" + strings[1]).build();
-
-        System.out.println(userToken);
-        System.out.println(url + strings[0] + "/" + strings[1]);
 
         try {
             Response response = httpClient.newCall(request).execute();

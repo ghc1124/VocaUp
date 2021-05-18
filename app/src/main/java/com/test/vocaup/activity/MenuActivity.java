@@ -110,7 +110,7 @@ public class MenuActivity extends AppCompatActivity {
 
     public Manager getManager() {
         Connect_post connectPost = new Connect_post();
-        System.out.println(token);
+        // System.out.println(token);
         return connectPost.getUserInfo(new Manager(token));
     }
 

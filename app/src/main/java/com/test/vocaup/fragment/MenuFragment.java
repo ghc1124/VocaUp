@@ -1,6 +1,7 @@
 package com.test.vocaup.fragment;
 
 import android.content.Intent;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
@@ -8,13 +9,16 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.bumptech.glide.Glide;
 import com.test.vocaup.DO.Manager;
 import com.test.vocaup.R;
 import com.test.vocaup.activity.MenuActivity;
@@ -76,65 +80,7 @@ public class MenuFragment extends Fragment  {
         imgBtn_lab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(getActivity(), CrossWord.class);
-//                startActivity(intent);
-
-                // 사진 파일 통신 테스트
-                /*Glide.with(getActivity())
-                        .load("http://13.209.75.148:5000/wordPic/1/bye")
-                        .fitCenter()
-                        .into(imageView_test);*/
-
-                // 발음 파일 통신 테스트
-                /*try {
-                    if(mediaPlayer != null) {
-                        mediaPlayer.stop();
-                    }
-
-                    mediaPlayer = new MediaPlayer();
-                    mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-                    mediaPlayer.setDataSource("http://13.209.75.148:5000/wordPron/1/hello.mp3");
-                    mediaPlayer.prepareAsync();
-                    mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                        @Override
-                        public void onPrepared(MediaPlayer mediaPlayer) {
-                            Log.e("PREPARED", "Start Music");
-                            mediaPlayer.start();
-                        }
-                    });
-                } catch(Exception e) {
-                    e.printStackTrace();
-                }*/
-
-                // 정보 수정
-                Thread thread = new Thread() {
-                    @Override
-                    public void run() {
-                        // 사용자 정보 등록 or 받아오기
-                        Connect_put connect_put = new Connect_put();
-                        Manager testManager = new Manager(((MenuActivity)MenuActivity.context).manager.getToken(),
-                                ((MenuActivity)MenuActivity.context).manager.getLevel());
-
-                        testManager.setRecap(0);
-                        testManager.setBlank_spelling(0);
-                        testManager.setMean_spelling(0);
-                        testManager.setSpelling_mean(0);
-                        testManager.setSpelling_mean_link(0);
-                        testManager.setSpelling_sort(0);
-                        testManager.setPron_mean(0);
-
-                        Manager resultManager = connect_put.changeUserInfo(testManager);
-                        ((MenuActivity)getActivity()).manager = ((MenuActivity)getActivity()).getManager();
-                    }
-                };
-
-                thread.start();
-
-                try {
-                    thread.join();
-                } catch(Exception e) {
-                    e.printStackTrace();
-                }
+                Toast.makeText(getContext(), "더 멋진 기능을 준비중입니다!!", Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -101,8 +101,9 @@ public class CrossWord extends AppCompatActivity {
         ok_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 try {
-                    if(what_problem <= result.getJSONArray("problem_list").length() - 2){
+                    if(what_problem <= problem_list.size() - 2){
                         checking_problem(word, mean, x, y, len, tst, problem_list);
                         next_problem(result, word, mean, x, y, len, tst);
                     }
@@ -212,25 +213,15 @@ public class CrossWord extends AppCompatActivity {
             if (tst[i]) {
                 for (int j = 0; j < len[i]; j++) {
                     user_answer=user_answer+et[(x[i] + j) * 10 + y[i]].getText().toString();
-                    if(et[(x[i] + j) * 10 + y[i]].getText().toString().length()!=0&&(word[i].charAt(j)!=et[(x[i] + j) * 10 + y[i]].getText().toString().charAt(0))){
-                        System.out.println("비교할 거 :" + word[i].charAt(j)+ "유저선택"+ et[(x[i] + j) * 10 + y[i]].getText().toString().charAt(0));
-                        check_ox=1;
-                    }
-                    if(et[(x[i] + j) * 10 + y[i]].getText().toString().length()==0){
-                        user_answer=user_answer+"*";
+                    if(word[i].charAt(j)!=et[(x[i] + j) * 10 + y[i]].getText().toString().charAt(0)){
                         check_ox=1;
                     }
                 }
 
             } else {
-                for(int j = 0; j < len[i]; j++) {
+                for (int j = 0; j < len[i]; j++) {
                     user_answer=user_answer+et[x[i] * 10 + y[i] + j].getText().toString();
-                    if(et[x[i] * 10 + y[i] + j].getText().toString().length()!=0&&(word[i].charAt(j)!=et[x[i] * 10 + y[i] + j].getText().toString().charAt(0))){
-                        System.out.println("비교할 거 :" + word[i].charAt(j)+ "유저선택"+ et[x[i] * 10 + y[i] + j].getText().toString().charAt(0));
-                        check_ox=1;
-                    }
-                    if(et[x[i] * 10 + y[i] + j].getText().toString().length()==0){
-                        user_answer=user_answer+"*";
+                    if(word[i].charAt(j)!=et[x[i] * 10 + y[i] + j].getText().toString().charAt(0)){
                         check_ox=1;
                     }
                 }

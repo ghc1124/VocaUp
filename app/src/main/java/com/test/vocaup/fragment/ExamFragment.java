@@ -16,6 +16,7 @@ import com.test.vocaup.DO.Manager;
 import com.test.vocaup.R;
 import com.test.vocaup.activity.MenuActivity;
 import com.test.vocaup.quiz.BlankSpelling;
+import com.test.vocaup.quiz.CrossWord;
 import com.test.vocaup.quiz.MeanSpelling;
 import com.test.vocaup.quiz.PronMean;
 import com.test.vocaup.quiz.SpellingMean;
@@ -35,6 +36,7 @@ public class ExamFragment extends Fragment implements MenuActivity.OnBackPressed
     private Button btn_sort;
     private Button btn_fill_blank;
     private Button btn_back;
+    private Button btn_cross;
     private Button btn_recap;
 
     private Manager current_manager;
@@ -54,6 +56,7 @@ public class ExamFragment extends Fragment implements MenuActivity.OnBackPressed
         btn_match = viewGroup.findViewById(R.id.btn_match);
         btn_sort = viewGroup.findViewById(R.id.btn_sort);
         btn_p_to_m = viewGroup.findViewById(R.id.btn_p_to_m);
+        btn_cross = viewGroup.findViewById(R.id.btn_cross);
         btn_recap = viewGroup.findViewById(R.id.btn_recap);
 
         btn_back = viewGroup.findViewById(R.id.btn_back);
@@ -64,43 +67,7 @@ public class ExamFragment extends Fragment implements MenuActivity.OnBackPressed
         btn_match.setOnClickListener(but_listener);
         btn_sort.setOnClickListener(but_listener);
         btn_p_to_m.setOnClickListener(but_listener);
-
-        /*current_manager = ((MenuActivity) getActivity()).manager;
-
-        if(current_manager.getBlank_spelling() != 0) {
-            btn_fill_blank.setEnabled(false);
-            btn_fill_blank.setBackgroundResource(R.drawable.button_blue_big4);
-        }
-
-        if(current_manager.getMean_spelling() != 0) {
-            btn_m_to_w.setEnabled(false);
-            btn_m_to_w.setBackgroundResource(R.drawable.button_blue_big4);
-        }
-
-        if(current_manager.getSpelling_mean() != 0) {
-            btn_w_to_m.setEnabled(false);
-            btn_w_to_m.setBackgroundResource(R.drawable.button_blue_big4);
-        }
-
-        if(current_manager.getSpelling_mean_link() != 0) {
-            btn_match.setEnabled(false);
-            btn_match.setBackgroundResource(R.drawable.button_blue_big4);
-        }
-
-        if(current_manager.getSpelling_sort() != 0) {
-            btn_sort.setEnabled(false);
-            btn_sort.setBackgroundResource(R.drawable.button_blue_big4);
-        }
-
-        if(current_manager.getPron_mean() != 0) {
-            btn_p_to_m.setEnabled(false);
-            btn_p_to_m.setBackgroundResource(R.drawable.button_blue_big4);
-        }
-
-        if(current_manager.getRecap() == 5) {
-            btn_recap.setEnabled(false);
-            btn_recap.setBackgroundResource(R.drawable.button_blue_big4);
-        }*/
+        btn_cross.setOnClickListener(but_listener);
 
         btn_recap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,6 +83,7 @@ public class ExamFragment extends Fragment implements MenuActivity.OnBackPressed
                 strings.add(SpellingMeanLink.class);
                 strings.add(SpellingSort.class);
                 strings.add(PronMean.class);
+                strings.add(CrossWord.class);
 
                 Collections.shuffle(strings);
                 if (CurrentLevel == 1) {
@@ -143,8 +111,6 @@ public class ExamFragment extends Fragment implements MenuActivity.OnBackPressed
         });
 
         text_level = viewGroup.findViewById(R.id.text_level);
-        /*text_level.setText("현재 VocaUp lv. " + current_manager.getLevel() +
-                "\n승급 후 VocaUp lv. " + (current_manager.getLevel() + 1));*/
 
         return viewGroup;
     }
@@ -172,7 +138,11 @@ public class ExamFragment extends Fragment implements MenuActivity.OnBackPressed
                 case R.id.btn_p_to_m:
                     intent = new Intent(getActivity(), PronMean.class);
                     break;
+                case R.id.btn_cross:
+                    intent = new Intent(getActivity(), CrossWord.class);
+                    break;
             }
+
             intent.putExtra("Token", ((MenuActivity) getActivity()).manager.getToken());
             intent.putExtra("levelInfo", ((MenuActivity) getActivity()).manager.getLevel());
             intent.putExtra("ExamFlag", true);
@@ -255,6 +225,14 @@ public class ExamFragment extends Fragment implements MenuActivity.OnBackPressed
         } else {
             btn_p_to_m.setEnabled(true);
             btn_p_to_m.setBackgroundResource(R.drawable.button_blue_big3);
+        }
+
+        if(current_manager.getCross_puz() != 0) {
+            btn_cross.setEnabled(false);
+            btn_cross.setBackgroundResource(R.drawable.button_blue_big4);
+        } else {
+            btn_cross.setEnabled(true);
+            btn_cross.setBackgroundResource(R.drawable.button_blue_big3);
         }
 
         if(current_manager.getRecap() == 5) {

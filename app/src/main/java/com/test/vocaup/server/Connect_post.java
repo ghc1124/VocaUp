@@ -35,7 +35,7 @@ public class Connect_post {
                 object.put("Token", manager.getToken());
             }
 
-            if (manager.getLevel() != 0) {
+            /*if (manager.getLevel() != 0) {
                 object.put("Level", manager.getLevel());
             }
 
@@ -73,7 +73,7 @@ public class Connect_post {
 
             if (manager.getRecap() != -1) {
                 object.put("recap", manager.getRecap());
-            }
+            }*/
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -109,6 +109,7 @@ public class Connect_post {
                     result.setSpelling_mean_link(jsonData.getInt("spelling_mean_link"));
                     result.setSpelling_sort(jsonData.getInt("spelling_sort"));
                     result.setPron_mean(jsonData.getInt("pron_mean"));
+                    result.setCross_puz(jsonData.getInt("cross_puz"));
                     result.setRecap(jsonData.getInt("recap"));
                 }
             }
