@@ -244,6 +244,18 @@ public class CrossWord extends AppCompatActivity {
 
             problem_list.add(problem_add);
         }
+        for(int i=0;i<max_word;i++){
+            if (tst[i]) {
+                for (int j = 0; j < len[i]; j++) {
+                    et[(x[i] + j) * 10 + y[i]].setText("");
+                }
+            }
+            else {
+                for (int j = 0; j < len[i]; j++) {
+                    et[x[i] * 10 + y[i] + j].setText("");
+                }
+            }
+        }
 
     }
 
