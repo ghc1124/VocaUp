@@ -49,21 +49,23 @@ public class SpellingMeanLink extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_spelling_mean_link);
-        spelling =  (TextView)findViewById(R.id.look);
+
+        spelling = (TextView) findViewById(R.id.look);
         Show_but_array = new Button[4];
         Select_but_array = new Button[4];
         OX = new int[6];                                                //5번째와 6번째는 show, select 버튼클릭유무체크
         OX[0] = OX[1] = OX[2] = OX[3] = OX[4] = OX[5] = -1;
-        Show_but_array[0] = (Button)findViewById(R.id.show_0);
-        Show_but_array[1] = (Button)findViewById(R.id.show_1);
-        Show_but_array[2] = (Button)findViewById(R.id.show_2);
-        Show_but_array[3] = (Button)findViewById(R.id.show_3);
-        Select_but_array[0] = (Button)findViewById(R.id.select_0);
-        Select_but_array[1] = (Button)findViewById(R.id.select_1);
-        Select_but_array[2] = (Button)findViewById(R.id.select_2);
-        Select_but_array[3] = (Button)findViewById(R.id.select_3);
-        line = (Link_line)findViewById(R.id.line);
+        Show_but_array[0] = (Button) findViewById(R.id.show_0);
+        Show_but_array[1] = (Button) findViewById(R.id.show_1);
+        Show_but_array[2] = (Button) findViewById(R.id.show_2);
+        Show_but_array[3] = (Button) findViewById(R.id.show_3);
+        Select_but_array[0] = (Button) findViewById(R.id.select_0);
+        Select_but_array[1] = (Button) findViewById(R.id.select_1);
+        Select_but_array[2] = (Button) findViewById(R.id.select_2);
+        Select_but_array[3] = (Button) findViewById(R.id.select_3);
+        line = (Link_line) findViewById(R.id.line);
         what_problem = -1;
 
         textView_count = findViewById(R.id.textView_count);
@@ -71,7 +73,7 @@ public class SpellingMeanLink extends AppCompatActivity {
 
         test_json = "problem/spelling_mean_link";
         SpellingMeanLink.SelectBtnOnClickListener but_listener = new SpellingMeanLink.SelectBtnOnClickListener();
-      //  line.setting(OX[0],OX[1],OX[2],OX[3]);
+        //  line.setting(OX[0],OX[1],OX[2],OX[3]);
         Intent intent = getIntent();
         ExamFlag = intent.getBooleanExtra("ExamFlag", false);
         RecapFlag = intent.getBooleanExtra("RecapFlag", false);
@@ -81,10 +83,10 @@ public class SpellingMeanLink extends AppCompatActivity {
             @Override
             public void run() {
                 result = new Connect_get(intent.getStringExtra("Token"))
-                        .problem_get(test_json, (level_info+""));
+                        .problem_get(test_json, (level_info + ""));
                 try {
-                    problem_list_fill(result,problem_list);
-                    next_problem(spelling, Show_but_array,Select_but_array, problem_list);
+                    problem_list_fill(result, problem_list);
+                    next_problem(spelling, Show_but_array, Select_but_array, problem_list);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -107,7 +109,7 @@ public class SpellingMeanLink extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        for(int i = 0; i < 4; i++){
+        for (int i = 0; i < 4; i++) {
             Show_but_array[i].setOnClickListener(but_listener);
             Select_but_array[i].setOnClickListener(but_listener);
         }
@@ -120,7 +122,7 @@ public class SpellingMeanLink extends AppCompatActivity {
 
         line.getLocationOnScreen(locLine);
 
-        for(int i = 0; i < Show_but_array.length; i++) {
+        for (int i = 0; i < Show_but_array.length; i++) {
             Show_but_array[i].getLocationOnScreen(locBtn);
             x[i] = 0;
             y[i] = (locBtn[1] + (Show_but_array[i].getHeight() / 2)) - locLine[1];
@@ -128,7 +130,7 @@ public class SpellingMeanLink extends AppCompatActivity {
 //            System.out.println(x[i] + ", " + y[i]);
         }
 
-        for(int j = 0; j < Select_but_array.length; j++) {
+        for (int j = 0; j < Select_but_array.length; j++) {
             Select_but_array[j].getLocationOnScreen(locBtn);
             x[j + 4] = line.getWidth();
             y[j + 4] = y[j];
@@ -143,11 +145,6 @@ public class SpellingMeanLink extends AppCompatActivity {
     class SelectBtnOnClickListener implements Button.OnClickListener {
         @Override
         public void onClick(View view) {
-            int click_but = -1;
-            for (int i = 0; i < problem_list.size(); i++) {
-                System.out.println(problem_list.get(i).getAnswer() + " : " + problem_list.get(i).getChoice());
-            }
-
             switch (view.getId()) {
                 case R.id.show_0:
                     OX[4] = 0;
@@ -218,19 +215,23 @@ public class SpellingMeanLink extends AppCompatActivity {
             }
         }
     }
+
     //다음문제로 세팅
-    protected void next_problem(TextView show, Button[] show_buttons, Button[] select_buttons, ArrayList<Problem> problem_list){
+    protected void next_problem(TextView show, Button[] show_buttons, Button[] select_buttons, ArrayList<Problem> problem_list) {
         what_problem++;
 
         if ((what_problem + 1) <= problem_list.size())
             textView_count.setText((what_problem + 1) + "/" + (problem_list.size() / 4));
 
         for (int i = 0; i < problem_list.get(what_problem).getSelectSize(); i++) {
+            show_buttons[i].setVisibility(View.GONE);
+            show_buttons[i].setVisibility(View.VISIBLE);
             show_buttons[i].setText(problem_list.get(what_problem * 4 + i).getShow());
+            select_buttons[i].setVisibility(View.GONE);
+            select_buttons[i].setVisibility(View.VISIBLE);
             select_buttons[i].setText((problem_list.get(what_problem * 4 + i).getSelect(i)).replace("\n", " "));
-            /*show_buttons[i].setText("test");
-            select_buttons[i].setText("test");*/
         }
+
         OX[0] = OX[1] = OX[2] = OX[3] = OX[4] = OX[5] = -1;
     }
 
@@ -238,18 +239,16 @@ public class SpellingMeanLink extends AppCompatActivity {
     public void onBackPressed() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("").setMessage("포기하시겠습니까?");
-        builder.setPositiveButton("확인", new DialogInterface.OnClickListener(){
+        builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int id)
-            {
+            public void onClick(DialogInterface dialog, int id) {
                 SpellingMeanLink.super.onBackPressed();
             }
         });
 
-        builder.setNegativeButton("취소", new DialogInterface.OnClickListener(){
+        builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int id)
-            {
+            public void onClick(DialogInterface dialog, int id) {
 
             }
         });

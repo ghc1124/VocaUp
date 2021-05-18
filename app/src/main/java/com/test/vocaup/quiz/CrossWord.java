@@ -142,8 +142,6 @@ public class CrossWord extends AppCompatActivity {
 
                 } catch (Exception e) {
                 }
-
-
             }
         });
 
