@@ -12,8 +12,8 @@ public class Problem implements Serializable {
     private int level;
 
     public Problem(){
-
     }
+
     public int getChoice(){return choice;}
     public String getSelect(int i) {
         return select.get(i);
