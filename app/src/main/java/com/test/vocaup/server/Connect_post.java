@@ -109,6 +109,7 @@ public class Connect_post {
                     result.setSpelling_mean_link(jsonData.getInt("spelling_mean_link"));
                     result.setSpelling_sort(jsonData.getInt("spelling_sort"));
                     result.setPron_mean(jsonData.getInt("pron_mean"));
+                    result.setCross_puz(jsonData.getInt("cross_puz"));
                     result.setRecap(jsonData.getInt("recap"));
                 }
             }

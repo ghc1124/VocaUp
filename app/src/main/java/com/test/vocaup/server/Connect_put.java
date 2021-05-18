@@ -86,6 +86,10 @@ public class Connect_put implements Interceptor {
                 object.put("pron_mean", manager.getPron_mean());
             }
 
+            if (manager.getCross_puz() != -1) {
+                object.put("cross_puz", manager.getCross_puz());
+            }
+
             if (manager.getRecap() != -1) {
                 object.put("recap", manager.getRecap());
             }

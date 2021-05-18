@@ -103,11 +103,10 @@ public class CrossWord extends AppCompatActivity {
             public void onClick(View view) {
 
                 try {
-                    if(what_problem <= problem_list.size() - 2){
+                    if (what_problem <= problem_list.size() - 2) {
                         checking_problem(word, mean, x, y, len, tst, problem_list);
                         next_problem(result, word, mean, x, y, len, tst);
-                    }
-                    else{
+                    } else {
                         Intent intent = new Intent(CrossWord.this, TestResultActivity.class);
                         intent.putExtra("test_result", problem_list);
                         intent.putExtra("type", "cross_puz");
@@ -205,24 +204,24 @@ public class CrossWord extends AppCompatActivity {
         alertDialog.show();
     }
 
-    public void checking_problem(String[] word, String[] mean, int[] x, int[] y, int[] len, boolean[] tst,ArrayList<Problem> problem_list){
-        for(int i=0;i<max_word;i++){
+    public void checking_problem(String[] word, String[] mean, int[] x, int[] y, int[] len, boolean[] tst, ArrayList<Problem> problem_list) {
+        for (int i = 0; i < max_word; i++) {
             Problem problem_add = new Problem();
-            int check_ox=0;//일단 정답으로 간주 보기로 간주하는 select 배열에 0번째는 답 1번째는 사용자가 쓴 문자열 기입
-            String user_answer="";
+            int check_ox = 0;//일단 정답으로 간주 보기로 간주하는 select 배열에 0번째는 답 1번째는 사용자가 쓴 문자열 기입
+            String user_answer = "";
             if (tst[i]) {
                 for (int j = 0; j < len[i]; j++) {
-                    user_answer=user_answer+et[(x[i] + j) * 10 + y[i]].getText().toString();
-                    if(word[i].charAt(j)!=et[(x[i] + j) * 10 + y[i]].getText().toString().charAt(0)){
-                        check_ox=1;
+                    user_answer = user_answer + et[(x[i] + j) * 10 + y[i]].getText().toString();
+                    if (word[i].charAt(j) != et[(x[i] + j) * 10 + y[i]].getText().toString().charAt(0)) {
+                        check_ox = 1;
                     }
                 }
 
             } else {
                 for (int j = 0; j < len[i]; j++) {
-                    user_answer=user_answer+et[x[i] * 10 + y[i] + j].getText().toString();
-                    if(word[i].charAt(j)!=et[x[i] * 10 + y[i] + j].getText().toString().charAt(0)){
-                        check_ox=1;
+                    user_answer = user_answer + et[x[i] * 10 + y[i] + j].getText().toString();
+                    if (word[i].charAt(j) != et[x[i] * 10 + y[i] + j].getText().toString().charAt(0)) {
+                        check_ox = 1;
                     }
                 }
             }
@@ -234,8 +233,5 @@ public class CrossWord extends AppCompatActivity {
 
             problem_list.add(problem_add);
         }
-
     }
-
-
 }
