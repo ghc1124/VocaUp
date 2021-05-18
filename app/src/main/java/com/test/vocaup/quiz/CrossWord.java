@@ -77,7 +77,7 @@ public class CrossWord extends AppCompatActivity {
 
         what_problem = -1;
         test_json = "problem/cross_puz";
-        target= -1;
+        target = -1;
 
         Intent intent = getIntent();
         ExamFlag = intent.getBooleanExtra("ExamFlag", false);
@@ -87,7 +87,7 @@ public class CrossWord extends AppCompatActivity {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 et[10 * i + j] = (EditText) findViewById(Rid_editText[10 * i + j]);
-                et[10*i+j].setOnTouchListener(new setOnTouchListener());
+                et[10 * i + j].setOnTouchListener(new setOnTouchListener());
             }
         }
 
@@ -111,36 +111,37 @@ public class CrossWord extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                try{
+                try {
                     View currentView = getCurrentFocus();
-                    for(int i=0;i<100;i++){
-                        if(Rid_editText[i]==currentView.getId()) {
-                            temp=i;
+                    for (int i = 0; i < 100; i++) {
+                        if (Rid_editText[i] == currentView.getId()) {
+                            temp = i;
                         }
                     }
-                    recentX = temp%10;
-                    recentY = temp/10;
+                    recentX = temp % 10;
+                    recentY = temp / 10;
 
                     wordTemp = editText.getText().toString();
 
                     System.out.println(target);
 
-                    if(target != -1){
-                        if(!tst[target]){
-                            for(int i=0;i<len[target];i++){
-                                et[x[target]*10 + y[target]+i].setText(wordTemp.charAt(i)+"");
-                                System.out.println("좌표:" +(x[target]*10 + y[target]+i));
+                    if (target != -1) {
+                        if (!tst[target]) {
+                            for (int i = 0; i < len[target]; i++) {
+                                et[x[target] * 10 + y[target] + i].setText(wordTemp.charAt(i) + "");
+                                System.out.println("좌표:" + (x[target] * 10 + y[target] + i));
                             }
-                        }
-                        else{
-                            for(int i=0;i<len[target];i++){
-                                et[(x[target]+i)*10 + y[target]].setText(wordTemp.charAt(i)+"");
-                                System.out.println("우표:" +(x[target]*10 + y[target]+i));
+                        } else {
+                            for (int i = 0; i < len[target]; i++) {
+                                et[(x[target] + i) * 10 + y[target]].setText(wordTemp.charAt(i) + "");
+                                System.out.println("우표:" + (x[target] * 10 + y[target] + i));
                             }
                         }
                     }
+                    editText.setText("");
 
-                }catch(Exception e){ }
+                } catch (Exception e) {
+                }
 
 
             }
@@ -263,6 +264,7 @@ public class CrossWord extends AppCompatActivity {
                     }
                 }
 
+                editText.requestFocus();
 
             }
             return false;
