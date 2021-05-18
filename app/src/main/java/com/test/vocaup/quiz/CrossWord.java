@@ -37,6 +37,7 @@ public class CrossWord extends AppCompatActivity {
     int[] y = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; //y좌표
     int[] len = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; //길이
     boolean[] tst = new boolean[]{true, true, true, true, true, true, true, true, true, true}; //가로면 true 세로면 false
+
     int max_word = 1; //단어수
 
     private JSONObject result = new JSONObject();
@@ -102,7 +103,18 @@ public class CrossWord extends AppCompatActivity {
             public void onClick(View view) {
 
                 try {
-                    next_problem(result, word, mean, x, y, len, tst);
+                    if(what_problem <= problem_list.size() - 2){
+                        checking_problem(word, mean, x, y, len, tst, problem_list);
+                        next_problem(result, word, mean, x, y, len, tst);
+                    }
+                    else{
+                        Intent intent = new Intent(CrossWord.this, TestResultActivity.class);
+                        intent.putExtra("test_result", problem_list);
+                        intent.putExtra("type", "cross_puz");
+                        intent.putExtra("ExamFlag", ExamFlag);
+                        intent.putExtra("RecapFlag", RecapFlag);
+                        startActivity(intent);
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -158,13 +170,14 @@ public class CrossWord extends AppCompatActivity {
         }
 
         for (int i = 0; i < max_word; i++) {
-            if (tst[i] == false) {
-                for (int j = 0; j < len[i]; j++) {
-                    et[x[i] * 10 + y[i] + j].setEnabled(true);
-                }
-            } else {
+            if (tst[i]) {
                 for (int j = 0; j < len[i]; j++) {
                     et[(x[i] + j) * 10 + y[i]].setEnabled(true);
+                }
+
+            } else {
+                for (int j = 0; j < len[i]; j++) {
+                    et[x[i] * 10 + y[i] + j].setEnabled(true);
                 }
             }
         }
@@ -191,4 +204,38 @@ public class CrossWord extends AppCompatActivity {
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
+
+    public void checking_problem(String[] word, String[] mean, int[] x, int[] y, int[] len, boolean[] tst,ArrayList<Problem> problem_list){
+        for(int i=0;i<max_word;i++){
+            Problem problem_add = new Problem();
+            int check_ox=0;//일단 정답으로 간주 보기로 간주하는 select 배열에 0번째는 답 1번째는 사용자가 쓴 문자열 기입
+            String user_answer="";
+            if (tst[i]) {
+                for (int j = 0; j < len[i]; j++) {
+                    user_answer=user_answer+et[(x[i] + j) * 10 + y[i]].getText().toString();
+                    if(word[i].charAt(j)!=et[(x[i] + j) * 10 + y[i]].getText().toString().charAt(0)){
+                        check_ox=1;
+                    }
+                }
+
+            } else {
+                for (int j = 0; j < len[i]; j++) {
+                    user_answer=user_answer+et[x[i] * 10 + y[i] + j].getText().toString();
+                    if(word[i].charAt(j)!=et[x[i] * 10 + y[i] + j].getText().toString().charAt(0)){
+                        check_ox=1;
+                    }
+                }
+            }
+            problem_add.setShow(mean[i]);
+            problem_add.addSelect(word[i]);
+            problem_add.addSelect(user_answer);
+            problem_add.setAnswer(0);
+            problem_add.setChoice(check_ox);
+
+            problem_list.add(problem_add);
+        }
+
+    }
+
+
 }
