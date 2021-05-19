@@ -249,6 +249,9 @@ public class CrossWord extends AppCompatActivity {
                 }
             }
             System.out.println(target + "번째 단어");
+            if(target!=-1)
+                mean_text.setText(mean[target]);
+
             if (target != -1) {
                 if (!tst[target]) {
                     for (int i = 0; i < len[target]; i++) {
@@ -265,7 +268,7 @@ public class CrossWord extends AppCompatActivity {
                 editText.requestFocus();
 
             }
-            return false;
+            return true;
         }
     }
 
