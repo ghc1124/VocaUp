@@ -129,11 +129,6 @@ public class TestResultActivity extends AppCompatActivity {
         adapter.setItems(result); // 어댑터 아이템 설정
 
         recyclerView.setAdapter(adapter); // 어댑터 등록
-
-        if (adapter.getWrongList().size() == 0) {
-            btn_add.setEnabled(false);
-            btn_add.setBackgroundResource(R.drawable.button_bg2);
-        }
     }
 
     class ResultButtonLevelUpListener implements View.OnClickListener {
@@ -252,23 +247,28 @@ public class TestResultActivity extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialog, int id)
                         {
-                            Toast.makeText(getApplicationContext(), "나만의 단어장에 추가되었습니다.", Toast.LENGTH_SHORT).show();
                             ArrayList<String> strings = adapter.getWrongList();
+                            if(strings.size() == 0) {
+                                Toast.makeText(TestResultActivity.this, "추가할 단어가 없습니다!", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getApplicationContext(), "나만의 단어장에 추가되었습니다.", Toast.LENGTH_SHORT).show();
 
-                            Thread thread = new Thread() {
-                                @Override
-                                public void run() {
-                                    new Connect_put(((MenuActivity)MenuActivity.context).manager.getToken())
-                                            .appendWrongList(strings, ((MenuActivity)MenuActivity.context).manager.getLevel());
+
+                                Thread thread = new Thread() {
+                                    @Override
+                                    public void run() {
+                                        new Connect_put(((MenuActivity)MenuActivity.context).manager.getToken())
+                                                .appendWrongList(strings, ((MenuActivity)MenuActivity.context).manager.getLevel());
+                                    }
+                                };
+
+                                thread.start();
+
+                                try {
+                                    thread.join();
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
                                 }
-                            };
-
-                            thread.start();
-
-                            try {
-                                thread.join();
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
                             }
                         }
                     });
