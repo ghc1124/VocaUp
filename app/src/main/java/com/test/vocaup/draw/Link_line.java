@@ -42,6 +42,7 @@ public class Link_line extends View {
         for (int i = 0; i < 4; i++) {
             answer[i] = check_answer[i];
         }
+
         invalidate();
     }
 
