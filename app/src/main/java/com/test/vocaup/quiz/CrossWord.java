@@ -432,7 +432,6 @@ public class CrossWord extends AppCompatActivity {
             problem_add.addSelect(user_answer);
             problem_add.setAnswer(0);
             problem_add.setChoice(check_ox);
-
             problem_list.add(problem_add);
         }
         editText.requestFocus();
