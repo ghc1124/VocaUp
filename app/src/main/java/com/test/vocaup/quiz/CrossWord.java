@@ -150,6 +150,7 @@ public class CrossWord extends AppCompatActivity {
         submit_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                editText.requestFocus();
 
                 try {
                     if (what_problem <= result.getJSONArray("problem_list").length() - 2) {
@@ -166,31 +167,11 @@ public class CrossWord extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-
-//                String temp="";
-//                temp=editText.getText().toString();
-//
-//                et[x1 * 10 + y1].setText("" + temp.charAt(0));
-//
-//                mean_text.setText(tmean); //옮겨야함
-//
-//                if (temp.length() == len){
-//                    for (int i = 1; i < len; i++) {
-//                        if (tst == true) {
-//                            et[x1 * 10 + y1 + i].setText("" + temp.charAt(i));
-//                        } else {
-//                            et[(x1 + i) * 10 + y1].setText("" + temp.charAt(i));
-//                        }
-//                    }
-//                }
-//                else
-//                    Toast.makeText(CrossWord.this, "길이가 달라요! ", Toast.LENGTH_SHORT).show();
             }
         });
 
-
         thread.start();
+
         try {
             thread.join();
         } catch (InterruptedException e) {
@@ -234,8 +215,6 @@ public class CrossWord extends AppCompatActivity {
                             else
                                 target = -1;
                         }
-
-
                     }
 
                 } else {
@@ -308,11 +287,11 @@ public class CrossWord extends AppCompatActivity {
                         } catch (Exception e) {
                         }
 
-                        textView.clearFocus();
+                        /*textView.clearFocus();
                         textView.setFocusable(false);
                         textView.setText("");
                         textView.setFocusableInTouchMode(true);
-                        textView.setFocusable(true);
+                        textView.setFocusable(true);*/
 
                         imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
 
