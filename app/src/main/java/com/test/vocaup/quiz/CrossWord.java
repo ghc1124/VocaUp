@@ -75,7 +75,6 @@ public class CrossWord extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cross_word);
         editText = findViewById(R.id.editText1);
-        //editText.requestFocus();
         mean_text = findViewById(R.id.mean_text);
 
         what_problem = -1;
@@ -94,7 +93,7 @@ public class CrossWord extends AppCompatActivity {
             }
         }
 
-
+        editText.requestFocus();
         Thread thread = new Thread() {
             @Override
             public void run() {
@@ -329,6 +328,19 @@ public class CrossWord extends AppCompatActivity {
 
     protected void next_problem(JSONObject result, String[] word, String[] mean, int[] x, int[] y, int[] len, boolean[] tst) throws JSONException {
         JSONArray tmp_array = result.getJSONArray("problem_list");
+        for (int i = 0; i < max_word; i++) {
+            if (tst[i]) {
+                for (int j = 0; j < len[i]; j++) {
+                    et[(x[i] + j) * 10 + y[i]].setText("");
+                }
+
+            } else {
+                for (int j = 0; j < len[i]; j++) {
+                    et[x[i] * 10 + y[i] + j].setText("");
+                }
+            }
+        }
+
         what_problem++;
         JSONArray target_exam = (JSONArray) tmp_array.get(what_problem);
         max_word = target_exam.length();
@@ -359,6 +371,7 @@ public class CrossWord extends AppCompatActivity {
                 }
             }
         }
+        editText.requestFocus();
 
     }
 
@@ -422,5 +435,6 @@ public class CrossWord extends AppCompatActivity {
 
             problem_list.add(problem_add);
         }
+        editText.requestFocus();
     }
 }
