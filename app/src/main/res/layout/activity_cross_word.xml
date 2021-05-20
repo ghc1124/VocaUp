@@ -22,7 +22,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et01"
@@ -31,7 +32,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et02"
@@ -40,7 +42,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et03"
@@ -49,7 +52,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et04"
@@ -58,7 +62,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et05"
@@ -67,7 +72,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et06"
@@ -76,7 +82,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et07"
@@ -85,7 +92,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et08"
@@ -94,7 +102,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et09"
@@ -103,7 +112,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et10"
@@ -112,7 +122,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et11"
@@ -121,7 +132,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et12"
@@ -130,7 +142,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et13"
@@ -139,7 +152,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et14"
@@ -148,7 +162,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et15"
@@ -157,7 +172,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et16"
@@ -166,7 +182,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et17"
@@ -175,7 +192,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et18"
@@ -184,7 +202,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et19"
@@ -193,7 +212,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et20"
@@ -202,7 +222,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et21"
@@ -211,7 +232,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et22"
@@ -220,7 +242,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et23"
@@ -229,7 +252,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et24"
@@ -238,7 +262,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et25"
@@ -247,7 +272,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et26"
@@ -256,7 +282,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et27"
@@ -265,7 +292,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et28"
@@ -274,7 +302,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et29"
@@ -283,7 +312,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et30"
@@ -292,7 +322,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et31"
@@ -301,7 +332,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et32"
@@ -310,7 +342,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et33"
@@ -319,7 +352,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et34"
@@ -328,7 +362,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et35"
@@ -337,7 +372,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et36"
@@ -346,7 +382,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et37"
@@ -355,7 +392,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et38"
@@ -364,7 +402,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et39"
@@ -373,7 +412,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et40"
@@ -382,7 +422,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et41"
@@ -391,7 +432,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et42"
@@ -400,7 +442,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et43"
@@ -409,7 +452,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et44"
@@ -418,7 +462,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et45"
@@ -427,7 +472,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et46"
@@ -436,7 +482,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et47"
@@ -445,7 +492,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et48"
@@ -454,7 +502,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et49"
@@ -463,7 +512,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et50"
@@ -472,7 +522,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et51"
@@ -481,7 +532,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et52"
@@ -490,7 +542,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et53"
@@ -499,7 +552,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et54"
@@ -508,7 +562,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et55"
@@ -517,7 +572,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et56"
@@ -526,7 +582,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et57"
@@ -535,7 +592,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et58"
@@ -544,7 +602,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et59"
@@ -553,7 +612,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et60"
@@ -562,7 +622,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et61"
@@ -571,7 +632,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et62"
@@ -580,7 +642,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et63"
@@ -589,7 +652,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et64"
@@ -598,7 +662,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et65"
@@ -607,7 +672,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et66"
@@ -616,7 +682,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et67"
@@ -625,7 +692,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et68"
@@ -634,7 +702,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et69"
@@ -643,7 +712,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et70"
@@ -652,7 +722,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et71"
@@ -661,7 +732,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et72"
@@ -670,7 +742,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et73"
@@ -679,7 +752,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et74"
@@ -688,7 +762,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et75"
@@ -697,7 +772,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et76"
@@ -706,7 +782,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et77"
@@ -715,7 +792,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et78"
@@ -724,7 +802,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et79"
@@ -733,7 +812,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et80"
@@ -742,7 +822,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et81"
@@ -751,7 +832,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et82"
@@ -760,7 +842,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et83"
@@ -769,7 +852,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et84"
@@ -778,7 +862,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et85"
@@ -787,7 +872,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et86"
@@ -796,7 +882,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et87"
@@ -805,7 +892,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et88"
@@ -814,7 +902,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et89"
@@ -823,7 +912,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et90"
@@ -832,7 +922,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et91"
@@ -841,7 +932,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et92"
@@ -850,7 +942,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et93"
@@ -859,7 +952,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et94"
@@ -868,7 +962,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et95"
@@ -877,7 +972,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et96"
@@ -886,7 +982,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et97"
@@ -895,7 +992,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et98"
@@ -904,7 +1002,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et99"
@@ -913,7 +1012,8 @@
             android:background="@drawable/edittext_rounded_corner"
             android:enabled="false"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
     </GridLayout>
 
 
@@ -924,7 +1024,8 @@
         android:layout_row="2"
         android:layout_column="0"
         android:gravity="center|center_horizontal"
-        android:text="테스트입니다." />
+        android:text="테스트입니다."
+        android:textColor="@color/black" />
 
     <EditText
         android:id="@+id/editText1"

@@ -1,12 +1,15 @@
 package com.test.vocaup.quiz;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -72,7 +75,7 @@ public class CrossWord extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cross_word);
         editText = findViewById(R.id.editText1);
-        editText.requestFocus();
+        //editText.requestFocus();
         mean_text = findViewById(R.id.mean_text);
 
         what_problem = -1;
@@ -110,7 +113,6 @@ public class CrossWord extends AppCompatActivity {
         ok_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 try {
                     View currentView = getCurrentFocus();
                     for (int i = 0; i < 100; i++) {
@@ -266,6 +268,58 @@ public class CrossWord extends AppCompatActivity {
                 }
 
                 editText.requestFocus();
+
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
+
+                editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+                    @Override
+                    public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                        String data = textView.getText().toString();
+
+                        try {
+                            View currentView = getCurrentFocus();
+                            for (int j = 0; j < 100; j++) {
+                                if (Rid_editText[j] == currentView.getId()) {
+                                    temp = j;
+                                }
+                            }
+                            recentX = temp % 10;
+                            recentY = temp / 10;
+
+                            wordTemp = editText.getText().toString();
+
+                            System.out.println(target);
+
+                            if (target != -1) {
+                                if (!tst[target]) {
+                                    for (int k = 0; k < len[target]; k++) {
+                                        et[x[target] * 10 + y[target] + k].setText(wordTemp.charAt(k) + "");
+                                        System.out.println("좌표:" + (x[target] * 10 + y[target] + k));
+                                    }
+                                } else {
+                                    for (int l = 0; l < len[target]; l++) {
+                                        et[(x[target] + l) * 10 + y[target]].setText(wordTemp.charAt(l) + "");
+                                        System.out.println("우표:" + (x[target] * 10 + y[target] + l));
+                                    }
+                                }
+                            }
+                            editText.setText("");
+
+                        } catch (Exception e) {
+                        }
+
+                        textView.clearFocus();
+                        textView.setFocusable(false);
+                        textView.setText("");
+                        textView.setFocusableInTouchMode(true);
+                        textView.setFocusable(true);
+
+                        imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+
+                        return true;
+                    }
+                });
 
             }
             return true;
