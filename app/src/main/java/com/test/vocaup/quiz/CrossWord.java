@@ -307,7 +307,7 @@ public class CrossWord extends AppCompatActivity {
                         textView.setFocusable(true);
 
                         imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
-
+                        editText.requestFocus();
                         return true;
                     }
                 });
