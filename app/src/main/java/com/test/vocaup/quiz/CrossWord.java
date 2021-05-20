@@ -98,7 +98,7 @@ public class CrossWord extends AppCompatActivity {
             @Override
             public void run() {
                 result = new Connect_get(intent.getStringExtra("Token"))
-                        .problem_get(test_json, (2 + ""));
+                        .problem_get(test_json, (level_info + ""));
                 try {
                     next_problem(result, word, mean, x, y, len, tst);
                 } catch (JSONException e) {
@@ -166,26 +166,18 @@ public class CrossWord extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+                for (int i = 0; i < max_word; i++) {
+                    if (tst[i]) {
+                        for (int j = 0; j < len[i]; j++) {
+                            et[(x[i] + j) * 10 + y[i]].setBackground(getResources().getDrawable(R.drawable.edittext_rounded_corner));
+                        }
 
-
-//                String temp="";
-//                temp=editText.getText().toString();
-//
-//                et[x1 * 10 + y1].setText("" + temp.charAt(0));
-//
-//                mean_text.setText(tmean); //옮겨야함
-//
-//                if (temp.length() == len){
-//                    for (int i = 1; i < len; i++) {
-//                        if (tst == true) {
-//                            et[x1 * 10 + y1 + i].setText("" + temp.charAt(i));
-//                        } else {
-//                            et[(x1 + i) * 10 + y1].setText("" + temp.charAt(i));
-//                        }
-//                    }
-//                }
-//                else
-//                    Toast.makeText(CrossWord.this, "길이가 달라요! ", Toast.LENGTH_SHORT).show();
+                    } else {
+                        for (int j = 0; j < len[i]; j++) {
+                            et[x[i] * 10 + y[i] + j].setBackground(getResources().getDrawable(R.drawable.edittext_rounded_corner));
+                        }
+                    }
+                }
             }
         });
 
