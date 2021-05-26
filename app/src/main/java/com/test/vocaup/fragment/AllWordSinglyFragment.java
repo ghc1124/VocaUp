@@ -44,6 +44,8 @@ public class AllWordSinglyFragment extends Fragment implements MenuActivity.OnBa
     private int now_index = 0;
     private int last_index = 0;
 
+    private myListener listener = new myListener();
+
     public static AllWordSinglyFragment newInstance() { // 모든 프래그먼트에 공통으로 들어가야될 부분!!
         return new AllWordSinglyFragment();
     }
@@ -91,14 +93,16 @@ public class AllWordSinglyFragment extends Fragment implements MenuActivity.OnBa
             text_mean_s = viewGroup.findViewById(R.id.text_mean_s);
             text_mean_s.setText(result.get(0).getMean_s());
 
+            btn_pron = viewGroup.findViewById(R.id.btn_pron); // 발음 듣기 버튼 할당
+            btn_pron.setText(result.get(0).getWord());
+
             image_word = viewGroup.findViewById(R.id.image_word);
             Glide.with(container.getContext())
                     .load("http://13.209.75.148:5000/wordPic/" + level + "/" + result.get(0).getOrigin_word())
                     .fitCenter()
                     .into(image_word);
 
-            btn_pron = viewGroup.findViewById(R.id.btn_pron); // 발음 듣기 버튼 할당
-            btn_pron.setText(result.get(0).getWord());
+            checkBox_single.setOnCheckedChangeListener(listener);
         }
 
         btn_pron.setOnClickListener(new View.OnClickListener() {
@@ -133,10 +137,11 @@ public class AllWordSinglyFragment extends Fragment implements MenuActivity.OnBa
                 if(now_index == 0){
                     Toast myToast = Toast.makeText(getContext(),"이전 단어가 없습니다.", Toast.LENGTH_SHORT);
                     myToast.show();
-                }
-                else {
+                } else {
                     now_index--;
+                    checkBox_single.setOnCheckedChangeListener(null);
                     checkBox_single.setChecked(result.get(now_index).isSelected());
+                    checkBox_single.setOnCheckedChangeListener(listener);
                     btn_pron.setText(result.get(now_index).getWord()); // 증가 시킨 인덱스의 단어로 텍스트 변경
                     text_mean.setText(result.get(now_index).getMean());
                     text_part.setText(result.get(now_index).getPart());
@@ -157,11 +162,12 @@ public class AllWordSinglyFragment extends Fragment implements MenuActivity.OnBa
                 if(now_index == last_index){
                     Toast myToast = Toast.makeText(getContext(),"다음 단어가 없습니다.", Toast.LENGTH_SHORT);
                     myToast.show();
-                }
-                else {
+                } else {
                     now_index++;
                     btn_pron.setText(result.get(now_index).getWord()); // 증가 시킨 인덱스의 단어로 텍스트 변경
+                    checkBox_single.setOnCheckedChangeListener(null);
                     checkBox_single.setChecked(result.get(now_index).isSelected());
+                    checkBox_single.setOnCheckedChangeListener(listener);
                     text_mean.setText(result.get(now_index).getMean());
                     text_part.setText(result.get(now_index).getPart());
                     text_sentence.setText(result.get(now_index).getSentence());
@@ -171,19 +177,6 @@ public class AllWordSinglyFragment extends Fragment implements MenuActivity.OnBa
                             .fitCenter()
                             .into(image_word);
                 }
-            }
-        });
-
-        checkBox_single.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(b) {
-                    new AllWordFragment().onClick(result.get(now_index).getIndex());
-                } else {
-                    new AllWordFragment().onClick(-1 * result.get(now_index).getIndex());
-                }
-
-                result.get(now_index).setSelected(b);
             }
         });
 
@@ -222,5 +215,18 @@ public class AllWordSinglyFragment extends Fragment implements MenuActivity.OnBa
         super.onAttach(context);
         Log.e("Other", "onAttach()");
         ((MenuActivity)context).setOnBackPressedListener(this);
+    }
+
+    private class myListener implements CompoundButton.OnCheckedChangeListener {
+        @Override
+        public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+            if(b) {
+                new AllWordFragment().onClick(result.get(now_index).getIndex());
+            } else {
+                new AllWordFragment().onClick(-1 * result.get(now_index).getIndex());
+            }
+
+            result.get(now_index).setSelected(b);
+        }
     }
 }

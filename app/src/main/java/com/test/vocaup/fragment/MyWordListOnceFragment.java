@@ -19,6 +19,7 @@ import com.test.vocaup.DO.ListAll;
 import com.test.vocaup.R;
 import com.test.vocaup.activity.MenuActivity;
 import com.test.vocaup.adapter.ListAdapter;
+import com.test.vocaup.server.Connect_delete;
 import com.test.vocaup.server.Connect_get;
 import com.test.vocaup.server.Connect_put;
 
@@ -119,7 +120,7 @@ public class MyWordListOnceFragment extends Fragment implements MenuActivity.OnB
                 if(index > 0) {
                     new Connect_put(((MenuActivity)MenuActivity.context).manager.getToken()).appendUserWord(index);
                 } else {
-                    new Connect_put(((MenuActivity)MenuActivity.context).manager.getToken()).removeUserWord(-1 * index);
+                    new Connect_delete(((MenuActivity)MenuActivity.context).manager.getToken()).removeUserWord(-1 * index);
                 }
             }
         };
