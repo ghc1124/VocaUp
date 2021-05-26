@@ -19,8 +19,8 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class Connect_put implements Interceptor {
-    private String url = "http://10.0.2.2:5000/";
-    //private String url = "http://13.209.75.148:5000/";
+    //private String url = "http://10.0.2.2:5000/";
+    private String url = "http://13.209.75.148:5000/";
 
     private String userToken = "";
 
@@ -147,7 +147,7 @@ public class Connect_put implements Interceptor {
 
         System.out.println(body);
 
-        request = new Request.Builder().url(url + "/wrongList/" + level).put(body).build();
+        request = new Request.Builder().url(url + "wrongList/" + level).put(body).build();
 
         try {
             response = httpClient.newCall(request).execute();

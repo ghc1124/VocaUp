@@ -17,8 +17,8 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class Connect_delete implements Interceptor {
-    private String url = "http://10.0.2.2:5000/";
-    //private String url = "http://13.209.75.148:5000/";
+    //private String url = "http://10.0.2.2:5000/";
+    private String url = "http://13.209.75.148:5000/";
 
     private String userToken = "";
 
@@ -34,7 +34,7 @@ public class Connect_delete implements Interceptor {
         Request request = null;
         Response response = null;
 
-        request = new Request.Builder().url(url + "/userWord/" + index).delete().build();
+        request = new Request.Builder().url(url + "userWord/" + index).delete().build();
 
         try {
             response = httpClient.newCall(request).execute();

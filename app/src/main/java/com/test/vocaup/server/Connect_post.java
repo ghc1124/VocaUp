@@ -84,7 +84,7 @@ public class Connect_post {
                 object.toString()
         );
 
-        request = new Request.Builder().url(url + "/user").post(body).build();
+        request = new Request.Builder().url(url + "user").post(body).build();
 
         try {
             response = httpClient.newCall(request).execute();
