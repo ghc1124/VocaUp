@@ -35,46 +35,6 @@ public class Connect_post {
                 object.put("Token", manager.getToken());
             }
 
-            /*if (manager.getLevel() != 0) {
-                object.put("Level", manager.getLevel());
-            }
-
-            if (manager.getUserWord() != null) {
-                object.put("UserWord", manager.getUserWord());
-            }
-
-            if (manager.getProblemSet() != null) {
-                object.put("ProblemSet", manager.getProblemSet());
-            }
-
-            if (manager.getBlank_spelling() != -1) {
-                object.put("blank_spelling", manager.getBlank_spelling());
-            }
-
-            if (manager.getMean_spelling() != -1) {
-                object.put("mean_spelling", manager.getMean_spelling());
-            }
-
-            if (manager.getSpelling_mean() != -1) {
-                object.put("spelling_mean", manager.getSpelling_mean());
-            }
-
-            if (manager.getSpelling_mean_link() != -1) {
-                object.put("spelling_mean_link", manager.getSpelling_mean_link());
-            }
-
-            if (manager.getSpelling_sort() != -1) {
-                object.put("spelling_sort", manager.getSpelling_sort());
-            }
-
-            if (manager.getPron_mean() != -1) {
-                object.put("pron_mean", manager.getPron_mean());
-            }
-
-            if (manager.getRecap() != -1) {
-                object.put("recap", manager.getRecap());
-            }*/
-
         } catch (Exception e) {
             e.printStackTrace();
         }
