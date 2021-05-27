@@ -86,6 +86,8 @@ public class CrossWord extends AppCompatActivity {
         RecapFlag = intent.getBooleanExtra("RecapFlag", false);
         level_info = intent.getIntExtra("levelInfo", 0);
 
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 et[10 * i + j] = (EditText) findViewById(Rid_editText[10 * i + j]);
@@ -140,6 +142,8 @@ public class CrossWord extends AppCompatActivity {
                         }
                     }
                     editText.setText("");
+
+                    imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
 
                 } catch (Exception e) {
                 }

@@ -18,7 +18,8 @@
         <activity android:name=".quiz.MeanSpelling" />
         <activity android:name=".quiz.BlankSpelling" />
         <activity android:name=".quiz.PronMean" />
-        <activity android:name=".quiz.CrossWord" />
+        <activity android:name=".quiz.CrossWord"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity android:name=".activity.DetailActivity"
                   android:theme="@style/Theme.AppCompat.Dialog"/>
         <activity

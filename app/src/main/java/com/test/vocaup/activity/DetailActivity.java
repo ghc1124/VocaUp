@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -38,6 +39,8 @@ public class DetailActivity extends AppCompatActivity {
     private TextView textView_pron_mean;
     private TextView textView_cross_puz;
     private TextView textView_recap;
+
+    private ProgressBar progressBar;
 
     private Button btn_logout;
 
@@ -77,6 +80,9 @@ public class DetailActivity extends AppCompatActivity {
 
         textView_name.setText(name);
         textView_level.setText("lv. " + manager.getLevel());
+
+        progressBar = findViewById(R.id.progressBar);
+        progressBar.setProgress(manager.getLevel());
 
         textView_blank_spelling = findViewById(R.id.textView_blank_spelling);
         textView_mean_spelling = findViewById(R.id.textView_mean_spelling);
