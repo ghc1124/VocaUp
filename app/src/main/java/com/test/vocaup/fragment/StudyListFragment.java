@@ -1,15 +1,21 @@
 package com.test.vocaup.fragment;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
+import android.widget.NumberPicker;
 
 import com.test.vocaup.DO.ListAll;
 import com.test.vocaup.R;
@@ -33,15 +39,38 @@ public class StudyListFragment extends Fragment implements MenuActivity.OnBackPr
     private Button btn_act;
     private Button btn_once;
     private Button btn_singly;
+    private Button button;
+
+    private Dialog number;
+    private NumberPicker numberPicker;
 
     public static StudyListFragment newInstance() { // 모든 프래그먼트에 공통으로 들어가야될 부분!!
         return new StudyListFragment();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_studylist, container, false);
+
+        number = new Dialog(getActivity());
+        number.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        number.setContentView(R.layout.dialog_number);
+
+        button = number.findViewById(R.id.button_ok);
+
+        numberPicker = number.findViewById(R.id.numberPicker);
+
+        numberPicker.setWrapSelectorWheel(false);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            numberPicker.setTextColor(Color.BLACK);
+        }
+
+        numberPicker.setMaxValue(35);
+        numberPicker.setMinValue(1);
+        numberPicker.setValue(((MenuActivity) getActivity()).manager.getLevel());
 
         btn_act = viewGroup.findViewById(R.id.btn_act);
         btn_act.setOnClickListener(new View.OnClickListener() {
@@ -55,7 +84,18 @@ public class StudyListFragment extends Fragment implements MenuActivity.OnBackPr
         btn_once.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MenuActivity) getActivity()).replaceFragment(AllWordFragment.newInstance());
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        ((MenuActivity)MenuActivity.context).level = numberPicker.getValue();
+                        ((MenuActivity) getActivity()).replaceFragment(AllWordFragment.newInstance());
+
+                        number.dismiss();
+                    }
+                });
+
+                number.create();
+                number.show();
             }
         });
 
@@ -63,7 +103,18 @@ public class StudyListFragment extends Fragment implements MenuActivity.OnBackPr
         btn_singly.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MenuActivity) getActivity()).replaceFragment(AllWordSinglyFragment.newInstance());
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        ((MenuActivity)MenuActivity.context).level = numberPicker.getValue();
+                        ((MenuActivity) getActivity()).replaceFragment(AllWordSinglyFragment.newInstance());
+
+                        number.dismiss();
+                    }
+                });
+
+                number.create();
+                number.show();
             }
         });
 

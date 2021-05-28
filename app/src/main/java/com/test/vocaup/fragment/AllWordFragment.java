@@ -36,11 +36,17 @@ public class AllWordFragment extends Fragment implements MenuActivity.OnBackPres
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        String level = ((MenuActivity)MenuActivity.context).level == 0 ?
+                ((MenuActivity)MenuActivity.context).manager.getLevel() + "" : ((MenuActivity)MenuActivity.context).level + "";
+
+        ((MenuActivity)MenuActivity.context).level = 0;
+
         Thread thread = new Thread() {
             @Override
             public void run() {
                 result = new Connect_get(((MenuActivity)MenuActivity.context).manager.getToken())
-                        .get("list", ((MenuActivity)MenuActivity.context).manager.getLevel() + "");
+                        .get("list", level);
             }
         };
 

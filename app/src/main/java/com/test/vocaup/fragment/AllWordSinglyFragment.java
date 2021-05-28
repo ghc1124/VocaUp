@@ -55,7 +55,10 @@ public class AllWordSinglyFragment extends Fragment implements MenuActivity.OnBa
                              Bundle savedInstanceState) {
         ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_mywordlistsingly, container, false);
 
-        String level = ((MenuActivity)MenuActivity.context).manager.getLevel() + "";
+        String level = ((MenuActivity)MenuActivity.context).level == 0 ?
+                ((MenuActivity)MenuActivity.context).manager.getLevel() + "" : ((MenuActivity)MenuActivity.context).level + "";
+
+        ((MenuActivity)MenuActivity.context).level = 0;
 
         Thread thread = new Thread() {
             @Override

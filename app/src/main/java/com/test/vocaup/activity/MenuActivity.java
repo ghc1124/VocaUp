@@ -39,6 +39,8 @@ public class MenuActivity extends AppCompatActivity {
     private Fragment menu_fragment;
     public Manager manager;
 
+    public int level = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
