@@ -18,6 +18,7 @@ import com.test.vocaup.DO.Manager;
 import com.test.vocaup.DO.Problem;
 import com.test.vocaup.R;
 import com.test.vocaup.adapter.checkAdapter;
+import com.test.vocaup.quiz.SpellingSort;
 import com.test.vocaup.server.Connect_put;
 
 import java.util.ArrayList;
@@ -233,6 +234,11 @@ public class TestResultActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
     }
 
     class AddButtonListener implements View.OnClickListener{
