@@ -140,11 +140,7 @@ public class BlankSpelling extends AppCompatActivity {
             JSONObject problem_single = (JSONObject) tmp_array.get(i);
             JSONArray select_list = problem_single.getJSONArray("select");
             //problem_single.getString("sentence");
-
-            String insert_string = select_list.getString(problem_single.getInt("answer"));
-            String insert_String = insert_string.substring(0, 1).toUpperCase() + insert_string.substring(1);
-            String insert_sentence = problem_single.getString("sentence").replace(insert_string, "_____");
-            insert_sentence = insert_sentence.replace(insert_String, "_____");
+            String insert_sentence = problem_single.getString("sentence");
 
             problem_add.setAnswer(problem_single.getInt("answer"));
             problem_add.setShow(problem_single.getString("show"));
