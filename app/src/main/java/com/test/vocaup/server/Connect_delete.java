@@ -1,5 +1,6 @@
 package com.test.vocaup.server;
 
+import com.test.vocaup.BuildConfig;
 import com.test.vocaup.DO.Manager;
 
 import org.jetbrains.annotations.NotNull;
@@ -17,8 +18,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class Connect_delete implements Interceptor {
-    //private String url = "http://10.0.2.2:5000/";
-    private String url = "http://13.209.75.148:5000/";
+    private String url = BuildConfig.URL;
 
     private String userToken = "";
 
