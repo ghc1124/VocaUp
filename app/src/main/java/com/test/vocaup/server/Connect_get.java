@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.bumptech.glide.load.PreferredColorSpace;
 import com.google.android.gms.common.util.Strings;
+import com.test.vocaup.BuildConfig;
 import com.test.vocaup.DO.ListAll;
 
 import org.jetbrains.annotations.NotNull;
@@ -25,8 +26,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class Connect_get implements Interceptor {
-    //private String url = "http://172.17.9.101:5000/";
-    private String url = "http://13.209.75.148:5000/";
+    private String url = BuildConfig.URL;
     private ArrayList<ListAll> result = new ArrayList<>();
 
     private String userToken = "";

@@ -1,5 +1,6 @@
 package com.test.vocaup.server;
 
+import com.test.vocaup.BuildConfig;
 import com.test.vocaup.DO.Manager;
 
 import org.json.JSONArray;
@@ -13,8 +14,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class Connect_post {
-    //private String url = "http://172.17.9.101:5000/";
-    private String url = "http://13.209.75.148:5000/";
+    private String url = BuildConfig.URL;
 
     public Manager getUserInfo(Manager manager) {
         Manager result = new Manager(manager.getToken());

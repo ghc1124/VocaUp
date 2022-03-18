@@ -1,5 +1,6 @@
 package com.test.vocaup.server;
 
+import com.test.vocaup.BuildConfig;
 import com.test.vocaup.DO.ListAll;
 import com.test.vocaup.DO.Manager;
 
@@ -19,8 +20,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class Connect_put implements Interceptor {
-    //private String url = "http://172.17.9.101:5000/";
-    private String url = "http://13.209.75.148:5000/";
+    private String url = BuildConfig.URL;
 
     private String userToken = "";
 
