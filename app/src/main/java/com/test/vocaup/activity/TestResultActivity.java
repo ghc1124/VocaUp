@@ -18,6 +18,7 @@ import com.test.vocaup.DO.Manager;
 import com.test.vocaup.DO.Problem;
 import com.test.vocaup.R;
 import com.test.vocaup.adapter.checkAdapter;
+import com.test.vocaup.quiz.SpellingSort;
 import com.test.vocaup.server.Connect_put;
 
 import java.util.ArrayList;
@@ -28,6 +29,9 @@ public class TestResultActivity extends AppCompatActivity {
     TextView OX;
 
     private Button btn_result;
+    private Button btn_add;
+
+    private checkAdapter adapter;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,25 +40,33 @@ public class TestResultActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String type = intent.getStringExtra("type");
         Boolean ExamFlag = intent.getBooleanExtra("ExamFlag", false);
-        percent=(TextView)findViewById(R.id.percent);
-        OX=(TextView)findViewById(R.id.OX);
+        Boolean RecapFlag = intent.getBooleanExtra("RecapFlag", false);
+        percent = (TextView) findViewById(R.id.percent);
+        OX = (TextView) findViewById(R.id.OX);
+
+        btn_add = findViewById(R.id.btn_add);
+        btn_result = findViewById(R.id.btn_result);
+
         Thread thread = new Thread() {
             @Override
             public void run() {
-                btn_result = findViewById(R.id.btn_result);
                 result = (ArrayList<Problem>)getIntent().getExtras().get("test_result");
-                int check=0;
-                for(Problem tmp_pro:result){
-                    if(tmp_pro.getAnswer()==tmp_pro.getChoice()){
+                int check = 0;
+                for (Problem tmp_pro : result) {
+                    if (tmp_pro.getAnswer() == tmp_pro.getChoice()) {
                         check++;
                     }
                 }
-                percent.setText("정답률 "+Math.round(((float)check/result.size())*100)+"%");
-                OX.setText("O = "+check+", X = "+(result.size()-check));
+                percent.setText("정답률 " + Math.round(((float) check / result.size()) * 100) + "%");
+                OX.setText("O = " + check + ", X = " + (result.size() - check));
                 if(ExamFlag && check >= result.size() * 0.9) {
                     Connect_put connect_put = new Connect_put();
-                    Manager testManager = new Manager(((MenuActivity)MenuActivity.context).token);
-                    if (type.equals("blank_spelling")) {
+                    Manager testManager = new Manager(((MenuActivity)MenuActivity.context).manager.getToken(),
+                            ((MenuActivity)MenuActivity.context).manager.getLevel());
+                    if (RecapFlag) {
+                        System.out.println("test!!!");
+                        testManager.setRecap(((MenuActivity)MenuActivity.context).manager.getRecap() + 1);
+                    } else if (type.equals("blank_spelling")) {
                         testManager.setBlank_spelling(1);
                     } else if (type.equals("mean_spelling")) {
                         testManager.setMean_spelling(1);
@@ -66,6 +78,8 @@ public class TestResultActivity extends AppCompatActivity {
                         testManager.setSpelling_sort(1);
                     } else if (type.equals("pron_mean")) {
                         testManager.setPron_mean(1);
+                    } else if (type.equals("cross_puz")) {
+                        testManager.setCross_puz(1);
                     }
 
                     Manager resultManager = connect_put.changeUserInfo(testManager);
@@ -88,6 +102,8 @@ public class TestResultActivity extends AppCompatActivity {
                     btn_result.setOnClickListener(new ResultButtonFailureListener());
                 else if(!ExamFlag)
                     btn_result.setOnClickListener(new ResultButtonBasicListener());
+
+                btn_add.setOnClickListener(new AddButtonListener());
             }
         };
 
@@ -110,11 +126,10 @@ public class TestResultActivity extends AppCompatActivity {
 
         recyclerView.setLayoutManager(linearLayoutManager); // 레이아웃 매니저 등록
 
-        checkAdapter adapter = new checkAdapter(); // 어댑터 객체 생성
+        adapter = new checkAdapter(); // 어댑터 객체 생성
         adapter.setItems(result); // 어댑터 아이템 설정
 
         recyclerView.setAdapter(adapter); // 어댑터 등록
-
     }
 
     class ResultButtonLevelUpListener implements View.OnClickListener {
@@ -218,6 +233,66 @@ public class TestResultActivity extends AppCompatActivity {
                     dialog.show();
                 }
             });
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+    }
+
+    class AddButtonListener implements View.OnClickListener{
+        @Override
+        public void onClick(View view){
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(TestResultActivity.this);
+                    builder.setTitle("나만의 단어장 추가!");
+                    builder.setPositiveButton("추가", new DialogInterface.OnClickListener(){
+                        @Override
+                        public void onClick(DialogInterface dialog, int id)
+                        {
+                            ArrayList<String> strings = adapter.getWrongList();
+                            if(strings.size() == 0) {
+                                Toast.makeText(TestResultActivity.this, "추가할 단어가 없습니다!", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getApplicationContext(), "나만의 단어장에 추가되었습니다.", Toast.LENGTH_SHORT).show();
+
+
+                                Thread thread = new Thread() {
+                                    @Override
+                                    public void run() {
+                                        new Connect_put(((MenuActivity)MenuActivity.context).manager.getToken())
+                                                .appendWrongList(strings, ((MenuActivity)MenuActivity.context).manager.getLevel());
+                                    }
+                                };
+
+                                thread.start();
+
+                                try {
+                                    thread.join();
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                    });
+                    builder.setNegativeButton("취소", new DialogInterface.OnClickListener(){
+                        @Override
+                        public void onClick(DialogInterface dialog, int id)
+                        {
+
+                        }
+                    });
+                    builder.setMessage("틀린문제를 나만의 단어장에 추가하시겠습니까?");
+                    builder.setIcon(R.drawable.ic_failure);
+
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
+            });
+
         }
     }
 }

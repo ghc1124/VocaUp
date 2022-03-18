@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Problem implements Serializable {
-    private ArrayList<String> select=new ArrayList<String>();
+    private ArrayList<String> select = new ArrayList<String>();
     private int answer;
     private int choice;
     private String show;
@@ -12,8 +12,8 @@ public class Problem implements Serializable {
     private int level;
 
     public Problem(){
-
     }
+
     public int getChoice(){return choice;}
     public String getSelect(int i) {
         return select.get(i);

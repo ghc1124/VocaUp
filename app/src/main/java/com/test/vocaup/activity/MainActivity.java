@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
@@ -64,14 +65,19 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     @Override
     protected void onStart() {
         super.onStart();
+
+        /*GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        System.out.println(account);*/
+
         FirebaseUser currentUser = auth.getCurrentUser();
         if(currentUser != null) {
-            Toast.makeText(this, "자동 로그인!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "환영합니다!", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
             intent.putExtra("token", auth.getUid());
             intent.putExtra("name", currentUser.getDisplayName());
             intent.putExtra("profile", String.valueOf(currentUser.getPhotoUrl())); // getPhotoUrl이 URI 형태
             intent.putExtra("email", currentUser.getEmail());
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         }
     }
@@ -98,12 +104,13 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()) {
                             // 로그인 성공
-                            Toast.makeText(MainActivity.this, "로그인 성공: " + account.getDisplayName(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, account.getDisplayName() + " 님, 환영합니다!", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
                             intent.putExtra("token", auth.getUid());
                             intent.putExtra("name", account.getDisplayName());
                             intent.putExtra("profile", String.valueOf(account.getPhotoUrl())); // getPhotoUrl이 URI 형태
                             intent.putExtra("email", account.getEmail());
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
                         } else {
                             Toast.makeText(MainActivity.this, "로그인 실패", Toast.LENGTH_SHORT).show();

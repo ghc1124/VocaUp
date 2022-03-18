@@ -39,6 +39,8 @@ public class MenuActivity extends AppCompatActivity {
     private Fragment menu_fragment;
     public Manager manager;
 
+    public int level = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +64,6 @@ public class MenuActivity extends AppCompatActivity {
             token = intent.getStringExtra("token");
         }
 
-        text_name.setText(name + " 님");
         Glide.with(this).load(profile).into(image_profile);
 
         toolbar = findViewById(R.id.toolbar);
@@ -104,12 +105,14 @@ public class MenuActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        text_name.setText(name + " 님 " + "lv. " + manager.getLevel());
+
         System.out.println(manager.getLevel());
     }
 
     public Manager getManager() {
         Connect_post connectPost = new Connect_post();
-        System.out.println(token);
+        // System.out.println(token);
         return connectPost.getUserInfo(new Manager(token));
     }
 
@@ -125,6 +128,7 @@ public class MenuActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         System.out.println("onPause()");
+
         SharedPreferences preferences = getSharedPreferences(PREF, 0);
         SharedPreferences.Editor editor = preferences.edit();
         if(name != null && profile != null & email != null) {
@@ -146,11 +150,11 @@ public class MenuActivity extends AppCompatActivity {
             token = preferences.getString("token", "");
         }
 
-        menu_fragment = new MenuFragment();
+        /*menu_fragment = new MenuFragment();
 
         replaceFragment(menu_fragment);
 
-        System.out.println("onResume: " + manager.getLevel());
+        System.out.println("onResume: " + manager.getLevel());*/
     }
 
     @Override
@@ -194,22 +198,42 @@ public class MenuActivity extends AppCompatActivity {
             if ( pressedTime == 0 ) {
                 Toast.makeText(this,"한번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show();
                 pressedTime = System.currentTimeMillis();
-            }
-            else {
+            } else {
                 int seconds = (int) (System.currentTimeMillis() - pressedTime);
 
                 if ( seconds > 2000 ) {
                     Toast.makeText(this,"한번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show();
                     pressedTime = 0 ;
-                }
-                else {
+                } else {
                     super.onBackPressed();
                     Log.e("!!!", "onBackPressed : finish, killProcess");
                     finish();
-                    android.os.Process.killProcess(android.os.Process.myPid());
+                    //android.os.Process.killProcess(android.os.Process.myPid());
                 }
             }
         }
     }
 
+    @Override
+    protected void onNewIntent(Intent intent) {
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+                // 사용자 정보 등록 or 받아오기
+                manager = getManager();
+            }
+        };
+
+        thread.start();
+
+        try {
+            thread.join();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+
+        text_name.setText(name + " 님 " + "lv. " + manager.getLevel());
+
+        super.onNewIntent(intent);
+    }
 }

@@ -13,7 +13,13 @@ public class Manager implements Serializable {
     private int spelling_mean_link = -1; // 단어 뜻 연결하기
     private int spelling_sort = -1; // 빈칸 채우기
     private int pron_mean = -1; // 발음 듣고 뜻 맞추기
+    private int cross_puz = -1; // 낱말퍼즐
     private int recap = -1; // 복습
+
+    public Manager(String token, int level) {
+        Token = token;
+        Level = level;
+    }
 
     public Manager(String token) {
         Token = token;
@@ -26,6 +32,7 @@ public class Manager implements Serializable {
             spelling_mean_link == 1 &&
             spelling_sort == 1 &&
             pron_mean == 1 &&
+            cross_puz == 1 &&
             recap == 5)
 
             return true;
@@ -40,6 +47,7 @@ public class Manager implements Serializable {
         spelling_mean_link = 0;
         spelling_sort = 0;
         pron_mean = 0;
+        cross_puz = 0;
         recap = 0;
     }
 
@@ -121,6 +129,14 @@ public class Manager implements Serializable {
 
     public void setPron_mean(int pron_mean) {
         this.pron_mean = pron_mean;
+    }
+
+    public int getCross_puz() {
+        return cross_puz;
+    }
+
+    public void setCross_puz(int cross_puz) {
+        this.cross_puz = cross_puz;
     }
 
     public int getRecap() {

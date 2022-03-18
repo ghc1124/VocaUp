@@ -1,12 +1,40 @@
 package com.test.vocaup.DO;
 
 public class ListAll {
+    private int index;
     private String word;
+    private String origin_word;
     private String mean;
     private String part;
     private String level;
     private String sentence;
     private String mean_s;
+    private boolean isSelected;
+    private int userWord;
+
+    public int getUserWord() {
+        return userWord;
+    }
+
+    public void setUserWord(int userWord) {
+        this.userWord = userWord;
+    }
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
+    }
 
     public String getWord() {
         return word;
@@ -54,5 +82,13 @@ public class ListAll {
 
     public void setMean_s(String mean_s) {
         this.mean_s = mean_s;
+    }
+
+    public String getOrigin_word() {
+        return origin_word;
+    }
+
+    public void setOrigin_word(String origin_word) {
+        this.origin_word = origin_word;
     }
 }

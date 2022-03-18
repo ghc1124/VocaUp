@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="550dp"
     android:background="#FFFFFF"
     android:clipToPadding="false"
     tools:context=".activity.DetailActivity">
@@ -32,7 +32,7 @@
 
     <TextView
         android:id="@+id/textView_level"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginStart="20dp"
@@ -53,21 +53,56 @@
         android:layout_marginEnd="38dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/button_blue"
-        android:text="로그아웃"
+        android:text="확인"
         android:textColor="#FFFFFF"
         android:textSize="12sp"
         android:textStyle="bold"
         android:typeface="serif" />
 
     <TextView
+        android:id="@+id/textView21"
+        android:layout_width="20dp"
+        android:layout_height="30dp"
+        android:layout_alignBottom="@id/progressBar"
+        android:layout_marginRight="-30dp"
+        android:layout_toLeftOf="@id/progressBar"
+        android:gravity="center"
+        android:text="1"
+        android:textColor="@color/black"
+        android:textStyle="italic" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@id/textView_level"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="40dp"
+        android:max="35" />
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="20dp"
+        android:layout_height="30dp"
+        android:layout_alignRight="@id/progressBar"
+        android:layout_alignBottom="@id/progressBar"
+        android:layout_marginEnd="-30dp"
+        android:gravity="center"
+        android:text="35"
+        android:textColor="@color/black"
+        android:textStyle="italic" />
+
+    <TextView
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textView_name"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
+        android:layout_below="@id/progressBar"
+        android:layout_centerHorizontal="true"
         android:layout_marginStart="160dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="160dp"
         android:fontFamily="serif"
         android:gravity="center"
@@ -99,9 +134,8 @@
                 android:layout_weight="2"
                 android:text="빈칸 채우기"
                 android:textColor="#5C5C5C"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:typeface="serif" />
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView_blank_spelling"
@@ -126,9 +160,8 @@
                 android:layout_weight="2"
                 android:text="뜻 보고 단어 맞추기"
                 android:textColor="#5C5C5C"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:typeface="serif" />
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView_mean_spelling"
@@ -153,9 +186,8 @@
                 android:layout_weight="2"
                 android:text="단어 보고 뜻 맞추기"
                 android:textColor="#5C5C5C"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:typeface="serif" />
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView_spelling_mean"
@@ -180,9 +212,8 @@
                 android:layout_weight="2"
                 android:text="단어와 뜻 연결하기"
                 android:textColor="#5C5C5C"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:typeface="serif" />
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView_spelling_mean_link"
@@ -207,9 +238,8 @@
                 android:layout_weight="2"
                 android:text="알파벳 배열하기"
                 android:textColor="#5C5C5C"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:typeface="serif" />
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView_spelling_sort"
@@ -234,12 +264,36 @@
                 android:layout_weight="2"
                 android:text="발음 듣고 뜻 맞추기"
                 android:textColor="#5C5C5C"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:typeface="serif" />
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView_pron_mean"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right|center_vertical"
+                android:text="TextView"
+                android:textColor="#5C5C5C" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="낱말퀴즈"
+                android:textColor="#5C5C5C"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView_cross_puz"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -261,9 +315,8 @@
                 android:layout_weight="2"
                 android:text="복습"
                 android:textColor="#5C5C5C"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:typeface="serif" />
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView_recap"

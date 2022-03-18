@@ -1,5 +1,7 @@
 package com.test.vocaup.quiz;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -28,15 +30,19 @@ import java.util.ArrayList;
 
 public class PronMean extends AppCompatActivity {
     private JSONObject result = new JSONObject();
-    ArrayList<Problem> problem_list= new ArrayList<Problem>();
+    private ArrayList<Problem> problem_list = new ArrayList<Problem>();
+    private int what_problem;
+    private int level_info;
+    private String test_json;
+    private String mp3_name;
+    private Button[] but_array;
+    private ImageButton sound;
+    private TextView textView_count;
+    private TextView textView_info;
 
-    int what_problem;
-    int level_info;
-    String test_json;
-    String mp3_name;
-    Button[] but_array;
-    ImageButton sound;
     private Boolean ExamFlag;
+    private Boolean RecapFlag;
+
     private MediaPlayer mediaPlayer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,12 +56,17 @@ public class PronMean extends AppCompatActivity {
         but_array[3] = (Button)findViewById(R.id.button3);
         sound = (ImageButton)findViewById(R.id.sound);
         what_problem = -1;
-        level_info = ((MenuActivity)MenuActivity.context).manager.getLevel();
+
+        textView_count = findViewById(R.id.textView_count);
+        textView_info = findViewById(R.id.textView_info);
+
         test_json = "problem/pron_mean";
         SelectBtnOnClickListener but_listener = new SelectBtnOnClickListener();
 
         Intent intent = getIntent();
         ExamFlag = intent.getBooleanExtra("ExamFlag", false);
+        RecapFlag = intent.getBooleanExtra("RecapFlag", false);
+        level_info = intent.getIntExtra("levelInfo", 0);
 
         Thread thread = new Thread() {
             @Override
@@ -68,8 +79,6 @@ public class PronMean extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-                new Connect_get().wordPron(result, "wordPron", (level_info + ""));
             }
         };
         thread.start();
@@ -78,6 +87,15 @@ public class PronMean extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+        textView_count.setText("1/" + problem_list.size());
+
+        try {
+            textView_info.setText("문제 정보: " + result.getString("meta").substring(0, result.getString("meta").length() - 5));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         for(int i = 0; i < 4; i++){
             but_array[i].setOnClickListener(but_listener);
         }
@@ -92,7 +110,7 @@ public class PronMean extends AppCompatActivity {
                     int level = result.getInt("level");
                     mediaPlayer = new MediaPlayer();
                     mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-                    mediaPlayer.setDataSource("http://13.209.75.148:5000/wordPron/"+level+"/"+problem_list.get(what_problem).getShow());
+                    mediaPlayer.setDataSource("http://13.209.75.148:5000/wordPron/" + level + "/" + problem_list.get(what_problem).getShow());
                     mediaPlayer.prepareAsync();
                     mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                         @Override
@@ -139,6 +157,7 @@ public class PronMean extends AppCompatActivity {
                 intent.putExtra("test_result", problem_list);
                 intent.putExtra("type", "pron_mean");
                 intent.putExtra("ExamFlag", ExamFlag);
+                intent.putExtra("RecapFlag", RecapFlag);
                 startActivity(intent);
             }
         }
@@ -163,10 +182,37 @@ public class PronMean extends AppCompatActivity {
     //다음문제로 세팅
     protected void next_problem(String mp3_name, Button[] buttons, ArrayList<Problem> problem_list) {
         what_problem++;
+
+        if ((what_problem + 1) <= problem_list.size())
+            textView_count.setText((what_problem + 1) + "/" + problem_list.size());
+
         mp3_name = problem_list.get(what_problem).getShow();
         System.out.println(mp3_name);
         for (int i = 0; i < problem_list.get(what_problem).getSelectSize(); i++) {
             buttons[i].setText(problem_list.get(what_problem).getSelect(i));
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("").setMessage("포기하시겠습니까?");
+        builder.setPositiveButton("확인", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int id)
+            {
+                PronMean.super.onBackPressed();
+            }
+        });
+
+        builder.setNegativeButton("취소", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int id)
+            {
+
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 }

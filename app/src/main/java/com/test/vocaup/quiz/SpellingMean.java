@@ -2,6 +2,8 @@ package com.test.vocaup.quiz;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +12,6 @@ import android.widget.TextView;
 
 import com.test.vocaup.DO.Problem;
 import com.test.vocaup.R;
-import com.test.vocaup.activity.MenuActivity;
 import com.test.vocaup.activity.TestResultActivity;
 import com.test.vocaup.server.Connect_get;
 
@@ -22,14 +23,17 @@ import java.util.ArrayList;
 
 public class SpellingMean extends AppCompatActivity {
     private JSONObject result = new JSONObject();
-    ArrayList<Problem> problem_list= new ArrayList<Problem>();
-    int what_problem;
-    int level_info;
-    String test_json;
-    TextView spelling;
-    Button[] but_array;
+    private ArrayList<Problem> problem_list = new ArrayList<Problem>();
+    private int what_problem;
+    private int level_info;
+    private String test_json;
+    private TextView spelling;
+    private Button[] but_array;
+    private TextView textView_count;
+    private TextView textView_info;
 
     private Boolean ExamFlag;
+    private Boolean RecapFlag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,20 +46,24 @@ public class SpellingMean extends AppCompatActivity {
         but_array[2] = (Button)findViewById(R.id.button2);
         but_array[3] = (Button)findViewById(R.id.button3);
         what_problem = -1;
-        level_info = ((MenuActivity)MenuActivity.context).manager.getLevel();
+
+        textView_count = findViewById(R.id.textView_count);
+        textView_info = findViewById(R.id.textView_info);
+
         test_json = "problem/spelling_mean";
         SelectBtnOnClickListener but_listener = new SelectBtnOnClickListener();
 
         Intent intent = getIntent();
         ExamFlag = intent.getBooleanExtra("ExamFlag", false);
-
+        RecapFlag = intent.getBooleanExtra("RecapFlag", false);
+        level_info = intent.getIntExtra("levelInfo", 0);
         Thread thread = new Thread() {
             @Override
             public void run() {
                 result = new Connect_get(intent.getStringExtra("Token"))
                         .problem_get(test_json, (level_info+""));
                 try {
-                    problem_list_fill(result,problem_list);
+                    problem_list_fill(result, problem_list);
                     next_problem(spelling, but_array, problem_list);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -65,11 +73,21 @@ public class SpellingMean extends AppCompatActivity {
             }
         };
         thread.start();
+
         try {
             thread.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+        textView_count.setText("1/" + problem_list.size());
+
+        try {
+            textView_info.setText("문제 정보: " + result.getString("meta").substring(0, result.getString("meta").length() - 5));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         for(int i = 0; i < 4; i++){
             but_array[i].setOnClickListener(but_listener);
         }
@@ -94,16 +112,17 @@ public class SpellingMean extends AppCompatActivity {
                     break ;
             }
             System.out.println(problem_list.size()+ " : "+ what_problem);
+
             problem_list.get(what_problem).setChoice(click_but);
 
-            if(what_problem<=problem_list.size()-2) {
+            if (what_problem <= problem_list.size() - 2) {
                 next_problem(spelling, but_array, problem_list);
-            }
-            else{
+            } else{
                 Intent intent = new Intent(SpellingMean.this, TestResultActivity.class);
                 intent.putExtra("test_result",problem_list);
                 intent.putExtra("type", "spelling_mean");
                 intent.putExtra("ExamFlag", ExamFlag);
+                intent.putExtra("RecapFlag", RecapFlag);
                 startActivity(intent);
             }
         }
@@ -126,10 +145,37 @@ public class SpellingMean extends AppCompatActivity {
     //다음문제로 세팅
     protected void next_problem(TextView show, Button[] buttons, ArrayList<Problem> problem_list){
         what_problem++;
+
+        if ((what_problem + 1) <= problem_list.size())
+            textView_count.setText((what_problem + 1) + "/" + problem_list.size());
+
         show.setText(problem_list.get(what_problem).getShow());
         for(int i=0 ; i< problem_list.get(what_problem).getSelectSize() ; i++){
             buttons[i].setText(problem_list.get(what_problem).getSelect(i));
         }
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("").setMessage("포기하시겠습니까?");
+        builder.setPositiveButton("확인", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int id)
+            {
+                SpellingMean.super.onBackPressed();
+            }
+        });
+
+        builder.setNegativeButton("취소", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int id)
+            {
+
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 }

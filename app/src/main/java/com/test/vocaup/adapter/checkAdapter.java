@@ -8,7 +8,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.test.vocaup.DO.ListAll;
 import com.test.vocaup.DO.Problem;
 import com.test.vocaup.R;
 
@@ -16,6 +15,7 @@ import java.util.ArrayList;
 
 public class checkAdapter extends RecyclerView.Adapter<checkAdapter.ViewHolder> {
     private ArrayList<Problem> items = new ArrayList<>();
+    private ArrayList<String> wrongList = new ArrayList<>();
 
     @NonNull
     @Override
@@ -25,10 +25,6 @@ public class checkAdapter extends RecyclerView.Adapter<checkAdapter.ViewHolder> 
 
         return new ViewHolder(itemView);
     }
-
-
-
-
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
@@ -40,13 +36,13 @@ public class checkAdapter extends RecyclerView.Adapter<checkAdapter.ViewHolder> 
     public int getItemCount() {
         return items.size();
     }
-
     // 뷰 홀더
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView problem_word;
         private TextView textView_answer;
         private TextView textView_check;
         private TextView check;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -57,15 +53,21 @@ public class checkAdapter extends RecyclerView.Adapter<checkAdapter.ViewHolder> 
         }
 
         public void setItem(Problem problem) {
-            int answer=problem.getAnswer();
-            int choice=problem.getChoice();
+            String reg = "^[a-zA-Z]*";
+            int answer = problem.getAnswer();
+            int choice = problem.getChoice();
             problem_word.setText(problem.getShow());
             textView_answer.setText(problem.getSelect(answer));
             textView_check.setText(problem.getSelect(choice));
-            if(answer==choice)
+            if (answer == choice)
                 check.setText("O");
-            else
+            else {
                 check.setText("X");
+                if (problem_word.getText().toString().matches(reg))
+                    wrongList.add(problem_word.getText().toString());
+                else if (textView_answer.getText().toString().matches(reg))
+                    wrongList.add(textView_answer.getText().toString());
+            }
         }
     }
 
@@ -84,5 +86,9 @@ public class checkAdapter extends RecyclerView.Adapter<checkAdapter.ViewHolder> 
 
     public void setItem(int position, Problem problem) {
         items.set(position, problem);
+    }
+
+    public ArrayList<String> getWrongList() {
+        return wrongList;
     }
 }
